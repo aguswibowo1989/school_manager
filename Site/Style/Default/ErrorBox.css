@@ -1,5 +1,5 @@
 table.ErrorBox {
-	background: #A5AEBC;
+	background: #ff9999;
 	border-top-width: thin;
 	border-left-width: thin;
 	border-bottom-width: thin;
@@ -8,10 +8,10 @@ table.ErrorBox {
 	border-left-style: solid;
 	border-bottom-style: solid;
 	border-right-style: solid;
-	border-top-color: #000033;
-	border-left-color: #000033;
-	border-bottom-color: #000033;
-	border-right-color: #000033;
+	border-top-color: #ff0000;
+	border-left-color: #ff0000;
+	border-bottom-color: #ff0000;
+	border-right-color: #ff0000;
 	width: 100%;
 	border-spacing: 0px; 
 	border-collapse: collapse;

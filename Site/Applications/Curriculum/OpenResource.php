@@ -5,7 +5,7 @@
     $resourceid = getUnescapedGET("resourceid");
     $levelid = getUnescapedGET("levelid");
     $subjectid = getUnescapedGET("subjectid");
-    $topicid = getUnescapedGET("topicid");
+    $topicid = getUnescapedGET("topic");
     $action = getUnescapedGET("action");
     
     $vars = array();
@@ -42,8 +42,20 @@
         header("Location:  ViewResources.php?" . http_build_simple_query($vars));
     }
     else {
-        $resource = get_resource($resouceid);
-        layout_display_dialog("Are you sure you want to delete the resource named '{$resource['name']}'?", "YesNo", $vars);
+        $query = "select name from resource where id = " . $conn->quote($resourceid);
+        $result = $conn->query($query);
+        
+        if (DB::isError($result)) {
+            trigger_error($sql);
+            trigger_error($result->getMessage());
+            trigger_error("Could not name from resource." , E_USER_ERROR);
+        }
+        
+        $row = $result->fetchRow();
+        $name = $row[0];
+        $result->free();
+        
+        layout_display_dialog("Are you sure you want to delete the resource named '{$name}'?", "YesNo", $vars);
     }
  
 ?>

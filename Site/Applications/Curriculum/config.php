@@ -17,6 +17,7 @@
  	// Local configuration (Local means this application)
 	$config['local']['login'] = "{$config['local']['home']}index.php";
 	$config['local']['images'] = $config['path']['images'];
+    $config['local']['icons'] = $config['path']['images'] . "Icons/";
 	$config['local']['style'] = $config['path']['style'];
 	$config['local']['js'] = $config['path']['js'];
     $config['local']['title'] = $config['local']['name'];
@@ -30,6 +31,8 @@
     $config['local']['navigation']['Search'] = "Search.php";
     $config['local']['navigation']['Import'] = "Import.php";
     $config['local']['navigation']['Export'] = "Export.php";
+    
+    $config['local']['display_per_page'] = 5;
     
     define("NO_ANSWER", -1);
     define("NEW_ANSWER", -2);

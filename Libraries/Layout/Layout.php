@@ -17,7 +17,6 @@
     function layout_end ()
     {
         layout_close_body();
-        //layout_display_right_col();
         layout_close_cols();
         layout_display_error_footer();
         layout_close();
@@ -55,7 +54,8 @@
         echo "<link rel='stylesheet' type='text/css' media='screen' href='{$config['local']['home']}Style/Default/Header.css'></script>\n";
         echo "<link rel='stylesheet' type='text/css' media='screen' href='{$config['local']['home']}Style/Default/Navigation.css'></script>\n";
         echo "<link rel='stylesheet' type='text/css' media='screen' href='{$config['local']['home']}Style/Default/FormTable.css'></script>\n";
-        echo "<link rel='stylesheet' type='text/css' media='screen' href='{$config['local']['home']}Style/Default/ErroBox.css'></script>\n";
+        echo "<link rel='stylesheet' type='text/css' media='screen' href='{$config['local']['home']}Style/Default/ErrorBox.css'></script>\n";
+        echo "<link rel='stylesheet' type='text/css' media='screen' href='{$config['local']['home']}Style/Default/DataTable.css'></script>\n";
     }
 
     function layout_display_javascript($javascripts = array()) 
@@ -83,7 +83,7 @@
     function layout_open_cols()
     {
         echo "<!-- BEGIN COLUMNS -->\n";
-        echo "<table border=0 cellpadding=0 cellspacing=4 width=100% border=1>\n";
+        echo "<table border=0 cellpadding=0 cellspacing=0>\n";
         echo "  <tr>\n";
     }
 
@@ -103,50 +103,30 @@
         if (array_key_exists("navigation", $config) and $config['local']['name'] != "Login") {
             layout_display_navigation_box($config['site']['name'], $config['navigation']);
         }
-        echo "    <br>\n";
         
         if (array_key_exists("navigation", $config['local'])) {
             layout_display_navigation_box($config['local']['name'], $config['local']['navigation']);
         }
-        echo "    <br>\n";
          
-        if (array_key_exists("right_navigation", $config['local'])) {
+        if (array_key_exists("page_navigation", $config['local'])) {
             layout_display_navigation_box("Page Options", $config['local']['right_navigation']);
         }
         
         echo "    </td>\n";
-        echo "<td width={$config['layout']['buffer_col_width']}>&nbsp;</td>\n";
         echo "<!-- END LEFT COLUMN -->\n";
-    }
-
-    function layout_display_right_col()
-    {
-    	global $config;
-    	
-        echo "<!-- BEGIN RIGHT COLUMN -->\n";
-        echo "<td width={$config['layout']['buffer_col_width']}>&nbsp;</td>\n";
-        echo "    <td valign=top width={$config['layout']['right_col_width']}>\n";
-        if ($config['local']['name'] != "Login") {
-            //layout_display_users_online();
-        }
-        
-        echo "<br>\n";
-        
-        if ($config['local']['name'] != "Login") {
-            //layout_display_quicklinks();
-        }
-        echo "    </td>\n";
-        echo "<!-- END RIGHT COLUMN -->\n";
     }
     
     function layout_open_body()
     {
+        global $config;
         echo "<!-- BEGIN BODY -->\n";
-        echo "    <td valign=top>\n";
+        echo "    <td valign=top align=left width=" . $config['layout']['middle_col_width'] . ">\n";
+        echo "<div id=\"ContentArea\">\n";
     }
 
     function layout_close_body()
     {
+        echo "    </div>\n";
         echo "    </td>\n";
         echo "<!-- END BODY -->\n";
     }
@@ -176,11 +156,19 @@
         echo "</th></tr>\n";
                                                
         foreach ($links as $name => $link) {
-            echo "<tr class='$class'>\n";
-            echo "<td class='$class' nowrap \n";
-            echo "    onMouseOver='NavigationMouseOver(this, \"" . jsEscape($name) . "\")'";
-            echo "    onMouseOut='NavigationMouseOut(this)'";
-            echo "    onClick='document.location = \"$link\";'\n>";
+            
+            if ($name == $config['local']['name']) {
+                echo "<tr class='{$class}_sel'>\n";
+                echo "<td class='{$class}_sel' nowrap>\n";
+            }
+            else {
+                echo "<tr class='$class'>\n";
+                echo "<td class='$class' nowrap \n";
+                echo "    onMouseOver='NavigationMouseOver(this, \"" . jsEscape($name) . "\")'";
+                echo "    onMouseOut='NavigationMouseOut(this)'";
+                echo "    onClick='document.location = \"$link\";'\n>";
+            }
+            
             echo "<table cellspacing=0 cellpadding=0 border=0 width=100%>\n";
             echo "<td width=22 height=20>\n";
             
@@ -191,17 +179,15 @@
             else {
                 layout_display_icon_small($name);
             }
+        
             
             echo "</td>";
             
-            if ($name != $config['local']['name']) {
-                echo "<td height=24 colspan=2>\n";
-                echo "<a href=\"$link\" class=\"$class\">$name</a></td>\n";
+            if ($name == $config['local']['name']) {
+                echo "<td class=\"{$class}_sel\">$name</td>\n";
             }
             else {
                 echo "<td><a href=\"$link\" class=\"{$class}\">$name</a></td>";
-                echo "<td align=right height=24><img width=24 height=24 src=\""  .$config['path']['icons'] . "tb_left_arrow.gif\"  border=0 align=right>";
-                echo "</td>\n";
             }
             
             echo "</tr>\n";
@@ -229,25 +215,16 @@
     
     function layout_display_pagnation_bar($page_num, $viewing_start, $viewing_end, $total_count, $page, $vars = array())
     {
-		echo "<table class=\"pagination_bar\">\n";
+		echo "<table class=\"pagination_bar\" border=1>\n";
 		echo "<tr>\n";
-		echo "<td class=\"pagination_bar\" align=\"left\" width=\"33%\">\n";
+		echo "<td class=\"pagination_bar\" valign=\"middle\" align=\"left\" width=\"33%\">\n";
 		
 		if (1 < $page_num) {
-			$prev_page = $page_num - 1;
-			echo "<form name=\"Previous Page\" action=\"$page\" method=\"GET\">\n";
-			
-            if (is_array($vars)) {
-    			foreach ($vars as $key => $value) {
-    				echo "<input type=hidden name=\"$key\" value=\"$value\">\n";
-    			}
-            }
-			echo "<input type=hidden name=page_num value=\"$prev_page\">\n";
-			echo "<input type=submit name=action value=\"&lt;&lt; Prev\">\n";
-			echo "</form>\n";
+			$vars['page_num'] = $page_num - 1;
+            echo "<a class=pagination_bar href=\"{$page}?" . http_build_simple_query($vars) . "\">&lt;&lt Prev</a>";
 		}
 		echo "</td>\n";
-		echo "<td class=\"pagination_bar\" align=\"center\" width=\"33%\">\n";
+		echo "<td class=\"pagination_bar\" valign=\"middle\" align=\"center\" width=\"33%\">\n";
 		
 		
 		if ($total_count <= $viewing_end) {
@@ -260,20 +237,11 @@
         
 		echo "viewing $viewing_start through $viewing_end of $total_count\n";
 		echo "</td>\n";
-		echo "<td class=\"pagination_bar\" align=\"right\" width=\"33%\">\n";
+		echo "<td class=\"pagination_bar\" valign=\"middle\" align=\"right\" width=\"33%\">\n";
 	
 		if ($total_count > $viewing_end) {
-			$next_page = $page_num + 1;
-			echo "<form name=\"Previous Page\" action=\"$page\" method=\"GET\">\n";
-			
-            if (is_array($vars)) {
-    			foreach ($vars as $key => $value) {
-    				echo "<input type=hidden name=\"$key\" value=\"$value\">\n";
-    			}
-            }
-			echo "<input type=hidden name=page_num value=\"$next_page\">\n";
-			echo "<input type=submit name=action value=\"Next &gt;&gt;\">\n";
-			echo "</form>\n";
+			$vars['page_num'] = $page_num + 1;
+            echo "<a class=pagination_bar href=\"{$page}?" . http_build_simple_query($vars) . "\">Next &gt;&gt;</a>";
 		
 		}
 		echo "</td>\n";
@@ -294,12 +262,17 @@
         echo "<table border=0 cellpadding=10 class=\"DialogBox\" width=50% align=center>\n";
         echo "  <tr>\n";
         echo "    <td class=DialogBox colspan=2 align=center>\n";
-        echo "    <h1 class=DialogBox>$prompt</h1>\n";
+        echo "    <h2 class=DialogBox>$prompt</h2>\n";
         echo "    </td>\n";
         echo "  </tr>\n";
         echo "  <tr>\n";
-        echo "    <td  class=DialogBox align=right><input type=submit name=action value='Yes'></td>\n";
-        echo "    <td  class=DialogBox align=left><input type=submit name=action value='No'></td>\n";
+        if ($type == "YesNo") {
+            echo "    <td class=DialogBox align=right><input type=submit name=action value='Yes'></td>\n";
+            echo "    <td class=DialogBox align=left><input type=submit name=action value='No'></td>\n";
+        }
+        else if ($type == "OK") {
+            echo "    <td class=DialogBox align=right colspan=2><input type=submit name=action value='OK'></td>\n";
+        }
         echo "  </tr>\n";
         echo "</table>\n";
         echo "</form>\n";
@@ -350,58 +323,6 @@
         }
         else {
             echo "<img src=\"" . $config['largeicons']['default'] . "\" border=0 align=bottom>";
-        }
-    }
-    
-    function layout_display_users_online () {
-        global $config;
-        global $conn;
-        $users = array();
-        
-        $sql = "select uid, name
-                  from {$config['session']['table']}  
-                 where timestamp > CURRENT_TIMESTAMP - interval '{$config['session']['timeout']} seconds' 
-                 order by timestamp";
-                 
-        $result = $conn->query($sql);
-        echo "<!-- $sql -->\n\n";
-        if (DB::isError($result)) {
-            trigger_error("Could not get who is online: " . $sql, E_USER_NOTICE);
-        }
-        else {
-            
-            while ($row = $result->fetchRow(DB_FETCHMODE_ASSOC)) {
-                $users["i:Default User:" . $row['name']] = $config['local']['home'] . "Utils/ManageQuickLinks.php?uid=" . urlencode($row['uid']);
-            }
-            $result->free();
-            layout_navigation_box("Users Online", $users);
-        }
-    }
-    
-    function layout_display_quicklinks () {
-        global $config;
-        global $conn;
-        $links = array();
-        
-        $quid = $conn->quote($config['local']['user']['uid']);
-        
-        $sql = "select title, url
-                  from {$config['quicklinks']['table']}
-                 where uid = $quid order by timestamp";
-                 
-        $result = $conn->query($sql);
-        echo "<!-- $sql -->\n\n";
-        if (DB::isError($result)) {
-            trigger_error("Could not get who is online: " . $sql, E_USER_NOTICE);
-        }
-        else {
-            $links['Add to QuickLinks'] = $config['local']['home'] . "Utils/AddQuickLink.php?title=" . urlencode($config['local']['title']) . "&icon=" . urlencode($config['local']['name']) . "&home=" . urlencode($config['local']['home']) ;
-            $links['Manage QuickLinks'] = $config['local']['home'] . "Utils/ManageQuickLinks.php";
-            while ($row = $result->fetchRow(DB_FETCHMODE_ASSOC)) {
-                $links[$row['title']] = $config['local']['home'] . $row['url'];
-            }
-            $result->free();
-            layout_navigation_box("QuickLinks", $links);
         }
     }
 

@@ -10,7 +10,7 @@
 /SchoolManager/Libraries/HTTP/Parameter.php	fgetUnescapedPOST	o64	fgetEscapedPOST	o445	fgetUnescapedGET	o654	fgetUnescapedRequest	o1011	fgetEscapedGET	o1402	fupdate_cookie	o1563
 /SchoolManager/Libraries/Auth/Auth.php	fauth_user_pw	o19
 /SchoolManager/Libraries/Applications/Curriculum.php	fget_level_navigation	o20	fcurriculum_add_answer	o531
-/SchoolManager/Site/Applications/Curriculum/config.php	dNO_ANSWER	o1430	dNEW_ANSWER	o1460	dADD_ANSWER	o1491
+/SchoolManager/Site/Applications/Curriculum/config.php	dNO_ANSWER	o1433	dNEW_ANSWER	o1463	dADD_ANSWER	o1494
 /SchoolManager/Libraries/Curriculum/Curriculum.php	fget_level_navigation	o20
 /SchoolManager/Libraries/Errors/Errors.php	fmy_error_screen	o238	fmy_error_log	o436	fmy_error_handler	o1055
 /SchoolManager/Libraries/Database/PgSQL.php	fdb_connect	o18	fdb_begin_transaction	o725	fdb_rollback_transaction	o802	fdb_commit_transaction	o885	fdb_lastvalue	o965

@@ -1,9 +1,10 @@
 body {
 	font-size: 11px;
-	font-family:palatino, georgia, times new roman, serif;
+	font-family: palatino, georgia, times new roman, serif;
 	margin: 0;
+	margin-top: 4px;
 	padding: 0;
-	background-color: #d9d9d9;
+	background-color: #9c9cff;
 	color: #000000;
 }
 
@@ -11,35 +12,64 @@ h1 {
 	font-size: 16px;
 	border-bottom: solid;
 	border-bottom-width: thin;
-	font-weight: bold;
 }
 
 h2 {
 	font-size: 14px;
 	font-weight: bold;
-	padding-left: 10px;
 }
 
 h3 {
 	font-size: 12px;
 	font-weight: bold;
-	padding-left: 15px;
 }
 
 h4 {
 	font-size: 11px;
 	font-style: italics;
 	font-weight: bold;
-	padding-left: 20px;
 }
 
 h5 {
 	font-size: 11px;
 	font-style: italics;
-	padding-left: 25px;
 }
 
 p {
 	font-size: 11px;
-	padding-left: 25px;
+}
+
+#ContentArea {
+	background: #ffffff;
+	padding: 10px;
+	border-width: thin;
+	border-style: solid;
+	border-color: #000000;
+	width: 100%;
+	margin-top: 2px;
+	margin-left: 4px;	
+}
+
+/* Pagination Bar */
+table.pagination_bar {
+	background-color: #ebebeb;
+	border-width: thin;
+	border-style: solid;
+	border-color: #999999;
+	width: 100%;
+	border-spacing: 0px; 
+	border-collapse: collapse;
+	margin-top: 2px;
+	margin-bottom: 4px;
+}
+
+td.pagination_bar { 
+    font-size: 10px;
+	padding: 5px;
+	color: #000000;	
+}
+
+a.pagination_bar {
+	color: #000000;
+	text-decoration: none;
 }
