@@ -27,7 +27,7 @@
 
     
     if ($action ==  "Cancel") {
-        header("Location:  ViewLesson.php?" . urlencode($lessonid));
+        header("Location:  ViewLesson.php?lessonid=" . urlencode($vars['lessonid']));
         exit();
     }
 

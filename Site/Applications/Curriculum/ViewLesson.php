@@ -17,17 +17,17 @@
 
 <div id=actions>
 
-        <a class=DataView href="ViewResources.php?lessonid=<?= urlencode($lessonid) ?>">
+        <a class=DataView href="ViewTestBank.php?lessonid=<?= urlencode($lessonid) ?>">
         <img src="<?= $config['local']['icons'] ?>tb_open.gif" border=0 
-             alt="Delete Lesson" align=middle> View Test Bank</a>
+             alt="View Test Bank" align=middle> View Test Bank</a>
 
         <a class=DataView href="ViewResources.php?lessonid=<?= urlencode($lessonid) ?>">
         <img src="<?= $config['local']['icons'] ?>tb_open.gif" border=0 
-             alt="Delete Lesson" align=middle> View Resources</a>
+             alt="View Resources" align=middle> View Resources</a>
 
         <a class=DataView href="Export.php?lessonid=<?= urlencode($lessonid) ?>">
         <img src="<?= $config['local']['icons'] ?>tb_save_as.gif" border=0 
-             alt="Delete Lesson" align=middle> Export</a>
+             alt="Export Lesson" align=middle> Export</a>
 
         <a class=DataView href="EditLesson.php?lessonid=<?= urlencode($lessonid) ?>">
         <img src="<?= $config['local']['icons'] ?>tb_edit.gif" border=0 

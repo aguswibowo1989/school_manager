@@ -82,6 +82,23 @@
         return -1;
     }
     
+    function get_lessonid_from_testbankid($testbankid) {
+        global $conn;
+        $query = "select lessonid from lesson_testbank where testbankid = " . $conn->quote($testbankid);
+        $result = $conn->query($query);
+        
+        if (DB::isError($result)) {
+            trigger_error($query, E_USER_NOTICE);
+            trigger_error($result->getMessage(), E_USER_NOTICE);
+            trigger_error("Failed to retrieve testbankid", E_USER_ERROR);
+        }
+        
+        if ($row = $result->fetchRow()) {
+            return $row[0];
+        }
+        return -1;
+    }
+    
     function get_id_from_name($t, $c, $a) {
         global $conn;
         $qanswer = $conn->quote($a);
@@ -277,6 +294,23 @@
             trigger_error($query, E_USER_NOTICE);
             trigger_error($result->getMessage(), E_USER_NOTICE);
             trigger_error("Failed to get resource information.", E_USER_ERROR);
+        }
+        
+        $row = $result->fetchRow(DB_FETCHMODE_ASSOC);
+        $result->free();
+        return $row;
+    }
+    
+    function get_testquestion ($testbankid)
+    {
+        global $conn;
+        $query = "select * from testbank where id = " . $conn->quote($testbankid);
+        $result = $conn->query($query);
+        
+        if (DB::isError($result)) {
+            trigger_error($query, E_USER_NOTICE);
+            trigger_error($result->getMessage(), E_USER_NOTICE);
+            trigger_error("Failed to get test question information.", E_USER_ERROR);
         }
         
         $row = $result->fetchRow(DB_FETCHMODE_ASSOC);

@@ -19,6 +19,7 @@
     }
     
     if ($action ==  "Cancel") {
+        $lessonid = get_lessonid_from_resourceid($vars['resourceid']);
         header("Location:  ViewResources.php?lessonid=" . urlencode($lessonid));
         exit();
     }

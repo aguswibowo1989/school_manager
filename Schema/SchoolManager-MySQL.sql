@@ -91,5 +91,20 @@ CREATE TABLE user (
 	realname varchar(100),
 	password varchar(32),
 	email varchar(100),
+	timestamp timestamp,
     school varchar(255)
+);
+
+DROP TABLE if exists testbank;
+CREATE TABLE testbank (
+	id integer auto_increment not null primary key,
+	question text,
+	answer text,
+    timestamp timestamp
+);
+
+DROP TABLE if exists lesson_testbank;
+CREATE TABLE lesson_testbank (
+	lessonid integer not null,
+	testbankid integer not null
 );
