@@ -15,7 +15,8 @@
         exit();
     }
     else if ($resource['type'] == TYPE_FILE_PATH) {
-        header("Location:  file://" . rawurlencode($resource['path']));
+        //echo "<a href=\"file://{$resource['path']}\">here</a>";
+        header("Location:  file://" . $resource['path']);
         exit();
     }
     else if ($resource['type'] == TYPE_LOCAL_FILE) {
