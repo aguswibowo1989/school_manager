@@ -27,9 +27,10 @@
         if (! file_exists($file)) {
             trigger_error("File Not Found ($file)", E_USER_ERROR);
         }
-        
+        $stat=stat($file);
         header("Content-type: " . $resource['mimetype']);
         header("Content-Disposition: filename=" . $resource['path']);
+        header("Content-Length: " . $stat['size']);
         readfile($file);
         exit();
     }
