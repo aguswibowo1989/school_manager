@@ -8,30 +8,18 @@
         layout_display_javascript();
         layout_close_header();
         layout_display_banner();
-        //layout_open_cols();
-        layout_display_left_side();
-        //layout_open_body();
-        //layout_display_page_title();
-        //echo "<div id='fedora-middle-three'>\n";
-        //echo "  <div class='fedora-corner-tr'>&nbsp;</div>\n";
-        //echo "  <div class='fedora-corner-tl'>&nbsp;</div>\n";
-        echo "  <div id='site-content'>\n";
+        layout_open_cols();
+        layout_display_left_col();
+        layout_open_body();
+        layout_display_page_title();
     }
 
     function layout_end ()
     {
-        echo "\n  </div>\n";
-        
-        echo "\n  <div id='site-footer'>\n";
-        echo "hey\n";
-        echo "\n  </div>\n";
-        //echo "  <div class='fedora-corner-br'>&nbsp;</div>\n";
-        //echo "  <div class='fedora-corner-bl'>&nbsp;</div>\n";
-        //echo "</div>\n";
-       //layout_close_body();
-       //layout_display_right_col();
-       //layout_close_cols();
-       layout_close();
+        layout_close_body();
+        layout_display_right_col();
+        layout_close_cols();
+        layout_close();
     }
 
     function layout_open() 
@@ -54,7 +42,7 @@
 
     function layout_close_header() 
     {
-        echo "\n</head>\n";
+        echo "</head>\n";
         echo "<body>\n";
     }
 
@@ -62,14 +50,16 @@
     {
         global $config;
         echo "\n<!-- StyleSheets -->\n";
-        echo "<link rel='stylesheet' type='text/css' media='screen' href='{$config['local']['home']}Style/Default/layout.css'></script>\n";
+        echo "<link rel='stylesheet' type='text/css' media='screen' href='{$config['local']['home']}Style/Default/Default.css'></script>\n";
+        echo "<link rel='stylesheet' type='text/css' media='screen' href='{$config['local']['home']}Style/Default/Header.css'></script>\n";
+        echo "<link rel='stylesheet' type='text/css' media='screen' href='{$config['local']['home']}Style/Default/Navigation.css'></script>\n";
     }
 
     function layout_display_javascript($javascripts = array()) 
     {
         global $config;
         echo "\n<!-- JavaScript -->\n";
-        echo "<script language='JavaScript' src='{$config['local']['home']}JavaScript/Navigation.js'>\n";
+        echo "<script language=\"JavaScript\" src=\"{$config['local']['home']}JavaScript/Navigation.js\"></script>\n";
     }
 
     function layout_display_banner()
@@ -77,18 +67,20 @@
         global $config;
 
         echo "<!-- BEGIN BANNER -->\n";
-        echo "<div id='site-header'>\n";
-        echo "  <div id='site-header-logo'>\n";
-        echo "    <h1>" . $config['site']['name'] . "</h1>\n";
-        echo "  </div>\n";
-        echo "</div>\n";
+        echo "<table class=header border=0 cellpadding=0 cellspacing=0 height=60 width=100%>\n";
+        echo "  <tr>\n";
+        echo "    <td align=left valign=middle>\n";
+        echo "    <h1 class=header>". $config['site']['name'] . "</h1>";
+        echo "    </td>\n";
+        echo "  </tr>\n";
+        echo "</table>\n";
         echo "<!-- END BANNER -->\n";
     }
 
     function layout_open_cols()
     {
         echo "<!-- BEGIN COLUMNS -->\n";
-        echo "<table border=0 cellpadding=0 cellspacing=4 width=100%>\n";
+        echo "<table border=0 cellpadding=0 cellspacing=4 width=100% border=1>\n";
         echo "  <tr>\n";
     }
 
@@ -99,19 +91,28 @@
         echo "<!-- END COLUMNS -->\n";
     }
 
-    function layout_display_left_side()
+    function layout_display_left_col()
     {
         global $config;
-        echo "\n<!-- BEGIN LEFT SIDE -->\n";
-        echo "<div id='site-side-left'>\n";
-        echo "  <div id='site-side-nav-label'>Site Navigation</div>\n";
-        echo "  <ul id='site-side-nav'>\n";
+        echo "<!-- BEGIN LEFT COLUMN -->\n";
+        echo "    <td valign=top width={$config['layout']['left_col_width']}>\n";
         
         if (array_key_exists("navigation", $config) and $config['local']['name'] != "Login") {
-        	layout_navigation_box($config['navigation'], $config['local']['navigation']);
+            layout_navigation_box("Site Navigation", $config['navigation']);
         }
-        echo "  </ul>\n";
-        echo "</div>\n";
+        echo "    <br>\n";
+        
+        if (array_key_exists("navigation", $config['local'])) {
+            layout_navigation_box($config['local']['name'], $config['local']['navigation']);
+        }
+        echo "    <br>\n";
+         
+        if (array_key_exists("right_navigation", $config['local'])) {
+            layout_navigation_box("Page Options", $config['local']['right_navigation']);
+        }
+        
+        echo "    </td>\n";
+        echo "<td width={$config['layout']['buffer_col_width']}>&nbsp;</td>\n";
         echo "<!-- END LEFT COLUMN -->\n";
     }
 
@@ -147,15 +148,58 @@
         echo "<!-- END BODY -->\n";
     }
     
-    function layout_navigation_box($links, $links2 = array())
+    function layout_navigation_box($title, $links, $class = "Navigation")
     {
         global $config;
+
+        if (! $title || ! is_array($links)) {
+            return;
+        }
+
+        echo "\n\n<!-- Begin Navigation Box $title -->\n";
+        echo "<table class='$class' width=100%>\n";
+        echo "<tr class='$class'>\n";
+        echo "<th class='$class' nowrap height=20 valign=top>\n";
+        
+        if (substr($title, 0, 2) == "i:") {
+            list($i, $icon, $title) = split(":", $title, 3);
+            layout_display_icon_small($icon);
+            echo "$title\n";
+        }
+        else {
+            layout_display_icon_small($title, "align=right");
+            echo "$title\n";
+        }
+        echo "</th></tr>\n";
                                                
         foreach ($links as $name => $link) {
-            echo "    <li>\n";
-            echo "      <a href='$link'>$name</a>\n";
-            echo "    </li>\n";
+            echo "<tr class='$class'>\n";
+            echo "<td class='$class' nowrap \n";
+            echo "    onMouseOver='NavigationMouseOver(this, \"" . jsEscape($name) . "\")'";
+            echo "    onMouseOut='NavigationMouseOut(this)'";
+            echo "    onClick='document.location = \"$link\";'\n>";
+            echo "<table cellspacing=0 cellpadding=0 border=0 width=100%>\n";
+            echo "<td width=22 height=20>\n";
+            
+            if (substr($name, 0, 2) == "i:") {
+                list($i, $icon, $name) = split(":", $name, 3);
+                layout_display_icon_small($icon);
+            }
+            else {
+                layout_display_icon_small($name);
+            }
+            
+            echo "</td>";
+            echo "<td height=20>\n";
+            echo "<a href=\"$link\" class=\"$class\">$name</a></td>\n";
+            echo "</td>\n";
+            echo "</tr>\n";
+            echo "</table>\n";
+            echo "</tr>\n";
         }
+        echo "</table>\n";
+        echo "<!-- End Navigation Box $title -->\n\n";
+
     }
     
     function layout_display_error($level, $message, $file, $line)
@@ -305,10 +349,13 @@
             return;
         }
         
-        echo "<table cellpadding=0 cellspacing=0 border=0 width=100%>\n";
-        echo "<tr><td width=121>\n";
-        layout_display_icon_large($config['local']['name']);
-        echo "</td>\n<td>\n<h1>" . $config['local']['title'] . "</h1></td></tr></table>";
+        //echo "<table cellpadding=0 cellspacing=0 border=0 width=100%>\n";
+        //echo "<tr><td>\n";
+        //layout_display_icon_large($config['local']['name']);
+        //echo "</td>\n";
+        //echo "<td>\n";
+        echo "<h1>" . $config['local']['title'] . "</h1>\n";
+        //echo "</td></tr></table>";
     }
     
     function layout_display_icon_small($key, $attr = "") {

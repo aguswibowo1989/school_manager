@@ -1,7 +1,7 @@
 <?php
 
 	global $config;
-	$config['local']['name'] = "Cirriculum";
+	$config['local']['name'] = "Curriculum";
 	$config['local']['home'] = "../../";
 		
 	require_once("{$config['local']['home']}../config.php");

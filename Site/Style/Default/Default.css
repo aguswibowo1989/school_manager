@@ -1,0 +1,12 @@
+body {
+	font-size: 11px;
+	font-family: bitstream vera sans,sans-serif;
+	margin: 0;
+	padding: 0;
+	background-color: #d9d9d9;
+	color: #000000;
+}
+
+h1 {
+	border-bottom: solid;
+}

@@ -1,12 +1,12 @@
-/SchoolManager/Libraries/Auth/Null.php	fcheck_auth_options	o148	fauth_user_pw_mod	o514
 /SchoolManager/Libraries/Auth/LDAP.php	fcheck_auth_options	o148	fauth_user_pw_mod	o1151
+/SchoolManager/Libraries/Layout/Layout.php	flayout_begin	o26	flayout_end	o401	flayout_open	o567	flayout_close	o638	flayout_open_header	o738	flayout_close_header	o903	flayout_display_stylesheet	o1009	flayout_display_javascript	o1585	flayout_display_banner	o1852	flayout_open_cols	o2348	flayout_close_cols	o2549	flayout_display_left_col	o2694	flayout_display_right_col	o3682	flayout_open_body	o4318	flayout_close_body	o4445	flayout_navigation_box	o4565	flayout_display_error	o6528	flayout_display_pagnation_bar	o7053	flayout_display_dialog	o8837	flayout_archive_search_bar	o9819	flayout_display_page_title	o11554	flayout_display_icon_small	o12163	flayout_display_icon_large	o12672	flayout_display_users_online	o13134	flayout_display_quicklinks	o14101
+/SchoolManager/Libraries/Database/Connection.php	fbuild_dsn	o307
+/SchoolManager/Libraries/Escape/Escape.php	fjsEscape	o78
+/SchoolManager/Libraries/Auth/Connection.php	fcheck_auth_options	o148	fauth_user_pw_mod	o1129
+/SchoolManager/Libraries/Auth/Null.php	fcheck_auth_options	o148	fauth_user_pw_mod	o514
 /SchoolManager/Libraries/Auth/Session.php	fmy_session_confirm	o122	fmy_session_query	o1064	fmy_session_create	o2104	fmy_session_update	o2949	fmy_session_destroy	o3400	fmy_session_clean	o3903
-/SchoolManager/Libraries/Layout/Layout.php	flayout_begin	o26	flayout_end	o637	flayout_open	o1104	flayout_close	o1175	flayout_open_header	o1275	flayout_close_header	o1440	flayout_display_stylesheet	o1548	flayout_display_javascript	o1837	flayout_display_banner	o2091	flayout_open_cols	o2461	flayout_close_cols	o2653	flayout_display_left_side	o2798	flayout_display_right_col	o3391	flayout_open_body	o4027	flayout_close_body	o4154	flayout_navigation_box	o4274	flayout_display_error	o4608	flayout_display_pagnation_bar	o5133	flayout_display_dialog	o6917	flayout_archive_search_bar	o7899	flayout_display_page_title	o9634	flayout_display_icon_small	o10185	flayout_display_icon_large	o10694	flayout_display_users_online	o11156	flayout_display_quicklinks	o12123
 /SchoolManager/Libraries/Auth/Auth.php	fauth_user_pw	o19
 /SchoolManager/Libraries/HTTP/Parameter.php	fgetUnescapedPOST	o64	fgetEscapedPOST	o344	fgetUnescapedGET	o457	fgetUnescapedRequest	o718	fgetEscapedGET	o1003	fupdate_cookie	o1070
 /SchoolManager/Libraries/Database/MySQL.php	fdb_connect	o18	fdb_begin_transaction	o725	fdb_rollback_transaction	o802	fdb_commit_transaction	o885
-/SchoolManager/Libraries/Database/Connection.php	fbuild_dsn	o307
-/SchoolManager/Libraries/Escape/Escape.php	fjsEscape	o78
 /SchoolManager/Libraries/Errors/Errors.php	fmy_error_screen	o238	fmy_error_log	o436	fmy_error_handler	o1055
-/SchoolManager/Libraries/Auth/Connection.php	fcheck_auth_options	o148	fauth_user_pw_mod	o1129
 /SchoolManager/Libraries/Database/PgSQL.php	fdb_connect	o18	fdb_begin_transaction	o725	fdb_rollback_transaction	o802	fdb_commit_transaction	o885	fdb_lastvalue	o965

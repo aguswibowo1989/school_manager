@@ -1,0 +1,11 @@
+h1.header {
+	font-size: 22px;
+	color: #ffffff;
+	font-style: italic;
+	border-bottom: none;
+}
+
+table.header {
+	background-color: #1b1b63;
+	padding: 10px;
+}

@@ -50,7 +50,7 @@
     //$config['auth']['name_col']  = "realname";
     
     $config['auth']['type']      = "null";
-    $config['auth']['redirect']  = "Applications/Cirriculum/";
+    $config['auth']['redirect']  = "Applications/Curriculum/";
 
     // Session Configurations
     $config['session']['timeout'] = 120 * 60; // 2 hours
@@ -64,7 +64,7 @@
     
     // Top Level Navigation Configuration
     $config['navigation']['HOME'] = $config['local']['home'] . "Applications/Home/";
-    $config['navigation']['Cirriculum'] = $config['local']['home'] . "Applications/Cirriculum/";
+    $config['navigation']['Curriculum'] = $config['local']['home'] . "Applications/Curriculum/";
     $config['navigation']['Assessment'] = $config['local']['home'] . "Applications/Accessment/";
     $config['navigation']['Attendance'] = $config['local']['home'] . "Applications/Attendance/";
     $config['navigation']['Student Portal'] = $config['local']['home'] . "Applications/Portal/";
