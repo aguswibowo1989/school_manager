@@ -3,18 +3,10 @@
     require_once("config.php");
     
     $resourceid = getUnescapedGET("resourceid");
-    $levelid = getUnescapedGET("levelid");
-    $subjectid = getUnescapedGET("subjectid");
-    $topicid = getUnescapedGET("topicid");
     $action = getUnescapedGET("action");
-    $page_num = getUnescapedGET("page_num");
     
     $vars = array();
-    $vars['levelid'] = $levelid;
-    $vars['subjectid'] = $subjectid;
-    $vars['topicid'] = $topicid;
     $vars['resourceid'] = $resourceid;
-    $vars['page_num'] = $page_num;
     
     if (! $resourceid) {
         trigger_error("Resource ID is a require parameter", E_USER_ERROR);
@@ -22,6 +14,7 @@
     
     if ($action == "Yes") {
         $resource = get_resource($resourceid);
+        $vars['lessonid'] = get_lessonid_from_resourceid($resourceid);
         
         if ($resource['type'] == TYPE_LOCAL_FILE) {
              $file = $config['path']['filestore'] . "/" .
@@ -41,18 +34,19 @@
             trigger_error($result->getMessage());
             trigger_error("Cound not delete from resource table" , E_USER_ERROR);
         }
-        $sql = "delete from lstr where resourceid = '$resourceid'";
+        $sql = "delete from lesson_resource where resourceid = '$resourceid'";
         $result = $conn->query($sql);
         
         if (DB::isError($result)) {
             trigger_error($sql);
             trigger_error($result->getMessage());
-            trigger_error("Could not delete from lstr table" , E_USER_ERROR);
+            trigger_error("Could not delete from lesson_resource table" , E_USER_ERROR);
         }
-        
+
         header("Location:  ViewResources.php?" . http_build_simple_query($vars));
     }
     elseif ($action == "No") {
+        $vars['lessonid'] = get_lessonid_from_resourceid($resourceid);
         header("Location:  ViewResources.php?" . http_build_simple_query($vars));
     }
     else {

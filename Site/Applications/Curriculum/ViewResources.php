@@ -29,8 +29,11 @@
 ?>
 
 <div id=bar>
-    <a href="ViewTestBank.php?lessonid=<?= urlencode($lessonid) ?>">Test Bank</a>
     <a href="ViewLesson.php?lessonid=<?= urlencode($lessonid) ?>">Lesson</a>
+    <strong>Resources</strong>
+    <a href="ViewTestBank.php?lessonid=<?= urlencode($lessonid) ?>">Test Bank</a>
+</div>
+<div id=bar>
     <a href="NewResource.php?lessonid=<?= urlencode($lessonid) ?>&type=<?= TYPE_URL ?>">New URL (Web Site)</a>
     <a href="NewResource.php?lessonid=<?= urlencode($lessonid) ?>&type=<?= TYPE_LOCAL_FILE ?>">New File (Document)</a
     <a href="NewResource.php?lessonid=<?= urlencode($lessonid) ?>&type=<?= TYPE_FILE_PATH ?>">New Path (CD)</a>
@@ -64,15 +67,18 @@
 ?>
 
 <tr style="<?= $style ?>">
-<td width=100% style="border-top-style: solid;border-top-width: thin;"><?= $row['name'] ?> -- <?= $t ?></td>
-<td style="border-top-style: solid;border-top-width: thin;padding:3px;" nowrap>
+<td width=100% style="border-top-style: solid;border-top-width: thin;">
     <a href="OpenResource.php?resourceid=<?= urlencode($row['id']) ?>" target="<?= $row['id'] ?>">
-    <img src="<?= $config['local']['icons'] ?>tb_open.gif" border=0 
-             alt="Delete Lesson" align=middle> Open</a>
-&nbsp;&nbsp;
+<?= $row['name'] ?> -- <?= $t ?></a></td>
+<td style="border-top-style: solid;border-top-width: thin;padding:3px;" nowrap>
+
     <a href="EditResource.php?resourceid=<?= urlencode($row['id']) ?>">
     <img src="<?= $config['local']['icons'] ?>tb_edit.gif" border=0 
-             alt="Delete Lesson" align=middle> Edit</a></td>
+             alt="Delete Lesson" align=middle> Edit</a>&nbsp;&nbsp;
+    <a href="DeleteResource.php?resourceid=<?= urlencode($row['id']) ?>">
+    <img src="<?= $config['local']['icons'] ?>tb_trash.gif" border=0 
+             alt="Delete Lesson" align=middle> Delete</a>
+             </td>
 </tr>
 
 <?php } ?>

@@ -119,6 +119,16 @@ th.FormTable {
 	background: #cbcbcb;
 }
 
+#bar strong {
+    padding: 5px;
+	font-size: 10px;
+	padding-right: 10px;
+	padding-left: 10px;
+	background: #cbcbcb;
+	font-weight: normal;
+	text-decoration: underline;
+}
+
 #actions a {
     padding: 8px;
     padding-top: 0px;
@@ -131,4 +141,10 @@ th.FormTable {
     font-size: 16px;
 	border-bottom: solid;
 	border-bottom-width: thin;
+}
+
+#test li {
+    padding-top: 30px;
+    padding-bottom: 30px;
+    font-size: 16px;
 }

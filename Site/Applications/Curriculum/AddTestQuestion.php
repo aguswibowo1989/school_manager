@@ -10,7 +10,7 @@
         trigger_error("Lesson ID is required", E_USER_ERROR);
     }
     else if (!$question) {
-        trigger_error("Name is required", E_USER_ERROR);
+        trigger_error("Question is required", E_USER_ERROR);
     }
     
     $query = "insert into testbank (question, answer) values (" .
@@ -37,6 +37,6 @@
         trigger_error("Failed to create testbank", E_USER_ERROR);
     }
 
-    header("Location: ViewTestBank.php?lessonid=" . urlencode($lessonid));
+    header("Location: EditTestBank.php?lessonid=" . urlencode($lessonid));
     
 ?>

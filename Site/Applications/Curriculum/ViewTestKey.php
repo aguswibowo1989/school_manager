@@ -22,7 +22,6 @@
         trigger_error($result->getMessage(), E_USER_NOTICE);
         trigger_error("Could not get resources", E_USER_ERROR);
     } 
-
     $lesson = get_lesson($lessonid);
     layout_begin();
     show_breadcrumb_lesson($lessonid);
@@ -35,17 +34,19 @@
     <strong>Test Bank</strong>
 </div>
 <div id=bar>
-    <strong>View Test</strong>
-    <a href="ViewTestKey.php?lessonid=<?= urlencode($lessonid) ?>">View Test Key</a>
+    <a href="ViewTestBank.php?lessonid=<?= urlencode($lessonid) ?>">View Test</a>
+    <strong>View Test Key</strong>
     <a href="EditTestBank.php?lessonid=<?= urlencode($lessonid) ?>">Edit Test</a>
     <a href="NewTestQuestion.php?lessonid=<?= urlencode($lessonid) ?>">New Test Question</a>
 </div>
 
 <div id=test>
-<h1><?= $lesson['name'] ?> (Test)</h1>
+<h1><?= $lesson['name'] ?> (Test Key)</h1>
 <ol>
 <?php while ($row = $result->fetchRow(DB_FETCHMODE_ASSOC)) { ?>
-<li><?= nl2br(ereg_replace(" ", "&nbsp;",ereg_replace("\t", "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;", $row['question']))) ?></li>
+<li><?= nl2br(ereg_replace(" ", "&nbsp;",ereg_replace("\t", "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;", $row['question']))) ?><br><br>
+<strong>Answer: &nbsp;</strong><?= nl2br(ereg_replace(" ", "&nbsp;",ereg_replace("\t", "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;", $row['answer']))) ?>
+</li>
 <?php } ?>
 </ol>
 </div>
@@ -55,3 +56,4 @@
     layout_end();
 
 ?>
+

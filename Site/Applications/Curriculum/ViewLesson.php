@@ -16,8 +16,11 @@
 ?>
 
 <div id=bar>
-    <a class=DataView href="ViewTestBank.php?lessonid=<?= urlencode($lessonid) ?>">Test Bank</a>
+    <strong>Lesson</strong>
     <a class=DataView href="ViewResources.php?lessonid=<?= urlencode($lessonid) ?>">Resources</a>
+    <a class=DataView href="ViewTestBank.php?lessonid=<?= urlencode($lessonid) ?>">Test Bank</a>
+</div>
+<div id=bar>
     <a class=DataView href="Export.php?lessonid=<?= urlencode($lessonid) ?>">Export Lesson</a>
     <a class=DataView href="EditLesson.php?lessonid=<?= urlencode($lessonid) ?>">Edit Lesson</a>
     <a class=DataView href="DeleteLesson.php?lessonid=<?= urlencode($lessonid) ?>">Delete Lesson</a>

@@ -23,7 +23,6 @@
         trigger_error("Could not get resources", E_USER_ERROR);
     } 
 
-    $lesson = get_lesson($lessonid);
     layout_begin();
     show_breadcrumb_lesson($lessonid);
 
@@ -35,20 +34,31 @@
     <strong>Test Bank</strong>
 </div>
 <div id=bar>
-    <strong>View Test</strong>
+    <a href="ViewTestBank.php?lessonid=<?= urlencode($lessonid) ?>">View Test</a>
     <a href="ViewTestKey.php?lessonid=<?= urlencode($lessonid) ?>">View Test Key</a>
-    <a href="EditTestBank.php?lessonid=<?= urlencode($lessonid) ?>">Edit Test</a>
+    <strong>Edit Test</strong>
     <a href="NewTestQuestion.php?lessonid=<?= urlencode($lessonid) ?>">New Test Question</a>
 </div>
 
-<div id=test>
-<h1><?= $lesson['name'] ?> (Test)</h1>
-<ol>
+<table cellpadding=2 cellspacing=0 border=0 width=100% 
+       style="margin-top: 10px;border-bottom-style: solid;border-bottom-width: thin;">
 <?php while ($row = $result->fetchRow(DB_FETCHMODE_ASSOC)) { ?>
-<li><?= nl2br(ereg_replace(" ", "&nbsp;",ereg_replace("\t", "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;", $row['question']))) ?></li>
+
+<tr style="background: #ffffff;">
+<td width=100% style="border-top-style: solid;border-top-width: thin;">
+<strong>Question:</strong><br><?= ereg_replace("\r\n", "<br>\r\n", $row['question']) ?><br><br>
+<strong>Answer:</strong><br> <?= ereg_replace("\r\n", "<br>\r\n", $row['answer']) ?></td>
+<td style="border-top-style: solid;border-top-width: thin;padding:3px;" nowrap valign=top>
+    <a href="EditTestQuestion.php?testbankid=<?= urlencode($row['id']) ?>">
+    <img src="<?= $config['local']['icons'] ?>tb_edit.gif" border=0 
+             alt="Edit Test Question" align=middle> Edit</a><br>
+    <a href="DeleteTestQuestion.php?testbankid=<?= urlencode($row['id']) ?>">
+    <img src="<?= $config['local']['icons'] ?>tb_trash.gif" border=0 
+             alt="Edit Test Question" align=middle> Delete</a></td>
+</tr>
+
 <?php } ?>
-</ol>
-</div>
+</table>
 
 <?php
 
