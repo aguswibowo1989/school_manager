@@ -4,7 +4,7 @@
 	if ($config['sql']['phptype'] == "pgsql") {
 		include ("PgSQL.php");
 	}
-    if ($config['sql']['phptype'] == "mysql") {
+    elseif ($config['sql']['phptype'] == "mysql") {
         include ("MySQL.php");
     }
 	else {
