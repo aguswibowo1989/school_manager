@@ -3,22 +3,22 @@
     require_once("config.php");
     
     $action = getUnescapedPOST("action");
+    $sectionid = getUnescapedPOST("sectionid");
     
+    if (! $sectionid) {
+        trigger_error("Section ID is required", E_USER_ERROR);
+    }
+    
+    // Handle Cancel Button
     if ($action ==  "Cancel") {
-        $lessonid = get_lessonid_from_testbankid($vars['testbankid']);
-        header("Location:  ViewResources.php?lessonid=" . urlencode($lessonid));
+        header("Location:  ViewSection.php?sectionid=" . urlencode($sectionid));
         exit();
     }
     
-    $sectionid = getUnescapedPOST("sectionid");
     $name = getUnescapedPOST("name");
     $displayorder = getUnescapedPOST("displayorder");
     $orig_name = getUnescapedPOST("orig_name");
     $orig_displayorder = getUnescapedPOST("orig_displayorder");
-      
-    if (! $sectionid) {
-        trigger_error("Section ID is required", E_USER_ERROR);
-    }
               
     if (! $name) {
         trigger_error("Section name is required", E_USER_ERROR);
@@ -36,7 +36,7 @@
     }
     
     if ($displayorder != $orig_displayorder) {
-        $query = "update help_section set name = " . $conn->quote($displayorder) . " where id = " . $conn->quote($sectionid);
+        $query = "update help_section set displayorder = " . $conn->quote($displayorder) . " where id = " . $conn->quote($sectionid);
         $result = $conn->query($query);
         
         if (DB::isError($result)) {

@@ -38,6 +38,7 @@
     }
     print "</ul>\n</li>\n</ul>\n";
 
+    if (!$config['local']['disable_update']) {
 ?>
 <table>
 <tr>
@@ -49,6 +50,7 @@
 </tr>
 </table>
 <?php
+    }
     
     layout_end();
 

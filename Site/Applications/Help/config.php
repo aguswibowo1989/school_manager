@@ -21,5 +21,6 @@
     $config['local']['title'] = $config['local']['name'];
     
     $config['local']['user'] = my_session_query(session_id());
+    $config['local']['disable_update'] = true;
 
 ?>

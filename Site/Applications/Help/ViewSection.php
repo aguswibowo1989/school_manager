@@ -9,9 +9,9 @@
     }
     $qsectionid = $conn->quote($sectionid);
     $section_name = get_section_name($sectionid);
-    $query = "select c.title, c.content
+    $query = "select c.id, c.helpsectionid, c.title, c.content
                 from help_content c
-               where c.helpsectionid = $qsectionid";
+               where c.helpsectionid = $qsectionid order by displayorder";
     $result = $conn->query($query);
     
     if (DB::isError($result)) {
@@ -28,12 +28,18 @@
 <a href="Home.php">[ TOC ]</a></h2>
 
 <?php
-    
-    while ($row = $result->fetchRow(DB_FETCHMODE_ASSOC)) {
-        print "<h3>" . $row['title'] . "</h3>\n";
+
+   while ($row = $result->fetchRow(DB_FETCHMODE_ASSOC)) {
+        print "<h3>" . $row['title'];
+        if (!$config['local']['disable_update']) {
+            print " <a href=\"EditContent.php?contentid=${row['id']}\">[edit]</a>" .
+                  " &nbsp;<a href=\"DeleteContent.php?contentid=${row['id']}&sectionid=${row['helpsectionid']}\">[delete]</a>";
+        }
+        print "</h3>\n";
         print "<p>" . nl2br($row['content']) . "<p>\n";
     }
 
+    if (!$config['local']['disable_update']) {
 ?>
 <table>
 <tr>
@@ -49,9 +55,16 @@
 <input type=submit name=action value="Edit Section">
 </form>
 </td>
+<td>
+<form name="DeleteSection" action="DeleteSection.php" method="GET">
+<input type=hidden name=sectionid value="<?= $sectionid ?>">
+<input type=submit name=action value="Delete Section">
+</form>
+</td>
 </tr>
 </table>
 <?php
+    }
     
     layout_end();
 
