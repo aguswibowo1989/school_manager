@@ -11,7 +11,7 @@
     require_once("Escape/Escape.php");
 	require_once("HTTP/Parameter.php");
 	require_once("Layout/Layout.php");
-    require_once("Curriculum/Curriculum.php");
+    require_once("Applications/Curriculum.php");
 
  	// Local configuration (Local means this application)
 	$config['local']['login'] = "{$config['local']['home']}index.php";
@@ -23,12 +23,15 @@
     $config['local']['user'] = my_session_query(session_id());
     
     $config['local']['navigation'] = get_level_navigation();
-    
     $config['local']['navigation']['Search'] = "Search.php";
     $config['local']['navigation']['New Resource'] = "NewResource.php";
     $config['local']['navigation']['Edit Resource'] = "EditResource.php";
     $config['local']['navigation']['Delete Resource'] = "DeleteResource.php";
     $config['local']['navigation']['Import'] = "Import.php";
     $config['local']['navigation']['Export'] = "Export.php";
-
+    
+    define("NO_ANSWER", -1);
+    define("NEW_ANSWER", -2);
+    define("ADD_ANSWER", -3);
+    
 ?>

@@ -20,12 +20,12 @@
 <th class="FormTable">Choose Level</th>
 <td>
 <select name="levelid">
-<option value="-1">Choose One:</option>
+<option value="<?= NO_ANSWER ?>">Choose One:</option>
 <?php while ($row = $res->fetchRow(DB_FETCHMODE_ASSOC)) { ?>
 <option value="<?php echo $row['id'] ?>"><?php echo $row['name'] ?></option>
 <?php } ?>
 
-<option value="-2">Add New Level...</option>
+<option value="<?= NEW_ANSWER ?>">Add New Level...</option>
 </select>  
 </td>
 </tr>

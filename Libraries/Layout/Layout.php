@@ -19,6 +19,7 @@
         layout_close_body();
         //layout_display_right_col();
         layout_close_cols();
+        layout_display_error_footer();
         layout_close();
     }
 
@@ -54,6 +55,7 @@
         echo "<link rel='stylesheet' type='text/css' media='screen' href='{$config['local']['home']}Style/Default/Header.css'></script>\n";
         echo "<link rel='stylesheet' type='text/css' media='screen' href='{$config['local']['home']}Style/Default/Navigation.css'></script>\n";
         echo "<link rel='stylesheet' type='text/css' media='screen' href='{$config['local']['home']}Style/Default/FormTable.css'></script>\n";
+        echo "<link rel='stylesheet' type='text/css' media='screen' href='{$config['local']['home']}Style/Default/ErroBox.css'></script>\n";
     }
 
     function layout_display_javascript($javascripts = array()) 
@@ -403,4 +405,23 @@
         }
     }
 
+    function layout_display_error_footer()
+    {
+        global $config;
+        
+        if (! in_array('error', array_keys($config))) {
+            return;
+        }
+        
+        echo "<table border=1 class=\"ErrorFoot\" width=100% align=center cellpadding=5>\n";
+        echo "<tr><th class=\"ErrorFoot\">Notices and Warnings</th></tr>\n";
+        foreach ($config['error'] as $error) {
+            echo "  <tr>\n";
+            echo "    <td class=ErrorFoot>\n";
+            echo $error['message'];
+            echo "    </td>\n";
+            echo "   </tr>\n";
+        }
+        echo "</table>\n";  
+    }
 ?>

@@ -1,0 +1,57 @@
+table.ErrorBox {
+	background: #A5AEBC;
+	border-top-width: thin;
+	border-left-width: thin;
+	border-bottom-width: thin;
+	border-right-width: thin;
+	border-top-style: solid;
+	border-left-style: solid;
+	border-bottom-style: solid;
+	border-right-style: solid;
+	border-top-color: #000033;
+	border-left-color: #000033;
+	border-bottom-color: #000033;
+	border-right-color: #000033;
+	width: 100%;
+	border-spacing: 0px; 
+	border-collapse: collapse;
+}
+
+td.ErrorBox {
+}
+
+h1.ErrorBox {
+}
+
+h2.ErrorBox {
+}
+
+h3.ErrorBox {
+}
+
+h4.ErrorBox {
+}
+
+table.ErrorFoot {
+	background: #ff9999;
+	border-top-width: thin;
+	border-left-width: thin;
+	border-bottom-width: thin;
+	border-right-width: thin;
+	border-top-style: solid;
+	border-left-style: solid;
+	border-bottom-style: solid;
+	border-right-style: solid;
+	border-top-color: #000033;
+	border-left-color: #000033;
+	border-bottom-color: #000033;
+	border-right-color: #000033;
+	width: 80%;
+	border-spacing: 0px; 
+	border-collapse: collapse;
+	font-size: 10px;
+}
+
+th.ErrorFoot {
+	background: #dd6666;
+}

@@ -36,4 +36,10 @@ function db_commit_transaction($conn) {
 	 return $conn->query("commit");
 }
 
+function db_get_insert_id($table, $column, $result = "")
+{
+    
+    
+}
+
 ?>

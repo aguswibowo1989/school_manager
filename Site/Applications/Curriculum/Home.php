@@ -7,9 +7,9 @@
 
 <h2>View Curriculums</h2>
 
-<p>Lesson Plans and Ideas are stored in this Curriculum web application.  Click on 
+<p>Lesson Plans and ideas are stored in this curriculum web application.  Click on 
 the level of the students, and then click on the subject matter.  Resources such
-as a test item bank, document, and movies may be available to compliment the
+as a test item bank, document, and videos may be available to compliment the
 subject being taught.</p>
 
 <h2>Add New Curriculums</h2>
