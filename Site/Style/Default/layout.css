@@ -1,0 +1,265 @@
+/* Defaults */
+body {
+	font-size: 0.9em;
+	font-family: bitstream vera sans,sans-serif;
+	margin: 0;
+	padding: 0;
+	background-color: #cbcbcb;
+}
+
+a:link {
+	color: #900;
+}
+a:visited {
+	color: #48468f;
+}
+a:hover {
+	color: #f20;
+}
+a[name] {
+	color: inherit;
+	text-decoration: inherit;
+}
+
+/* Site Header */
+#site-header {
+	background-color: #fff;
+	height: 62px;	
+}
+
+#site-header h1 {
+	font-size: 22px;
+	font-style: italic;
+}
+
+#site-header img {
+	border: 0;
+	vertical-align: middle;
+}
+#site-header-logo {
+	/* position is offset by the header padding amount */
+	position: absolute;
+	left: 26px;
+	top: 8px;
+	z-index: 3;
+}
+#site-header-logo img {
+	width: 110px;
+	height: 40;
+}
+
+
+#site-side-left {
+	position: absolute;
+	z-index: 2;
+	width: 11em;
+	/* Space down for the approx line height (fonts) */
+	left: 12px;
+}
+#site-side-right {
+	position: absolute;
+	z-index: 1;
+	width: 13em;
+	right: 12px;
+	padding-top: 3px;
+}
+#site-side-left, #site-side-right {
+	top: 2px;
+	/* add to the top margin to compensate for the fixed sizes */
+	margin-top: 75px;
+	color: #555;
+	font-size: 0.9em;
+}
+#site-side-right ul {
+	list-style: square inside;
+	padding: 0;
+	margin: 0;
+}
+
+/* Left-side naviagation */
+#site-side-nav-label {
+	display: none;
+}
+#site-side-nav {
+	list-style: none;
+	margin: 0;
+	padding: 0;
+	border: 1px solid #5976b2;
+	border-top: 0;
+	background-color: #22437f;
+}
+#site-side-nav li {
+	margin: 0;
+	padding: 0;
+	border-top: 1px solid #5976b2;
+	/* IE/Win gets upset if there is no bottom border... Go figure. */
+	border-bottom: 1px solid #22437f;
+}
+#site-side-nav a {
+	margin: 0;
+	color: #c5ccdb;
+	display: block;
+	text-decoration: none;
+	padding: 4px 6px;
+}
+#site-side-nav a:hover {
+	background-color: #34548f;
+	color: #fff;
+}
+#site-side-nav ul {
+	list-style: none;
+	margin: 0;
+	padding: 0;
+}
+#site-side-nav ul li {
+	border-top: 1px solid #34548e;
+	background-color: #34548e;
+	/* IE/Win gets upset if there is no bottom border... Go figure. */
+	border-bottom: 1px solid #34548e;
+}
+#site-side-nav ul li:hover {
+	border-bottom: 1px solid #34548f;
+}
+#site-side-nav ul li a {
+	padding-left: 12px;
+	color: #a7b2c9;
+}
+#site-side-nav ul li a:hover {
+	background-color: #46659e;
+}
+#site-side-nav ul ul li a {
+	padding-left: 18px;
+}
+#site-side-nav strong a {
+	font-weight: normal;
+	color: #fff !important;
+	background-color: #10203b;
+}
+#site-side-nav strong a:hover {
+	background-color: #172e56 !important;
+}
+
+/* content containers */
+#fedora-middle-one, #fedora-middle-two, #fedora-middle-three {
+	font-size: 0.9em;
+	/* position: relative; */ /* relative to utilize z-index */
+	width: auto;
+	min-width: 120px;
+	margin: 10px;
+	z-index: 3; /* content can overlap when the browser is narrow */
+}
+#fedora-middle-two, #fedora-middle-three {
+	margin-left: 11em;
+	padding-left: 24px;
+}
+#fedora-middle-three {
+	margin-right: 13em;
+	padding-right: 24px;
+}
+
+#site-content {
+	padding: 24px;
+	border: 1px solid #aaa;
+	background-color: #fff;
+}
+
+#site-content > .fedora-corner-bottom { top: 0 }
+
+.fedora-corner-tl, .fedora-corner-tr, .fedora-corner-bl, .fedora-corner-br {
+	background-color: #d9d9d9;
+	position: relative;
+	width: 19px;
+	height: 19px;
+	/* The following line is to render PNGs with alpha transparency within IE/Win, using DirectX */
+	/* Work-around for IE6/Mac borkage (Part 1) */
+	display: none;
+}
+
+.fedora-corner-tl, .fedora-corner-bl { float: left; left: 0px; }
+.fedora-corner-tr, .fedora-corner-br { float: right; right: 0px; }
+.fedora-corner-tl, .fedora-corner-tr { top: 0px; }
+.fedora-corner-bl, .fedora-corner-br { bottom: 0px; margin-top: -19px; /* Opera fix (part 1) */ top: -18px;}
+
+html>body .fedora-corner-tl { background: #d9d9d9 url("/images/corner-tl.png") no-repeat left top; }
+html>body .fedora-corner-tr { background: #d9d9d9 url("/images/corner-tr.png") no-repeat right top; }
+html>body .fedora-corner-bl { background: #d9d9d9 url("/images/corner-bl.png") no-repeat left bottom; }
+html>body .fedora-corner-br { background: #d9d9d9 url("/images/corner-br.png") no-repeat right bottom; }
+
+.fedora-corner-tl { filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(src='/images/corner-tl.png',sizingMethod='scale'); }
+.fedora-corner-tr { filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(src='/images/corner-tr.png',sizingMethod='scale'); }
+.fedora-corner-br { filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(src='/images/corner-br.png',sizingMethod='scale'); }
+.fedora-corner-bl { filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(src='/images/corner-bl.png',sizingMethod='scale'); }
+
+/* \*/
+.fedora-corner-tl, .fedora-corner-tr, .fedora-corner-bl, .fedora-corner-br {
+	/* Restore the view for everything but IE6/Mac (part 2 of the "IE/Mac fix") */
+	display: block;
+}
+/* */
+
+.fedora-corner-bl, .fedora-corner-br {
+	top: 0px;
+}
+
+.content { margin: 0 1em }
+
+#fedora-sidelist {
+	position: relative;
+	bottom: 3px;
+	margin: 0;
+	padding: 3px !important;
+	border: 1px solid #bbb;
+	background-color: #ccc;
+	border-radius: 2.5px;
+	-moz-border-radius: 2.5px;
+}
+#fedora-sidelist strong a {
+	font-weight: normal;
+	background-color: #555;
+	color: #fff;
+}
+#fedora-sidelist strong a:hover {
+	background-color: #333;
+	color: #fff;
+}
+#fedora-sidelist li {
+	list-style-position: outside;
+	font-size: 0.9em;
+	list-style: none;
+	border: 1px solid #ccc;
+	border-width: 1px 0;
+	padding: 0;
+	list-style: none;
+}
+#fedora-sidelist li a {
+	text-decoration: none;
+	display: block;
+	padding: 6px 8px;
+	border-radius: 2.5px;
+	-moz-border-radius: 2.5px;
+}
+#fedora-sidelist li a:hover {
+	background-color: #999;
+	color: #eee;
+}
+
+#fedora-footer {
+	font-size: 0.75em;
+	text-align: center;
+	color: #777;
+	margin-bottom: 2em;
+}
+#fedora-printable {
+	text-align: center;
+	margin: 1em 0;
+	font-size: 0.85em;
+}
+#fedora-printable a {
+	text-decoration: none;
+	padding: 5px 0;
+	padding-left: 18px;
+	background: transparent url("/images/printable.png") no-repeat left;
+}
+#fedora-printable a:hover {
+	text-decoration: underline;
+}
