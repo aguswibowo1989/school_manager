@@ -12,3 +12,40 @@ CREATE TABLE user (
 	realname varchar(255),
 	password varchar(32)
 );
+
+CREATE TABLE level (
+	id integer auto_increment not null primary key,
+	name varchar(100),
+	description varchar(255)
+);
+
+CREATE TABLE subject (
+	id integer auto_increment not null primary key,
+	name varchar(100),
+	description varchar(255)
+);
+
+CREATE TABLE topic (
+	id integer auto_increment not null primary key,
+	name varchar(100),
+	description varchar(255)
+);
+
+CREATE TABLE resource (
+	id integer auto_increment not null primary key,
+	name varchar(100),
+	description varchar(255),
+	type integer not null,
+	path varchar(255)
+);
+
+CREATE TABLE lstr (
+	levelid integer not null,
+	subjectid integer not null,
+	topicid integer not null,
+	resourceid integer not null,
+	index (levelid),
+	index (subjectid),
+	index (topicid),
+	index (resourceid)
+);

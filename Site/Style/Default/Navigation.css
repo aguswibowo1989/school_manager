@@ -8,10 +8,10 @@ table.Navigation {
 	border-left-style: solid;
 	border-bottom-style: solid;
 	border-right-style: solid;
-	border-top-color: #000000;
-	border-left-color: #000000;
-	border-bottom-color: #000000;
-	border-right-color: #000000;
+	border-top-color: #999999;
+	border-left-color: #999999;
+	border-bottom-color: #999999;
+	border-right-color: #999999	;
 	width: 100%;
 	border-spacing: 0px; 
 	border-collapse: collapse;

@@ -1,7 +1,7 @@
 <?php
 
 	global $config;
-	$config['local']['name'] = "Curriculum";
+	$config['local']['name'] = "Student Portal";
 	$config['local']['home'] = "../../";
 		
 	require_once("{$config['local']['home']}../config.php");
@@ -11,7 +11,6 @@
     require_once("Escape/Escape.php");
 	require_once("HTTP/Parameter.php");
 	require_once("Layout/Layout.php");
-    require_once("Curriculum/Curriculum.php");
 
  	// Local configuration (Local means this application)
 	$config['local']['login'] = "{$config['local']['home']}index.php";
@@ -20,8 +19,6 @@
 	$config['local']['js'] = $config['path']['js'];
     $config['local']['title'] = $config['local']['name'];
     
-    $config['local']['user'] = my_session_query(session_id());
-    
-    $config['local']['navigation'] = get_level_navigation();
+    $config['local']['user'] = my_session_query(session_id()); 
 
 ?>

@@ -98,17 +98,17 @@
         echo "    <td valign=top width={$config['layout']['left_col_width']}>\n";
         
         if (array_key_exists("navigation", $config) and $config['local']['name'] != "Login") {
-            layout_navigation_box("Site Navigation", $config['navigation']);
+            layout_display_navigation_box($config['site']['name'], $config['navigation']);
         }
         echo "    <br>\n";
         
         if (array_key_exists("navigation", $config['local'])) {
-            layout_navigation_box($config['local']['name'], $config['local']['navigation']);
+            layout_display_navigation_box($config['local']['name'], $config['local']['navigation']);
         }
         echo "    <br>\n";
          
         if (array_key_exists("right_navigation", $config['local'])) {
-            layout_navigation_box("Page Options", $config['local']['right_navigation']);
+            layout_display_navigation_box("Page Options", $config['local']['right_navigation']);
         }
         
         echo "    </td>\n";
@@ -148,7 +148,7 @@
         echo "<!-- END BODY -->\n";
     }
     
-    function layout_navigation_box($title, $links, $class = "Navigation")
+    function layout_display_navigation_box($title, $links, $class = "Navigation")
     {
         global $config;
 
@@ -191,7 +191,12 @@
             
             echo "</td>";
             echo "<td height=20>\n";
-            echo "<a href=\"$link\" class=\"$class\">$name</a></td>\n";
+            if ($name != $config['local']['name']) {
+                echo "<a href=\"$link\" class=\"$class\">$name</a></td>\n";
+            }
+            else {
+                echo "<a href=\"$link\" class=\"$class\">&gt; $name</a></td>\n";
+            }
             echo "</td>\n";
             echo "</tr>\n";
             echo "</table>\n";
@@ -293,52 +298,6 @@
         echo "</table>\n";
         echo "</form>\n";
         layout_end();
-    }
-    
-    function layout_archive_search_bar($action = "ViewVersions.php") {
-        
-        global $conn;
-        global $config;
-        $search = $config['local']['param']['search'];
-        $appgroup = $config['local']['param']['appgroup'];
-        
-        echo "<table width=100%>\n";
-        echo "<tr>\n";
-        echo "<td width=50% align=left>\n";
-        echo "<form action=\"{$action}\" method=\"GET\">\n";
-        echo "<select name=\"appgroup\" onChange='this.form.submit()'>\n";
-        echo "<option value=\"0\">View All</option>\n";
-
-        $appgroup_sql = "select id, name from appgroup order by name";
-        $appgroup_res = $conn->query($appgroup_sql);
-
-        if (DB::isError($appgroup_res)) {
-            print $query . "<br>";
-            die("file: " . __FILE__ . "<br>line: " . __LINE__ . "<br>" . $appgroup_res->getMessage());
-        }
-        
-        while ($appgroup_row = $appgroup_res->fetchRow(DB_FETCHMODE_OBJECT)) {
-            echo "<option value=" . $appgroup_row->id;
-            if ($appgroup_row->id == $appgroup) { 
-                echo " selected"; 
-            }
-            echo ">";
-            echo $appgroup_row->name;
-            echo "</option>\n";
-        }
-        $appgroup_res->free();
-        echo "</select>\n";
-        echo "</td>\n";
-        
-        // Search Form
-        echo "<td width=50% align=right>\n";
-        echo "<input type=hidden name=screen value=\"View Versions\">\n";
-        echo "<input type=text name=search value=\"{$search}\">\n";
-        echo "<input type=submit name=action value=\"Search\">\n";
-        echo "</form>\n";
-        echo "</td>\n";
-        echo "</tr>\n";
-        echo "</table>\n";  
     }
     
     function layout_display_page_title() {

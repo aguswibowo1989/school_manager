@@ -1,6 +1,6 @@
 body {
 	font-size: 11px;
-	font-family: bitstream vera sans,sans-serif;
+	font-family:palatino, georgia, times new roman, serif;
 	margin: 0;
 	padding: 0;
 	background-color: #d9d9d9;
@@ -8,5 +8,38 @@ body {
 }
 
 h1 {
+	font-size: 16px;
 	border-bottom: solid;
+	border-bottom-width: thin;
+	font-weight: bold;
+}
+
+h2 {
+	font-size: 14px;
+	font-weight: bold;
+	padding-left: 10px;
+}
+
+h3 {
+	font-size: 12px;
+	font-weight: bold;
+	padding-left: 15px;
+}
+
+h4 {
+	font-size: 11px;
+	font-style: italics;
+	font-weight: bold;
+	padding-left: 20px;
+}
+
+h5 {
+	font-size: 11px;
+	font-style: italics;
+	padding-left: 25px;
+}
+
+p {
+	font-size: 11px;
+	padding-left: 25px;
 }
