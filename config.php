@@ -65,6 +65,9 @@
     // Top Level Navigation Configuration
     $config['navigation']['HOME'] = $config['local']['home'] . "Applications/Home/";
     $config['navigation']['Cirriculum'] = $config['local']['home'] . "Applications/Cirriculum/";
+    $config['navigation']['Assessment'] = $config['local']['home'] . "Applications/Accessment/";
+    $config['navigation']['Attendance'] = $config['local']['home'] . "Applications/Attendance/";
+    $config['navigation']['Student Portal'] = $config['local']['home'] . "Applications/Portal/";
     $config['navigation']['Logout'] = $config['local']['home'] . "Applications/Login/Logout.php";
     
     // add the application lib directory, to screens can include the libs they 

@@ -12,16 +12,22 @@
         layout_display_left_side();
         //layout_open_body();
         //layout_display_page_title();
-        echo "<div id='fedora-middle-three'>\n";
-        echo "  <div class='fedora-corner-tr'>&nbsp;</div>\n";
-        echo "  <div class='fedora-corner-tl'>&nbsp;</div>\n";
+        //echo "<div id='fedora-middle-three'>\n";
+        //echo "  <div class='fedora-corner-tr'>&nbsp;</div>\n";
+        //echo "  <div class='fedora-corner-tl'>&nbsp;</div>\n";
         echo "  <div id='site-content'>\n";
     }
 
     function layout_end ()
     {
-        echo "  </div>\n";
-        echo "</div>\n";
+        echo "\n  </div>\n";
+        
+        echo "\n  <div id='site-footer'>\n";
+        echo "hey\n";
+        echo "\n  </div>\n";
+        //echo "  <div class='fedora-corner-br'>&nbsp;</div>\n";
+        //echo "  <div class='fedora-corner-bl'>&nbsp;</div>\n";
+        //echo "</div>\n";
        //layout_close_body();
        //layout_display_right_col();
        //layout_close_cols();

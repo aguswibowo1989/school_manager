@@ -4,7 +4,7 @@ body {
 	font-family: bitstream vera sans,sans-serif;
 	margin: 0;
 	padding: 0;
-	background-color: #cbcbcb;
+	background-color: #ebebeb;
 }
 
 a:link {
@@ -23,13 +23,16 @@ a[name] {
 
 /* Site Header */
 #site-header {
-	background-color: #fff;
-	height: 62px;	
+	position: fixed;
+	background-color: #1b1b63;
+	height: 62px;
+	width: 100%;
 }
 
 #site-header h1 {
 	font-size: 22px;
 	font-style: italic;
+	color: #ffffff;
 }
 
 #site-header img {
@@ -39,8 +42,8 @@ a[name] {
 #site-header-logo {
 	/* position is offset by the header padding amount */
 	position: absolute;
-	left: 26px;
-	top: 8px;
+	left: 23px;
+	top: 5px;
 	z-index: 3;
 }
 #site-header-logo img {
@@ -48,35 +51,15 @@ a[name] {
 	height: 40;
 }
 
-
+/* Left Side Naviagation */
 #site-side-left {
-	position: absolute;
+	position: fixed;
+	top:74px;
 	z-index: 2;
-	width: 11em;
-	/* Space down for the approx line height (fonts) */
-	left: 12px;
+	width: 12em;
+	left: 1em;
+	font-size: 12px;
 }
-#site-side-right {
-	position: absolute;
-	z-index: 1;
-	width: 13em;
-	right: 12px;
-	padding-top: 3px;
-}
-#site-side-left, #site-side-right {
-	top: 2px;
-	/* add to the top margin to compensate for the fixed sizes */
-	margin-top: 75px;
-	color: #555;
-	font-size: 0.9em;
-}
-#site-side-right ul {
-	list-style: square inside;
-	padding: 0;
-	margin: 0;
-}
-
-/* Left-side naviagation */
 #site-side-nav-label {
 	display: none;
 }
@@ -84,27 +67,25 @@ a[name] {
 	list-style: none;
 	margin: 0;
 	padding: 0;
-	border: 1px solid #5976b2;
-	border-top: 0;
-	background-color: #22437f;
+	border: 1px solid #999999;
+	background-color: #cbcbcb;
 }
 #site-side-nav li {
 	margin: 0;
 	padding: 0;
-	border-top: 1px solid #5976b2;
-	/* IE/Win gets upset if there is no bottom border... Go figure. */
-	border-bottom: 1px solid #22437f;
+	border-top: 1px solid #ffffff;
+	border-bottom: 1px solid #999999;
 }
 #site-side-nav a {
 	margin: 0;
-	color: #c5ccdb;
+	color: #000000;
 	display: block;
 	text-decoration: none;
 	padding: 4px 6px;
 }
 #site-side-nav a:hover {
-	background-color: #34548f;
-	color: #fff;
+	background-color: #ffffff;
+	color: #000000;
 }
 #site-side-nav ul {
 	list-style: none;
@@ -158,108 +139,35 @@ a[name] {
 }
 
 #site-content {
+	position: fixed;
+	top: 74px;
+	width: auto;
+	height: auto;
+	left: 14em;
+	right: 14em;
 	padding: 24px;
-	border: 1px solid #aaa;
-	background-color: #fff;
+	border: 1px solid #cbcbcb;
+	background-color: #ffffff;
+	font-size: 12px;	
+	z-index: 3;
 }
-
-#site-content > .fedora-corner-bottom { top: 0 }
-
-.fedora-corner-tl, .fedora-corner-tr, .fedora-corner-bl, .fedora-corner-br {
-	background-color: #d9d9d9;
-	position: relative;
-	width: 19px;
-	height: 19px;
-	/* The following line is to render PNGs with alpha transparency within IE/Win, using DirectX */
-	/* Work-around for IE6/Mac borkage (Part 1) */
-	display: none;
-}
-
-.fedora-corner-tl, .fedora-corner-bl { float: left; left: 0px; }
-.fedora-corner-tr, .fedora-corner-br { float: right; right: 0px; }
-.fedora-corner-tl, .fedora-corner-tr { top: 0px; }
-.fedora-corner-bl, .fedora-corner-br { bottom: 0px; margin-top: -19px; /* Opera fix (part 1) */ top: -18px;}
-
-html>body .fedora-corner-tl { background: #d9d9d9 url("/images/corner-tl.png") no-repeat left top; }
-html>body .fedora-corner-tr { background: #d9d9d9 url("/images/corner-tr.png") no-repeat right top; }
-html>body .fedora-corner-bl { background: #d9d9d9 url("/images/corner-bl.png") no-repeat left bottom; }
-html>body .fedora-corner-br { background: #d9d9d9 url("/images/corner-br.png") no-repeat right bottom; }
-
-.fedora-corner-tl { filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(src='/images/corner-tl.png',sizingMethod='scale'); }
-.fedora-corner-tr { filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(src='/images/corner-tr.png',sizingMethod='scale'); }
-.fedora-corner-br { filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(src='/images/corner-br.png',sizingMethod='scale'); }
-.fedora-corner-bl { filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(src='/images/corner-bl.png',sizingMethod='scale'); }
-
-/* \*/
-.fedora-corner-tl, .fedora-corner-tr, .fedora-corner-bl, .fedora-corner-br {
-	/* Restore the view for everything but IE6/Mac (part 2 of the "IE/Mac fix") */
-	display: block;
-}
-/* */
-
-.fedora-corner-bl, .fedora-corner-br {
-	top: 0px;
-}
-
-.content { margin: 0 1em }
-
-#fedora-sidelist {
-	position: relative;
-	bottom: 3px;
-	margin: 0;
-	padding: 3px !important;
-	border: 1px solid #bbb;
-	background-color: #ccc;
-	border-radius: 2.5px;
-	-moz-border-radius: 2.5px;
-}
-#fedora-sidelist strong a {
-	font-weight: normal;
-	background-color: #555;
-	color: #fff;
-}
-#fedora-sidelist strong a:hover {
-	background-color: #333;
-	color: #fff;
-}
-#fedora-sidelist li {
-	list-style-position: outside;
-	font-size: 0.9em;
-	list-style: none;
-	border: 1px solid #ccc;
-	border-width: 1px 0;
-	padding: 0;
-	list-style: none;
-}
-#fedora-sidelist li a {
-	text-decoration: none;
-	display: block;
-	padding: 6px 8px;
-	border-radius: 2.5px;
-	-moz-border-radius: 2.5px;
-}
-#fedora-sidelist li a:hover {
-	background-color: #999;
-	color: #eee;
-}
-
-#fedora-footer {
+#site-footer {
 	font-size: 0.75em;
 	text-align: center;
 	color: #777;
 	margin-bottom: 2em;
-}
-#fedora-printable {
+	z-index: 0;
+    /* 
+    position: fixed;
+	top: auto;
+	height: 68px;
+	width: 100%;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	font-size: 10px;
 	text-align: center;
-	margin: 1em 0;
-	font-size: 0.85em;
-}
-#fedora-printable a {
-	text-decoration: none;
-	padding: 5px 0;
-	padding-left: 18px;
-	background: transparent url("/images/printable.png") no-repeat left;
-}
-#fedora-printable a:hover {
-	text-decoration: underline;
+	color: #777;
+	
+	*/
 }
