@@ -1,0 +1,2 @@
+What resolution do the projectors project at?  I am designing for 1024x768.  Is 
+that correct?

@@ -7,7 +7,7 @@
         layout_display_stylesheet();
         layout_display_javascript();
         layout_close_header();
-        layout_display_banner();
+        //layout_display_banner();
         layout_open_cols();
         layout_display_left_col();
         layout_open_body();
@@ -17,7 +17,7 @@
     function layout_end ()
     {
         layout_close_body();
-        layout_display_right_col();
+        //layout_display_right_col();
         layout_close_cols();
         layout_close();
     }
@@ -53,6 +53,7 @@
         echo "<link rel='stylesheet' type='text/css' media='screen' href='{$config['local']['home']}Style/Default/Default.css'></script>\n";
         echo "<link rel='stylesheet' type='text/css' media='screen' href='{$config['local']['home']}Style/Default/Header.css'></script>\n";
         echo "<link rel='stylesheet' type='text/css' media='screen' href='{$config['local']['home']}Style/Default/Navigation.css'></script>\n";
+        echo "<link rel='stylesheet' type='text/css' media='screen' href='{$config['local']['home']}Style/Default/FormTable.css'></script>\n";
     }
 
     function layout_display_javascript($javascripts = array()) 
@@ -190,14 +191,17 @@
             }
             
             echo "</td>";
-            echo "<td height=20>\n";
+            
             if ($name != $config['local']['name']) {
+                echo "<td height=24 colspan=2>\n";
                 echo "<a href=\"$link\" class=\"$class\">$name</a></td>\n";
             }
             else {
-                echo "<a href=\"$link\" class=\"$class\">&gt; $name</a></td>\n";
+                echo "<td><a href=\"$link\" class=\"{$class}\">$name</a></td>";
+                echo "<td align=right height=24><img width=24 height=24 src=\""  .$config['path']['icons'] . "tb_left_arrow.gif\"  border=0 align=right>";
+                echo "</td>\n";
             }
-            echo "</td>\n";
+            
             echo "</tr>\n";
             echo "</table>\n";
             echo "</tr>\n";
@@ -320,15 +324,15 @@
     function layout_display_icon_small($key, $attr = "") {
         global $config;
         
-        if (! is_array($key)) {
+        if (! is_array($config['icons'])) {
             return;
         }
         
         if (array_key_exists($key, $config['icons'])) {
-            echo "<img src=\"" . $config['icons'][$key] . "\" border=0 $attr align=middle width=22 height=20>";
+            echo "<img src=\"" . $config['icons'][$key] . "\" border=0 $attr align=middle width=24 height=24>";
         }
         else {
-            echo "<img src=\"" . $config['icons']['default'] . "\" border=0 $attr align=middle width=22 height=20>";
+            echo "<img src=\"" . $config['icons']['default'] . "\" border=0 $attr align=middle width=24 height=24>";
         }
     }
     

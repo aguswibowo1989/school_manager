@@ -1,0 +1,27 @@
+table.FormTable {
+	border-spacing: 10px; 
+	border-collapse: collapse;
+}
+
+td.FormTable {
+}
+
+th.FormTable {
+    font-size: 14px;
+    color: #000000;
+	padding: 10px;
+	text-align: left;
+}
+
+tr.FormTable {
+}
+
+a.FormTable {
+	color: #000000;
+	font-size: 12px;
+	font-weight: bold;
+}
+
+a.FormTable:hover {
+	color: #000000;
+}

@@ -1,7 +1,7 @@
 <?php
 
 	global $config;
-	$config['local']['name'] = "Curriculum";
+	$config['local']['name'] = "Help";
 	$config['local']['home'] = "../../";
 		
 	require_once("{$config['local']['home']}../config.php");
@@ -21,14 +21,5 @@
     $config['local']['title'] = $config['local']['name'];
     
     $config['local']['user'] = my_session_query(session_id());
-    
-    $config['local']['navigation'] = get_level_navigation();
-    
-    $config['local']['navigation']['Search'] = "Search.php";
-    $config['local']['navigation']['New Resource'] = "NewResource.php";
-    $config['local']['navigation']['Edit Resource'] = "EditResource.php";
-    $config['local']['navigation']['Delete Resource'] = "DeleteResource.php";
-    $config['local']['navigation']['Import'] = "Import.php";
-    $config['local']['navigation']['Export'] = "Export.php";
 
 ?>

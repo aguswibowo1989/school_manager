@@ -60,3 +60,5 @@ Task List for SchoolManger (Curriculum Module)
   22. Advanced Security                                           ( Future  )
 
   23. Lesson Sharing Options                                      ( Future  )
+  
+  24. Icons                                                       ( Future  )

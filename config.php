@@ -18,6 +18,7 @@
     $config['path']['style']  = $config['local']['home'] . "Style/Default/";
     $config['path']['js']     = $config['local']['home'] . "JavaScript/";
     $config['path']['images'] = $config['local']['home'] . "Images/";
+    $config['path']['icons'] = $config['local']['home'] . "Images/Icons/";
     
     // SQL Database Configuration
     $config['sql']['phptype'] = 'mysql';
@@ -68,7 +69,25 @@
     $config['navigation']['Assessment'] = $config['local']['home'] . "Applications/Assessment/";
     $config['navigation']['Attendance'] = $config['local']['home'] . "Applications/Attendance/";
     $config['navigation']['Student Portal'] = $config['local']['home'] . "Applications/StudentPortal/";
+    $config['navigation']['Help'] = $config['local']['home'] . "Applications/Help/";
     $config['navigation']['Logout'] = $config['local']['home'] . "Applications/Login/Logout.php";
+    
+    // Icons
+    $config['icons']['default'] = $config['path']['icons'] . "default_icon.gif";
+    $config['icons']['HOME'] = $config['path']['icons'] . "tb_home.gif";
+    $config['icons']['Curriculum'] = $config['path']['icons'] . "tb_book_open.gif";
+    $config['icons']['Assessment'] = $config['path']['icons'] . "tb_book_red.gif";
+    $config['icons']['Attendance'] = $config['path']['icons'] . "tb_book_blue.gif";
+    $config['icons']['Student Portal'] = $config['path']['icons'] . "tb_book_green.gif";
+    $config['icons']['Help'] = $config['path']['icons'] . "tb_help.gif";
+    $config['icons']['Logout'] = $config['path']['icons'] . "tb_exit.gif";
+    $config['icons']['New Resource'] = $config['path']['icons'] . "tb_new.gif";
+    $config['icons']['Edit Resource'] = $config['path']['icons'] . "tb_edit.gif";
+    $config['icons']['Delete Resource'] = $config['path']['icons'] . "tb_trash.gif";
+    $config['icons']['Search'] = $config['path']['icons'] . "tb_search.gif";
+    $config['icons']['Import'] = $config['path']['icons'] . "tb_open    .gif";
+    $config['icons']['Export'] = $config['path']['icons'] . "tb_save.gif";
+    
     
     // add the application lib directory, to screens can include the libs they 
     // need.  The reason that this is so complicated is becuase of the differences
