@@ -85,7 +85,7 @@
     $config['icons']['Edit Resource'] = $config['path']['icons'] . "tb_edit.gif";
     $config['icons']['Delete Resource'] = $config['path']['icons'] . "tb_trash.gif";
     $config['icons']['Search'] = $config['path']['icons'] . "tb_search.gif";
-    $config['icons']['Import'] = $config['path']['icons'] . "tb_open    .gif";
+    $config['icons']['Import'] = $config['path']['icons'] . "tb_open.gif";
     $config['icons']['Export'] = $config['path']['icons'] . "tb_save.gif";
     
     
