@@ -584,8 +584,8 @@
         }
         
         while ($row = $result->fetchRow(DB_FETCHMODE_ASSOC)) {
-            array_push($f, substr($row['md5'], 0, 2) . "\\" . 
-                               substr($row['md5'], 2, 2) . "\\" . 
+            array_push($f, substr($row['md5'], 0, 2) . "/" . 
+                               substr($row['md5'], 2, 2) . "/" . 
                                $row['md5']);
         }
         $result->free();
