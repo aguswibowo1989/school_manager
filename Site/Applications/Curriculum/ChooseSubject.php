@@ -26,14 +26,7 @@
 <tr class="FormTable">
 <th class="FormTable">Choose Subject</th>
 <td>
-<select name="subjectid">
-<option value="<?= NO_ANSWER ?>">Choose One:</option>
-<?php while ($row = $res->fetchRow(DB_FETCHMODE_ASSOC)) { ?>
-<option value="<?php echo $row['id'] ?>"><?php echo $row['name'] ?></option>
-<?php } ?>
-
-<option value="<?= NEW_ANSWER ?>">Add New Subject...</option>
-</select>  
+<?php echo show_subject_select("Choose One:", "",  "EnableAddNew"); ?> 
 </td>
 </tr>
 <tr class="FormTable">

@@ -75,13 +75,13 @@
 <form action="" method="GET">
 <tr>
 <td align=left width=33%>
-<?php echo show_level_select("Show All Levels", "Level: ", $levelid); ?>
+<?php echo show_level_select("Show All Levels", "Level: ", "SubmitOnChange", $levelid); ?>
 </td>
 <td align=center width=33%>
-<?php echo show_subject_select("Show All Subjects", "Subject: ", $levelid, $subjectid); ?>
+<?php echo show_subject_select("Show All Subjects", "Subject: ", "SubmitOnChange", $levelid, $subjectid); ?>
 </td>
 <td align=right width=33%>
-<?php echo show_topic_select("Show All Topics", "Topic: ", $levelid, $subjectid, $topicid); ?>
+<?php echo show_topic_select("Show All Topics", "Topic: ", "SubmitOnChange", $levelid, $subjectid, $topicid); ?>
 </td>
 </tr>
 </form>
@@ -123,17 +123,23 @@
 
 <tr>
 <td class="DataView">
-<a class=DataView href="EditResource.php?resourceid=<?= urlencode($row['resourceid']) ?>">
+
+<a class=DataView href="EditResource.php?resourceid=<?= urlencode($row['resourceid']) ?>&<?= http_build_simple_query($var) ?>">
 <img src="<?= $config['local']['icons'] ?>tb_edit.gif" border=0 alt="Edit Resource" align=middle> Edit</a>
+&nbsp;&nbsp;
 <a class=DataView href="DeleteResource.php?resourceid=<?= urlencode($row['resourceid']) ?>&<?= http_build_simple_query($var) ?>">
 <img src="<?= $config['local']['icons'] ?>tb_trash.gif" border=0 alt="Delete Resource" align=middle> Delete</a>
+
 </td>
 <td>&nbsp;
 </td>
+
 <td align=right>
+<a class=DataView href="ExportResources.php?resource[]=<?= urlencode($row['resourceid']) ?>">
+<img src="<?= $config['local']['icons'] ?>tb_save.gif" border=0 alt="Open Resource" align=middle> Export</a>
+&nbsp;&nbsp;
 <a class=DataView href="OpenResource.php?resourceid=<?= urlencode($row['resourceid']) ?>&<?= http_build_simple_query($var) ?>">
-<img src="<?= $config['local']['icons'] ?>tb_open.gif" border=0 alt="Open Resource" align=middle> Open
-</a>
+<img src="<?= $config['local']['icons'] ?>tb_open.gif" border=0 alt="Open Resource" align=middle> Open</a>
 </td>
 </table>
 

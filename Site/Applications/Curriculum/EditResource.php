@@ -21,21 +21,21 @@
 <tr class="FormTable">
 <th class="FormTable">Level</th>
 <td>
-<?php echo show_level_select("Choose:", "", $resource['levelid']); ?>
+<?php echo show_level_select("Choose:", "", "Normal", $resource['levelid']); ?>
 </td>
 </tr>
 
 <tr class="FormTable">
 <th class="FormTable">Subject</th>
 <td>
-<?php echo show_subject_select("Choose:", "", $resource['levelid'], $resource['subjectid']); ?>
+<?php echo show_subject_select("Choose:", "",  "Normal", $resource['levelid'], $resource['subjectid']); ?>
 </td>
 
 </tr>
 <tr class="FormTable">
 <th class="FormTable">Topic</th>
 <td>
-<?php echo show_topic_select("Choose:", "", $resource['levelid'], $resource['subjectid'], $resource['topicid']); ?>
+<?php echo show_topic_select("Choose:", "",  "Normal", $resource['levelid'], $resource['subjectid'], $resource['topicid']); ?>
 </td>
 </tr>
 
@@ -46,11 +46,7 @@
 <input type="hidden" name="orig_name" value="<?= $resource['name'] ?>">
 <input type="hidden" name="orig_path" value="<?= $resource['path'] ?>">
 <input type="hidden" name="orig_description" value="<?= $resource['description'] ?>">
-
 <input type="hidden" name="resourceid" value="<?= $resource['resourceid'] ?>">
-<input type="hidden" name="levelid" value="<?= $resource['levelid'] ?>">
-<input type="hidden" name="subjectid" value="<?= $resource['subjectid'] ?>">
-<input type="hidden" name="topicid" value="<?= $resource['topicid'] ?>">
 <input type="hidden" name="resourcetype" value="<?= $resource['type'] ?>">
 
 <tr class="FormTable">
@@ -77,7 +73,8 @@
 <tr class="FormTable">
 <td class="FormTable">&nbsp;</td>
 <td class="FormTable">
-<input type=submit name=action value="Update Resource">
+<input type=submit name=action value="Update Resource">&nbsp;&nbsp;
+<input type=submit name=action value="Cancel">
 </td>
 </tr>
 </form>

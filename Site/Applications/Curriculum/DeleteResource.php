@@ -42,7 +42,7 @@
         header("Location:  ViewResources.php?" . http_build_simple_query($vars));
     }
     else {
-        $resource = get_resource($resouceid);
+        $resource = get_resource($resourceid);
         layout_display_dialog("Are you sure you want to delete the resource named '{$resource['name']}'?", "YesNo", $vars);
     }
  

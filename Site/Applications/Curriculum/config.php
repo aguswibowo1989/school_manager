@@ -34,8 +34,4 @@
     
     $config['local']['display_per_page'] = 5;
     
-    define("NO_ANSWER", -1);
-    define("NEW_ANSWER", -2);
-    define("ADD_ANSWER", -3);
-    
 ?>

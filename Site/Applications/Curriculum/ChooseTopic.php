@@ -31,14 +31,7 @@
 <tr class="FormTable">
 <th class="FormTable">Choose Topic</th>
 <td>
-<select name="topicid">
-<option value="<?= NO_ANSWER ?>">Choose One:</option>
-<?php while ($row = $res->fetchRow(DB_FETCHMODE_ASSOC)) { ?>
-<option value="<?php echo $row['id'] ?>"><?php echo $row['name'] ?></option>
-<?php } ?>
-
-<option value="<?= NEW_ANSWER ?>">Add New Topic...</option>
-</select>  
+<?php echo show_topic_select("Choose One:", "",  "EnableAddNew"); ?>
 </td>
 </tr>
 <tr class="FormTable">

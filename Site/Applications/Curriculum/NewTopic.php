@@ -26,7 +26,7 @@
         header("Location: ChooseResourceType.php?" . http_build_simple_query($in));
         exit();
     }
-    
+    $config['local']['title'] = $config['local']['name'] . ": New Resource";
     layout_begin();
     
 ?>

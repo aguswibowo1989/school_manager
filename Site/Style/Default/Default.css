@@ -6,6 +6,7 @@ body {
 	padding: 0;
 	background-color: #9c9cff;
 	color: #000000;
+	background-image: url(../../Images/barely_textured-blue.png);
 }
 
 h1 {
@@ -72,4 +73,10 @@ td.pagination_bar {
 a.pagination_bar {
 	color: #000000;
 	text-decoration: none;
+}
+
+a.pagination_bar:hover {
+	color: #000000;
+	text-decoration: underline;
+	background-color: #ffffff;
 }

@@ -1,5 +1,9 @@
 <?php
-
+   
+    define("NO_ANSWER", -1);
+    define("NEW_ANSWER", -2);
+    define("ADD_ANSWER", -3);
+    
     function get_level_navigation ()
     {
         global $conn;
@@ -54,10 +58,15 @@
         return db_get_insert_id($table . "_" . $column . "_seq");
     }
     
-    function show_level_select ($default_prompt, $pre, $levelid)
+    function show_level_select ($default_prompt, $pre, $type, $levelid = NO_ANSWER)
     {
         global $conn;
-        echo "<select name=levelid onChange='this.form.submit()'>\n";
+        
+        if ($type == "SubmitOnChange") {
+            echo "<select name=levelid onChange='this.form.submit()'>\n";
+        } else {
+            echo "<select name=levelid>\n";
+        }
         echo "<option value=\"" . NO_ANSWER . "\">" . $default_prompt . "</option>\n";
         $query = "select level.id as id, level.name as name 
                     from lstr 
@@ -78,13 +87,22 @@
                 echo "<option value=\"" . $row['id'] . "\">{$pre}" . $row['name'] . "</option>\n";
             }
         }
+        
+        if ($type == "EnableAddNew") {
+            echo "<option value=\"" . NEW_ANSWER . "\">Add New Level...</option>\n";
+        }
         echo "</select>\n";
     }
     
-    function show_subject_select ($default_prompt, $pre, $levelid, $subjectid)
+    function show_subject_select ($default_prompt, $pre, $type, $levelid = NO_ANSWER, $subjectid = NO_ANSWER)
     {
         global $conn;
-        echo "<select name=subjectid onChange='this.form.submit()'>\n";
+        
+        if ($type == "SubmitOnChange") {
+            echo "<select name=subjectid onChange='this.form.submit()'>\n";
+        } else {
+            echo "<select name=subjectid>\n";
+        }
         echo "<option value=\"" . NO_ANSWER . "\">" . $default_prompt . "</option>\n";
         $query = "select subject.id as id, subject.name as name 
                     from lstr 
@@ -105,13 +123,22 @@
                 echo "<option value=\"" . $row['id'] . "\">{$pre}" . $row['name'] . "</option>\n";
             }
         }
+        
+        if ($type == "EnableAddNew") {
+            echo "<option value=\"" . NEW_ANSWER . "\">Add New Level...</option>\n";
+        }
         echo "</select>\n";
     }
     
-    function show_topic_select ($default_prompt, $pre, $levelid, $subjectid, $topicid)
+    function show_topic_select ($default_prompt, $pre, $type, $levelid = NO_ANSWER, $subjectid = NO_ANSWER, $topicid = NO_ANSWER)
     {
         global $conn;
-        echo "<select name=topicid onChange='this.form.submit()'>\n";
+        
+        if ($type == "SubmitOnChange") {
+            echo "<select name=topicid onChange='this.form.submit()'>\n";
+        } else {
+            echo "<select name=topicid>\n";
+        }
         echo "<option value=\"" . NO_ANSWER . "\">" . $default_prompt . "</option>\n";
         $query = "select topic.id as id, topic.name as name 
                     from lstr 
@@ -131,6 +158,10 @@
             else {
                 echo "<option value=\"" . $row['id'] . "\">{$pre}" . $row['name'] . "</option>\n";
             }
+        }
+        
+        if ($type == "EnableAddNew") {
+            echo "<option value=\"" . NEW_ANSWER . "\">Add New Level...</option>\n";
         }
         echo "</select>\n";
     }

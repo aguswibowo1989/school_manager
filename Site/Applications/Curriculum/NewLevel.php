@@ -18,7 +18,7 @@
         header("Location: ChooseSubject.php?levelid=" . urlencode($id));
         exit();
     }
-    
+    $config['local']['title'] = $config['local']['name'] . ": New Resource";
     layout_begin();
     
 ?>

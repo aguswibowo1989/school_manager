@@ -2,12 +2,15 @@
 
     require_once("config.php");
     
-    $action = getUnescapedGET("action");
+    $action = getUnescapedPOST("action");
     
     $vars = array();
     $vars['levelid'] = getUnescapedPOST("levelid");
     $vars['subjectid'] = getUnescapedPOST("subjectid");
     $vars['topicid'] = getUnescapedPOST("topicid");
+    
+    $view_resource_param = $vars;
+    
     $vars['resourceid'] = getUnescapedPOST("resourceid");
     $vars['name'] = getUnescapedPOST("name");
     $vars['path'] = getUnescapedPOST("path");
@@ -21,7 +24,11 @@
     $vars['orig_path'] = getUnescapedPOST("orig_path");
     $vars['orig_description'] = getUnescapedPOST("orig_description");
     
-    
+    if ($action ==  "Cancel") {
+        header("Location:  ViewResources.php?" . http_build_simple_query($view_resource_param));
+        exit();
+    }
+
     if (! $vars['resourceid']) {
         trigger_error("Resource ID is a require parameter", E_USER_ERROR);
     }
@@ -43,7 +50,7 @@
         $result = $conn->query($query);
         
         if (DB::isError($result)) {
-            trigger_error($sql);
+            trigger_error($query);
             trigger_error($result->getMessage());
             trigger_error("Could not update resource name." , E_USER_ERROR);
         }
@@ -54,7 +61,7 @@
         $result = $conn->query($query);
         
         if (DB::isError($result)) {
-            trigger_error($sql);
+            trigger_error($query);
             trigger_error($result->getMessage());
             trigger_error("Could not update resource path." , E_USER_ERROR);
         }
@@ -65,19 +72,19 @@
         $result = $conn->query($query);
         
         if (DB::isError($result)) {
-            trigger_error($sql);
+            trigger_error($query);
             trigger_error($result->getMessage());
             trigger_error("Could not update resource description." , E_USER_ERROR);
         }
     }
     
     if ($vars['orig_levelid'] != $vars['levelid']) {
-        $query = "update lstr set leveid = " . $conn->quote($vars['levelid']) . 
+        $query = "update lstr set levelid = " . $conn->quote($vars['levelid']) . 
                  " where resourceid = " . $conn->quote($vars['resourceid']);
         $result = $conn->query($query);
         
         if (DB::isError($result)) {
-            trigger_error($sql);
+            trigger_error($query);
             trigger_error($result->getMessage());
             trigger_error("Could not update resource level." , E_USER_ERROR);
         }
@@ -89,7 +96,7 @@
         $result = $conn->query($query);
         
         if (DB::isError($result)) {
-            trigger_error($sql);
+            trigger_error($query);
             trigger_error($result->getMessage());
             trigger_error("Could not update resource subject." , E_USER_ERROR);
         }
@@ -101,12 +108,12 @@
         $result = $conn->query($query);
         
         if (DB::isError($result)) {
-            trigger_error($sql);
+            trigger_error($query);
             trigger_error($result->getMessage());
             trigger_error("Could not update resource topic." , E_USER_ERROR);
         }
     }
 
-    header("Location:  ViewResources.php?" . http_build_simple_query($vars));
+    header("Location:  ViewResources.php?" . http_build_simple_query($view_resource_param));
  
 ?>
