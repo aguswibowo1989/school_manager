@@ -1,0 +1,81 @@
+1.  Confirmation of Curriculum Application
+
+    First, let me explain what is there currently, and the reason that I
+    made some of the decisions I have made.
+
+    The navigation box, which is in the left hand column of the layout,
+    will hold all of the major applications.  Currently, that list is
+    Home, Curriculum, Assessment, Attendance, Student Portal, Help, and
+    Logout.  Of course, only Curriculm has any functionality.  Click on
+    Curriculum, and you will come to the curriculum home page.  On this
+    page, there is a short summary and a couple of reports for quick
+    access to some lesson plans.  The two reports that I have shown are
+    Newest Lesson Plans and a count of lesson plans per level.  Those are
+    only examples, I can add other quick reports here, or I can replace
+    them.
+
+    After you click on Curriculm in the main navigation box, there will be
+    another box that give you options within the Curriculum Application.
+    This box will remain the same through out the application.  Home will
+    link to the summary and report page. The Lesson Plan link will allow
+    you to start browsing the lesson plans.  And Search, which is not
+    implemented yet, will allow you to search the lesson plans.
+
+    When you click on the Lesson Plans link in the navigation box, then
+    you will be able to click on one of the existing grade levels, or you
+    will be able to add a new grade level.  After selecting a grade level,
+    you will then be able to choose or add a subject, topic, and then a
+    unit.  You understand what all those are.
+
+    I chose to combine the update and browsing of information because it
+    is too complicated.  Also, when we enable user authentication and
+    authorization, then we can only allow some to see the "Add New
+    Level...".  If you are not allow to update, then it will only look
+    like you are browsing/viewing the information.
+
+    Once you choose a lesson, you will go straight to the content of the
+    lesson plan.  On the top, there are links to view the resources, which
+    are urls, files or cd links.  From this screen, you are able to edit
+    all parts of the lesson: lesson content, resources, and test banks.
+
+    The test bank is a very simple design.  There is a textarea for the
+    question and a textarea for the answer.
+
+2.  New Features for this version.
+
+    CD-ROM - This is mostly done, but I need to debug it some.
+
+    Search - This will be a view elementary search.  It will search the
+    contents of the lesson plans.
+
+    Import - Upload new lesson plans
+
+    Export - Save lesson plans.  You will be able to save from any point.
+    i.e. save all lessons or save an entire level or subject.
+
+    Mock ups for other applications
+
+    Display test question in different format.  Test, Key, 
+
+    Help
+
+    others?
+
+3.  other features not in this version.
+    
+    user management and authentication.
+
+    others?
+
+4. Layout and Aesthetics
+
+   There used to be a banner on the application, but since I had to stay
+   within a resolution of 800x600, I removed it.
+
+   I am also thinking about removing the navigation column, and moving it
+   to the top, where the banner would have been.  With that, a lot of the
+   icons would be removed also.  I may experiment with it a little, and
+   show you the results.
+
+   Comments on the color, layout?
+
