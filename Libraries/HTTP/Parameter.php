@@ -2,33 +2,53 @@
 
 	// returns POST variables in original form
 	function getUnescapedPOST ($key) {
-	    $value = $_POST[$key];     // $_POST returns slashed string
-	    $value = stripslashes($value);   // unescape back to original form
-	    return $value;           
+        
+        if (in_array($key, array_keys($_POST))) {
+    	    $value = $_POST[$key];     // $_POST returns slashed string
+    	    $value = stripslashes($value);   // unescape back to original form
+    	    return $value;
+        }
+        return "";        
 	}
 	    
 	// function is to remind us $_POST returns slashed strings
 	function getEscapedPOST ($key) {
-	    return $_POST[$key];
+        
+        if (in_array($key, array_keys($_POST))) {
+	       return $_POST[$key];
+        }
+        return  "";
 	}
 	
 	// returns GET variables in original form
 	function getUnescapedGET ($key) {
-	    $value = $_GET[$key];     // $_POST returns slashed string
-	    $value = stripslashes($value);   // unescape back to original form
-	    return $value;           
+        
+        if (in_array($key, array_keys($_GET))) {
+    	    $value = $_GET[$key];     // $_POST returns slashed string
+    	    $value = stripslashes($value);   // unescape back to original form
+    	    return $value;
+        }
+        return "";    
 	}
 	
 	// returns REQUEST variables in original form
 	function getUnescapedRequest ($key) {
-	    $value = $_REQUEST[$key];     // $_POST returns slashed string
-	    $value = stripslashes($value);   // unescape back to original form
-	    return $value;           
+        
+        if (in_array($key, array_keys($_REQUEST))) {
+    	    $value = $_REQUEST[$key];     // $_POST returns slashed string
+    	    $value = stripslashes($value);   // unescape back to original form
+    	    return $value;
+        }
+        return "";          
 	}
 	    
 	// function is to remind us $_GET returns slashed strings
 	function getEscapedGET ($key) {
-	    return $_GET[$key];
+        
+        if (in_array($key, array_keys($_GET))) {
+	       return $_GET[$key];
+        }
+        return "";
 	}
 	
 	function update_cookie ($key) 

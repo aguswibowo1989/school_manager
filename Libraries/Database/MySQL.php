@@ -36,10 +36,21 @@ function db_commit_transaction($conn) {
 	 return $conn->query("commit");
 }
 
-function db_get_insert_id($table, $column, $result = "")
+function db_get_insert_id($seq)
 {
+    global $conn;
+    $query = "select last_insert_id()";
+    $result = $conn->query($query);
     
-    
+    if (DB::isError($result)) {
+        trigger_error($query, E_USER_NOTICE);
+        trigger_error($result->getMessage(), E_USER_NOTICE);
+        trigger_error("Failed to create resource", E_USER_ERROR);
+    }
+    $row = $result->fetchRow();
+    $id = $row[0];
+    $result->free();
+    return $id;
 }
 
 ?>

@@ -10,6 +10,7 @@
 	require_once("Auth/Session.php");
     require_once("Escape/Escape.php");
 	require_once("HTTP/Parameter.php");
+    require_once("HTTP/HTTP.php");
 	require_once("Layout/Layout.php");
     require_once("Applications/Curriculum.php");
 
@@ -22,11 +23,11 @@
     
     $config['local']['user'] = my_session_query(session_id());
     
-    $config['local']['navigation'] = get_level_navigation();
+    $config['local']['navigation']['View Resources'] = "ViewResources.php";
+    $config['local']['navigation']['New Resource'] = "ChooseLevel.php";
+    //$config['local']['navigation']['Edit Resource'] = "EditResource.php";
+    //$config['local']['navigation']['Delete Resource'] = "DeleteResource.php";
     $config['local']['navigation']['Search'] = "Search.php";
-    $config['local']['navigation']['New Resource'] = "NewResource.php";
-    $config['local']['navigation']['Edit Resource'] = "EditResource.php";
-    $config['local']['navigation']['Delete Resource'] = "DeleteResource.php";
     $config['local']['navigation']['Import'] = "Import.php";
     $config['local']['navigation']['Export'] = "Export.php";
     

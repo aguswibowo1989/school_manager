@@ -48,7 +48,7 @@
             trigger_error($result->getMessage(), E_USER_NOTICE);
             trigger_error("Failed to insert answer", E_USER_ERROR);
         }
-        return db_get_insert_id($table, $column);
+        return db_get_insert_id($table . "_" . $column . "_seq");
     }
 
 ?>
