@@ -5,13 +5,13 @@
 	$config['local']['home'] = "../../";
 		
 	require_once("{$config['local']['home']}../config.php");
+    require_once("Layout/Layout.php");
     require_once("Errors/Errors.php");
 	require_once("Database/Connection.php");
 	require_once("Auth/Session.php");
     require_once("Escape/Escape.php");
 	require_once("HTTP/Parameter.php");
     require_once("HTTP/HTTP.php");
-	require_once("Layout/Layout.php");
     require_once("Applications/Curriculum.php");
 
  	// Local configuration (Local means this application)
