@@ -4,6 +4,10 @@
     define("NEW_ANSWER", -2);
     define("ADD_ANSWER", -3);
     
+    define("TYPE_URL", 1);
+    define("TYPE_LOCAL_FILE", 2);
+    define("TYPE_FILE_PATH", 3);
+    
     function get_level_navigation ()
     {
         global $conn;
@@ -44,6 +48,13 @@
         if (!$answer) {
             trigger_error("answer is required", E_USER_ERROR);
         }
+        
+        $tableid = get_id_from_name($table, $column, $answer);
+        
+        if ($tableid > 0) {
+            return $tableid;
+        }
+        
         $qtable = $conn->quote($table);
         $qcolumn = $conn->quote($column);
         $qanswer = $conn->quote($answer);    
@@ -57,6 +68,25 @@
         }
         return db_get_insert_id($table . "_" . $column . "_seq");
     }
+    
+    function get_id_from_name($t, $c, $a) {
+        global $conn;
+        $qanswer = $conn->quote($a);
+        $query = "select id from $t where $c = $qanswer";
+        $result = $conn->query($query);
+        
+        if (DB::isError($result)) {
+            trigger_error($query, E_USER_NOTICE);
+            trigger_error($result->getMessage(), E_USER_NOTICE);
+            trigger_error("Failed to retrieve answer", E_USER_ERROR);
+        }
+        
+        if ($row = $result->fetchRow()) {
+            return $row[0];
+        }
+        return -1;
+    }
+        
     
     function show_level_select ($default_prompt, $pre, $type, $levelid = NO_ANSWER)
     {

@@ -16,7 +16,7 @@ table.Navigation {
 	border-spacing: 0px; 
 	border-collapse: collapse;
 	font-family: verdana, arial;
-	margin: 2px;
+	margin-bottom: 4px;
 }
 
 td.Navigation {

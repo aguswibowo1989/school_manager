@@ -1,8 +1,7 @@
 body {
 	font-size: 11px;
 	font-family: palatino, georgia, times new roman, serif;
-	margin: 0;
-	margin-top: 4px;
+	margin: 5;
 	padding: 0;
 	background-color: #9c9cff;
 	color: #000000;
@@ -47,8 +46,7 @@ p {
 	border-style: solid;
 	border-color: #000000;
 	width: 100%;
-	margin-top: 2px;
-	margin-left: 4px;	
+	margin-left: 4px;
 }
 
 /* Pagination Bar */
@@ -60,14 +58,15 @@ table.pagination_bar {
 	width: 100%;
 	border-spacing: 0px; 
 	border-collapse: collapse;
-	margin-top: 2px;
+	margin-top: 4px;
 	margin-bottom: 4px;
 }
 
 td.pagination_bar { 
     font-size: 10px;
 	padding: 5px;
-	color: #000000;	
+	color: #000000;
+	border: 0px;
 }
 
 a.pagination_bar {

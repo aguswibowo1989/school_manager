@@ -9,8 +9,7 @@
 /SchoolManager/Libraries/Database/MySQL.php	fdb_connect	o18	fdb_begin_transaction	o725	fdb_rollback_transaction	o802	fdb_commit_transaction	o885	fdb_get_insert_id	o965
 /SchoolManager/Libraries/HTTP/Parameter.php	fgetUnescapedPOST	o64	fgetEscapedPOST	o445	fgetUnescapedGET	o654	fgetUnescapedRequest	o1011	fgetEscapedGET	o1402	fupdate_cookie	o1563
 /SchoolManager/Libraries/Auth/Auth.php	fauth_user_pw	o19
-/SchoolManager/Libraries/Applications/Curriculum.php	fget_level_navigation	o20	fcurriculum_add_answer	o659	fshow_level_select	o1735	fshow_subject_select	o2750	fshow_topic_select	o3793	fget_resource	o4830
-/SchoolManager/Site/Applications/Curriculum/config.php	dNO_ANSWER	o1557	dNEW_ANSWER	o1587	dADD_ANSWER	o1618
+/SchoolManager/Libraries/Applications/Curriculum.php	dNO_ANSWER	o21	dNEW_ANSWER	o50	dADD_ANSWER	o80	dTYPE_URL	o115	dTYPE_LOCAL_FILE	o142	dTYPE_FILE_PATH	o176	fget_level_navigation	o216	fcurriculum_add_answer	o855	fget_id_from_name	o2088	fshow_level_select	o2657	fshow_subject_select	o3959	fshow_topic_select	o5303	fget_resource	o6651
 /SchoolManager/Libraries/Curriculum/Curriculum.php	fget_level_navigation	o20
 /SchoolManager/Libraries/Errors/Errors.php	fmy_error_screen	o238	fmy_error_log	o436	fmy_error_handler	o1055
 /SchoolManager/Libraries/Database/PgSQL.php	fdb_connect	o18	fdb_begin_transaction	o725	fdb_rollback_transaction	o802	fdb_commit_transaction	o885	fdb_lastvalue	o965

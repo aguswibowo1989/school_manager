@@ -13,6 +13,7 @@
     if (!$page_num) {
         $page_num = 1;
     }
+     $var['page_num'] = $page_num;
     
     $where = " where 1=1 ";
     
@@ -48,7 +49,8 @@
     
     $query = "select l.name as level, s.name as subject, t.name as topic, 
                      r.name as resource, r.timestamp as created, 
-                     r.description as description, r.id as resourceid
+                     r.description as description, r.type as type, 
+                     r.path as path, r.id as resourceid
                 from lstr 
                 join resource r on (lstr.resourceid = r.id)
                 join subject s on  (lstr.subjectid = s.id)

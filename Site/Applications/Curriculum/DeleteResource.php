@@ -7,18 +7,32 @@
     $subjectid = getUnescapedGET("subjectid");
     $topicid = getUnescapedGET("topicid");
     $action = getUnescapedGET("action");
+    $page_num = getUnescapedGET("page_num");
     
     $vars = array();
     $vars['levelid'] = $levelid;
     $vars['subjectid'] = $subjectid;
     $vars['topicid'] = $topicid;
     $vars['resourceid'] = $resourceid;
+    $vars['page_num'] = $page_num;
     
     if (! $resourceid) {
         trigger_error("Resource ID is a require parameter", E_USER_ERROR);
     }
     
     if ($action == "Yes") {
+        $resource = get_resource($resourceid);
+        
+        if ($resource['type'] == TYPE_LOCAL_FILE) {
+             $file = $config['path']['filestore'] . "/" .
+                     substr($resource['md5'], 0, 2) . "/" . 
+                     substr($resource['md5'], 2, 2) . "/" . $resource['md5'];
+             if (file_exists($file)) {
+                if (!unlink($file)) {
+                    trigger_error("Failed to delete file", E_USER_ERROR);
+                }
+             }
+        }
         $sql = "delete from resource where id = '$resourceid'";
         $result = $conn->query($sql);
         

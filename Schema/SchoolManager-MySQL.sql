@@ -59,3 +59,6 @@ CREATE TABLE lstr (
 	index (topicid),
 	index (resourceid)
 );
+
+ALTER TABLE resource add mimetype varchar(100),
+                     add md5 varchar(32);

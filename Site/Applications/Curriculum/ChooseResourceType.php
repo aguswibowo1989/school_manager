@@ -29,11 +29,11 @@
 <tr class="FormTable">
 <th class="FormTable">Choose Resource Type</th>
 <td>
-<select name="resourcetype">
+<select name="type">
 <option value="<?= NO_ANSWER ?>">Choose One:</option>
-<option value="url">Web Link</option>
-<option value="file">File Upload</option>
-<option value="path">File on disk or CD</option>
+<option value="<?= TYPE_URL ?>">Link to Website</option>
+<option value="<?= TYPE_LOCAL_FILE ?>">Upload File</option>
+<option value="<?= TYPE_FILE_PATH ?>">Link to File or CD</option>
 </select>  
 </td>
 </tr>
