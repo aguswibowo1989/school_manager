@@ -44,9 +44,11 @@
     
     $tar_obj->create($files);
     
-    header("Content-type: application/x-gzip");
-    header("Content-Disposition: filename=CirExp-" . date("YmdGis") . ".tgz");
-    readfile($archive);
+    header("Content-type: text/plain");
+    print_r($files);
+    //header("Content-type: application/x-gzip");
+    //header("Content-Disposition: filename=CirExp-" . date("YmdGis") . ".tgz");
+    //readfile($archive);
     
     unlink($filename);
     unlink($archive);
