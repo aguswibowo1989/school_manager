@@ -35,7 +35,7 @@
 </div>
 <div id=bar>
     <a href="NewResource.php?lessonid=<?= urlencode($lessonid) ?>&type=<?= TYPE_URL ?>">New URL (Web Site)</a>
-    <a href="NewResource.php?lessonid=<?= urlencode($lessonid) ?>&type=<?= TYPE_LOCAL_FILE ?>">New File (Document)</a
+    <a href="NewResource.php?lessonid=<?= urlencode($lessonid) ?>&type=<?= TYPE_LOCAL_FILE ?>">New File (Document)</a>
     <a href="NewResource.php?lessonid=<?= urlencode($lessonid) ?>&type=<?= TYPE_FILE_PATH ?>">New Path (CD)</a>
 </div>
 
