@@ -15,8 +15,9 @@
         exit();
     }
     else if ($resource['type'] == TYPE_FILE_PATH) {
-        //echo "<a href=\"file://{$resource['path']}\">here</a>";
-        header("Location:  file://" . $resource['path']);
+        
+        /* This seems to work in IE, but it does not work in Mozilla */
+        header("Location: file://" .  $resource['path'] . "\r\n\r\n");
         exit();
     }
     else if ($resource['type'] == TYPE_LOCAL_FILE) {

@@ -148,4 +148,17 @@ CREATE TABLE `user` (
   PRIMARY KEY  (`id`)
 ) TYPE=MyISAM; 
 
+CREATE TABLE help_section (
+  id int(11) not null auto_increment primary key,
+  displayorder int(11),
+  name varchar(100)
+)
+
+create table help_content (
+  id int(11) not null auto_increment primary key,
+  helpsectionid int(11) not null,
+  title varchar(255) not null,
+  displayorder int(11),
+  content text
+);
 

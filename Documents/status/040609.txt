@@ -1,0 +1,28 @@
+Here are a few things that I would like to talk about on our wednesday
+call:
+
+    1.  Mock-ups
+
+    2.  Help
+
+    3.  Testbank  (follow-up to Jim's email)
+
+    4.  All features are complete (or will be by Wednesday).  How do they
+        look? What is missing?
+
+            - import export
+            - search
+            - change category name
+
+    5.  Layout ok?
+
+    6.  Project Name? (SchoolManager is taken on sourceforge.net)
+
+    7.  sourceforge.net project submission?
+
+    8.  bug fix mode
+
+
+
+Greg
+

@@ -11,7 +11,7 @@
     require_once("Escape/Escape.php");
 	require_once("HTTP/Parameter.php");
 	require_once("Layout/Layout.php");
-    require_once("Applications/Curriculum.php");
+    require_once("Applications/Help.php");
 
  	// Local configuration (Local means this application)
 	$config['local']['login'] = "{$config['local']['home']}index.php";

@@ -3,6 +3,7 @@
 /SchoolManager/Libraries/Layout/Layout.php	flayout_begin	o26	flayout_end	o333	flayout_open	o472	flayout_close	o543	flayout_open_header	o643	flayout_close_header	o808	flayout_display_stylesheet	o914	flayout_display_javascript	o1326	flayout_display_top	o1711	flayout_open_body	o2893	flayout_close_body	o3050	flayout_display_navigation_box	o3167	flayout_display_error	o5551	flayout_display_pagnation_bar	o6076	flayout_display_dialog	o7340	flayout_display_page_title	o8535	flayout_display_icon_small	o8892	flayout_display_icon_large	o9413	flayout_display_error_footer	o9871
 /SchoolManager/Libraries/Database/Connection.php	fbuild_dsn	o307
 /SchoolManager/Libraries/Escape/Escape.php	fjsEscape	o78
+/SchoolManager/Libraries/Applications/Help.php	fget_section_name	o16
 /SchoolManager/Libraries/Auth/Connection.php	fcheck_auth_options	o148	fauth_user_pw_mod	o1129
 /SchoolManager/Libraries/Applications/ImportParser.php	cImportParser	o62	vlesson_queue	o114	vcurrent_index	o142	vcurrent_tag	o171	kImportParser	o213	mstartHandler	o615	p366	l230	mendHandler	o2619	p2411	l189	mcdataHandler	o2819
 /SchoolManager/Libraries/Auth/Null.php	fcheck_auth_options	o148	fauth_user_pw_mod	o514
