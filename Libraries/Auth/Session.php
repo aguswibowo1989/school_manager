@@ -93,7 +93,7 @@
 		$sessionid = $conn->quote($sessionid);
 		$uid = $conn->quote($uid);
 		$name = $conn->quote($name);
-		$sql = "insert into {$config['session']['table']} (id, uid, name) values ($sessionid, $uid, $name)";
+		$sql = "replace into {$config['session']['table']} (id, uid, name) values ($sessionid, $uid, $name)";
 		$result = $conn->query($sql);
 		
 		if (DB::isError($result)) {

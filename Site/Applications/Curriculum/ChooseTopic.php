@@ -34,6 +34,7 @@
 <div id=bar>
     <a href="Search.php?<?= http_build_simple_query($in) ?>">Search Subject</a>
     <a href="EditCategory.php?<?= http_build_simple_query($in) ?>">Edit Subject</a>
+    <a href="Export.php?<?= http_build_simple_query($in) ?>">Export Subject</a>
 </div>
 <strong>Choose Topic: &nbsp;</strong>
 <a href="NewTopic.php?<?= http_build_simple_query($in) ?>">Add New Topic...</a>

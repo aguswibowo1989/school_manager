@@ -28,6 +28,7 @@
 <div id=bar>
     <a href="Search.php?<?= http_build_simple_query($in) ?>">Search Level</a>
     <a href="EditCategory.php?<?= http_build_simple_query($in) ?>">Edit Level</a>
+    <a href="Export.php?<?= http_build_simple_query($in) ?>">Export Level</a>
 </div>
 <strong>Choose Subject: &nbsp;</strong>
 <a href="NewSubject.php?<?= http_build_simple_query($in) ?>">Add New Subject...</a>

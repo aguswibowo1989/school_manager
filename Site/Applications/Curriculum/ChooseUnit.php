@@ -39,6 +39,7 @@
 <div id=bar>
     <a href="Search.php?<?= http_build_simple_query($in) ?>">Search Topic</a>
     <a href="EditCategory.php?<?= http_build_simple_query($in) ?>">Edit Topic</a>
+    <a href="Export.php?<?= http_build_simple_query($in) ?>">Export Topic</a>
 </div>
 <strong>Choose Unit: &nbsp;</strong>
 <a href="NewUnit.php?<?= http_build_simple_query($in) ?>">Add New Unit...</a>

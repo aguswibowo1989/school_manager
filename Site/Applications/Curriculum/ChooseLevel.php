@@ -20,8 +20,10 @@
 ?>
 <div id=bar>
     <a href="Search.php">Search Lesson Plans</a>
-
+    <a href="Export.php">Export Lesson Plans</a>
+    <a href="Import.php">Import Lesson Plans</a>
 </div>
+
 <strong>Choose Level: &nbsp;</strong>
 <a href="NewLevel.php?levelid=<?= NEW_ANSWER ?>">Add New Level...</a>
 <ul>
