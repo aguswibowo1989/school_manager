@@ -5,3 +5,4 @@ Time Sheet for Project
 04/10/2004 		7.5 hours			Programming Foundation
 04/13/2004      2.5 hours           Programming Foundation
 04/17/2004		2.0 hours			Layout, Schema, Foundation
+04/21/2004      2.0 hours           Curriculum, Icons
