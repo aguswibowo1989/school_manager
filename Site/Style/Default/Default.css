@@ -1,11 +1,11 @@
 body {
+    background-color: #000000;
+    background-image: url(../../Images/barely_textured-blue.png);
+    color: #000000;
 	font-size: 11px;
 	font-family: palatino, georgia, times new roman, serif;
 	margin: 5;
 	padding: 0;
-	background-color: #9c9cff;
-	color: #000000;
-	background-image: url(../../Images/barely_textured-blue.png);
 }
 
 h1 {
@@ -37,7 +37,15 @@ h5 {
 
 p {
 	font-size: 11px;
+	padding-left: 10px;
 }
+
+li {
+	font-size: 11px;
+	padding-top: 2px;
+	padding-bottom: 2px;
+}
+	
 
 #ContentArea {
 	background: #ffffff;

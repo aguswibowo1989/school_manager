@@ -44,6 +44,7 @@
 		if (!$sessionid) {
 			trigger_error("No Session ID available", E_USER_ERROR);
 		}
+        
 		$sessionid = $conn->quote($sessionid);
 		$sql = "select uid, name from {$config['session']['table']} where " .
 		       "id = {$sessionid} and " .
@@ -86,7 +87,9 @@
 		}
 		
 		// clean out all previous
-		my_session_clean($uid);
+        if ($config['auth']['type'] != "null") {
+            my_session_clean($uid);
+        }
 		$sessionid = $conn->quote($sessionid);
 		$uid = $conn->quote($uid);
 		$name = $conn->quote($name);

@@ -1,7 +1,7 @@
 <?php
 
     require("config.php");
-    $levelid = getUnescapedPost("levelid");
+    $levelid = getUnescapedGET("levelid");
     
     if (!$levelid) {
         trigger_error("Level ID is required", E_USER_ERROR);
@@ -24,7 +24,7 @@
 ?>
 
 <table class="FormTable">
-<form action="NewLevel.php" method="POST">
+<form action="NewLevel.php" method="GET">
 <input type="hidden" name="levelid" value="<?= ADD_ANSWER ?>">
 <input type="hidden" name="table" value="level">
 <input type="hidden" name="column" value="name">

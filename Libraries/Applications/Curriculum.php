@@ -14,7 +14,7 @@
         $return = array();
         
         $query = "select level.id as id, level.name as name 
-                    from lstr 
+                    from lstul 
                     join level on (id = levelid) 
                    group by id";
         $result = $conn->query($query);
@@ -33,9 +33,9 @@
     {
         global $conn;
         
-        $table = getUnescapedPost("table");
-        $column = getUnescapedPost("column");
-        $answer = getUnescapedPost("answer");
+        $table = getUnescapedGET("table");
+        $column = getUnescapedGET("column");
+        $answer = getUnescapedGET("answer");
         
         if (!$table) {
             trigger_error("table is required", E_USER_ERROR);
@@ -99,7 +99,7 @@
         }
         echo "<option value=\"" . NO_ANSWER . "\">" . $default_prompt . "</option>\n";
         $query = "select level.id as id, level.name as name 
-                    from lstr 
+                    from lstul 
                     join level on (id = levelid) 
                    group by id";
         $result = $conn->query($query);
@@ -135,7 +135,7 @@
         }
         echo "<option value=\"" . NO_ANSWER . "\">" . $default_prompt . "</option>\n";
         $query = "select subject.id as id, subject.name as name 
-                    from lstr 
+                    from lstul 
                     join subject on (id = subjectid) 
                    group by id";
         $result = $conn->query($query);
@@ -171,7 +171,7 @@
         }
         echo "<option value=\"" . NO_ANSWER . "\">" . $default_prompt . "</option>\n";
         $query = "select topic.id as id, topic.name as name 
-                    from lstr 
+                    from lstul 
                     join topic on (id = topicid) 
                    group by id";
         $result = $conn->query($query);
@@ -196,10 +196,46 @@
         echo "</select>\n";
     }
     
+    function show_unit_select ($default_prompt, $pre, $type, $levelid = NO_ANSWER, $subjectid = NO_ANSWER, $topicid = NO_ANSWER, $unitid = NO_ANSWER)
+    {
+        global $conn;
+        
+        if ($type == "SubmitOnChange") {
+            echo "<select name=unitid onChange='this.form.submit()'>\n";
+        } else {
+            echo "<select name=unitid>\n";
+        }
+        echo "<option value=\"" . NO_ANSWER . "\">" . $default_prompt . "</option>\n";
+        $query = "select unit.id as id, unit.name as name 
+                    from lstul 
+                    join unit on (id = unitid) 
+                   group by id";
+        $result = $conn->query($query);
+        
+        if (DB::isError($result)) {
+            trigger_error("Could not get units", E_USER_ERROR);
+        }
+        
+        while ($row = $result->fetchRow(DB_FETCHMODE_ASSOC)) {
+            
+            if ($unitid == $row['id']) {
+                echo "<option value=\"" . $row['id'] . "\" selected>{$pre}" . $row['name'] . "</option>\n";
+            }
+            else {
+                echo "<option value=\"" . $row['id'] . "\">{$pre}" . $row['name'] . "</option>\n";
+            }
+        }
+        
+        if ($type == "EnableAddNew") {
+            echo "<option value=\"" . NEW_ANSWER . "\">Add New Level...</option>\n";
+        }
+        echo "</select>\n";
+    }
+    
     function get_resource ($resourceid)
     {
         global $conn;
-        $query = "select * from resource join lstr on (lstr.resourceid = resource.id) where id = " . $conn->quote($resourceid);
+        $query = "select * from resource join lstul on (lstul.resourceid = resource.id) where id = " . $conn->quote($resourceid);
         $result = $conn->query($query);
         
         if (DB::isError($result)) {

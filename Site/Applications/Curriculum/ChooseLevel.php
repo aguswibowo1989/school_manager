@@ -1,28 +1,28 @@
 <?php
 
     require("config.php");
+    $query = "select level.id as id, level.name as name 
+                from lstul 
+                join level on (id = levelid) 
+               group by id";
+    $result = $conn->query($query);
     
+    if (DB::isError($result)) {
+        trigger_error($query);
+        trigger_error($result->getMessage());
+        trigger_error("Could not get levels", E_USER_ERROR);
+    }
     $config['local']['title'] = $config['local']['name'] . ": New Resource";
     layout_begin();
   
 ?>
-
-<table class="FormTable">
-<form action="NewLevel.php" method="POST">
-<tr class="FormTable">
-<th class="FormTable">Choose Level</th>
-<td>
-<?php echo show_level_select("Choose One:", "",  "EnableAddNew"); ?>
-</td>
-</tr>
-<tr class="FormTable">
-<td class="FormTable">&nbsp;</td>
-<td class="FormTable">
-<input type=submit name=action value="Next &gt;&gt;">
-</td>
-</tr>
-</form>
-</table>
+<h2>Choose Level:</h2>
+<ul>
+<?php while ($row = $result->fetchRow(DB_FETCHMODE_ASSOC)) { ?>
+<li><a href="NewLevel.php?levelid=<?= $row['id'] ?>"><?= $row['name'] ?></a></li>
+<?php } ?>
+<li><a href="NewLevel.php?levelid=<?= NEW_ANSWER ?>">Add New Level...</a></li>
+</ul>
 
 <?php
     

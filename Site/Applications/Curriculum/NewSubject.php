@@ -1,8 +1,8 @@
 <?php
 
     require("config.php");
-    $in['subjectid'] = getUnescapedPost("subjectid");
-    $in['levelid'] = getUnescapedPost("levelid");
+    $in['subjectid'] = getUnescapedGET("subjectid");
+    $in['levelid'] = getUnescapedGET("levelid");
     
     if (!$in['levelid']) {
         trigger_error("Level ID is required", E_USER_ERROR);
@@ -28,7 +28,7 @@
 ?>
 
 <table class="FormTable">
-<form action="NewSubject.php" method="POST">
+<form action="NewSubject.php" method="GET">
 <input type="hidden" name="subjectid" value="<?= ADD_ANSWER ?>">
 <input type="hidden" name="levelid" value="<?= $in['levelid'] ?>">
 <input type="hidden" name="table" value="subject">

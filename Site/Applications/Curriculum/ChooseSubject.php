@@ -8,35 +8,39 @@
         trigger_error("Level ID is required", E_USER_ERROR);
     }
     
-    $sql = "select id, name from subject";
-    $res = $conn->query($sql);
+    $query = "select subject.id as id, subject.name as name 
+                from lstul 
+                join subject on (id = subjectid)
+               where lstul.levelid = " . $conn->quote($in['levelid']) . " 
+               group by id";
+    $result = $conn->query($query);
     
-    if (DB::isError($res)) {
-        trigger_error("Unable to get levels", E_USER_ERROR);
+    if (DB::isError($result)) {
+        trigger_error($query);
+        trigger_error($result->getMessage());
+        trigger_error("Could not get subjects", E_USER_ERROR);
     }
-    
     $config['local']['title'] = $config['local']['name'] . ": New Resource";
     layout_begin();
     
 ?>
 
-<table class="FormTable">
-<form action="NewSubject.php" method="POST">
-<input type="hidden" name="levelid" value="<?= $in['levelid'] ?>">
-<tr class="FormTable">
-<th class="FormTable">Choose Subject</th>
-<td>
-<?php echo show_subject_select("Choose One:", "",  "EnableAddNew"); ?> 
-</td>
-</tr>
-<tr class="FormTable">
-<td class="FormTable">&nbsp;</td>
-<td class="FormTable">
-<input type=submit name=action value="Next &gt;&gt;">
-</td>
-</tr>
-</form>
-</table>
+<h2>Choose Subject:</h2>
+<ul>
+<?php 
+    while ($row = $result->fetchRow(DB_FETCHMODE_ASSOC)) {
+        $var = array('levelid'=> $in['levelid'],
+                     'subjectid' => $row['id']);
+?>
+<li><a href="NewSubject.php?<?= http_build_simple_query($var) ?>"><?= $row['name'] ?></a></li>
+<?php 
+    } 
+    $var = array('levelid'=> $in['levelid'],
+                 'subjectid' => NEW_ANSWER);
+?>
+
+<li><a href="NewSubject.php?<?= http_build_simple_query($var) ?>">Add New Subject...</a></li>
+</ul>
 
 <?php
     
