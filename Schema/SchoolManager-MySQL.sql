@@ -1,110 +1,151 @@
-# Connection: Local MySQL Server
 # Host: localhost
-# Saved: 2004-05-04 23:00:38
+# Database: schoolmanager
+# Table: 'lesson'
 # 
-# Connection: Local MySQL Server
+CREATE TABLE `lesson` (
+  `id` int(11) NOT NULL auto_increment,
+  `name` varchar(100) default NULL,
+  `author` varchar(100) default NULL,
+  `school` varchar(100) default NULL,
+  `uid` varchar(32) default NULL,
+  `timestamp` timestamp(14) NOT NULL,
+  `description` text,
+  PRIMARY KEY  (`id`)
+) TYPE=MyISAM; 
+
 # Host: localhost
-# Saved: 2004-05-04 22:22:16
+# Database: schoolmanager
+# Table: 'lesson_resource'
 # 
-DROP TABLE if exists session;
-CREATE TABLE session (
-	id varchar(32) not null,
-	uid varchar(25) not null,
-	name varchar(255) not null,
-	timestamp timestamp,
-	primary key (id)
-);
+CREATE TABLE `lesson_resource` (
+  `lessonid` int(11) NOT NULL default '0',
+  `resourceid` int(11) NOT NULL default '0'
+) TYPE=MyISAM; 
 
-DROP TABLE if exists level;
-CREATE TABLE level (
-	id integer auto_increment not null primary key,
-	name varchar(100),
-	description text
-);
+# Host: localhost
+# Database: schoolmanager
+# Table: 'lesson_testbank'
+# 
+CREATE TABLE `lesson_testbank` (
+  `lessonid` int(11) NOT NULL default '0',
+  `testbankid` int(11) NOT NULL default '0'
+) TYPE=MyISAM; 
 
-DROP TABLE if exists subject;
-CREATE TABLE subject (
-	id integer auto_increment not null primary key,
-	name varchar(100),
-	description text
-);
+# Host: localhost
+# Database: schoolmanager
+# Table: 'level'
+# 
+CREATE TABLE `level` (
+  `id` int(11) NOT NULL auto_increment,
+  `name` varchar(100) default NULL,
+  `description` text,
+  PRIMARY KEY  (`id`)
+) TYPE=MyISAM; 
 
-DROP TABLE if exists topic;
-CREATE TABLE topic (
-	id integer auto_increment not null primary key,
-	name varchar(100),
-	description text
-);
+# Host: localhost
+# Database: schoolmanager
+# Table: 'lstul'
+# 
+CREATE TABLE `lstul` (
+  `levelid` int(11) NOT NULL default '0',
+  `subjectid` int(11) NOT NULL default '0',
+  `topicid` int(11) NOT NULL default '0',
+  `unitid` int(11) NOT NULL default '0',
+  `lessonid` int(11) NOT NULL default '0',
+  `timestamp` timestamp(14) NOT NULL,
+  KEY `levelid` (`levelid`),
+  KEY `subjectid` (`subjectid`),
+  KEY `topicid` (`topicid`),
+  KEY `unitid` (`unitid`),
+  KEY `lessonid` (`lessonid`)
+) TYPE=MyISAM; 
 
-DROP TABLE if exists resource;
-CREATE TABLE resource (
-	id integer auto_increment not null primary key,
-	name varchar(100),
-	description text,
-	type integer not null,
-	path text,
-	uid varchar(32),
-	mimetype varchar(100),
-    md5 varchar(32),
-    timestamp timestamp
-);
+# Host: localhost
+# Database: schoolmanager
+# Table: 'resource'
+# 
+CREATE TABLE `resource` (
+  `id` int(11) NOT NULL auto_increment,
+  `name` varchar(100) default NULL,
+  `description` text,
+  `type` int(11) NOT NULL default '0',
+  `path` text,
+  `uid` varchar(32) default NULL,
+  `mimetype` varchar(100) default NULL,
+  `md5` varchar(32) default NULL,
+  `timestamp` timestamp(14) NOT NULL,
+  PRIMARY KEY  (`id`)
+) TYPE=MyISAM; 
 
-DROP TABLE if exists unit;
-CREATE TABLE unit (
-	id integer auto_increment not null primary key,
-	name varchar(100),
-	description text
-);
+# Host: localhost
+# Database: schoolmanager
+# Table: 'session'
+# 
+CREATE TABLE `session` (
+  `id` varchar(32) NOT NULL default '',
+  `uid` varchar(25) NOT NULL default '',
+  `name` varchar(255) NOT NULL default '',
+  `timestamp` timestamp(14) NOT NULL,
+  PRIMARY KEY  (`id`)
+) TYPE=MyISAM; 
 
-DROP TABLE if exists lesson;
-CREATE TABLE lesson (
-	id integer auto_increment not null primary key,
-	name varchar(100),
-	description text
-);
+# Host: localhost
+# Database: schoolmanager
+# Table: 'subject'
+# 
+CREATE TABLE `subject` (
+  `id` int(11) NOT NULL auto_increment,
+  `name` varchar(100) default NULL,
+  `description` text,
+  PRIMARY KEY  (`id`)
+) TYPE=MyISAM; 
 
-DROP TABLE if exists lstul;
-CREATE TABLE lstul (
-	levelid integer not null,
-	subjectid integer not null,
-	topicid integer not null,
-	unitid integer not null,
-	lessonid integer not null,
-	timestamp timestamp,
-	index (levelid),
-	index (subjectid),
-	index (topicid),
-	index (unitid),
-	index (lessonid)
-);
+# Host: localhost
+# Database: schoolmanager
+# Table: 'testbank'
+# 
+CREATE TABLE `testbank` (
+  `id` int(11) NOT NULL auto_increment,
+  `question` text,
+  `answer` text,
+  `timestamp` timestamp(14) NOT NULL,
+  PRIMARY KEY  (`id`)
+) TYPE=MyISAM; 
 
-DROP TABLE if exists lesson_resource;
-CREATE TABLE lesson_resource (
-	lessonid integer not null,
-	resourceid integer not null
-);
+# Host: localhost
+# Database: schoolmanager
+# Table: 'topic'
+# 
+CREATE TABLE `topic` (
+  `id` int(11) NOT NULL auto_increment,
+  `name` varchar(100) default NULL,
+  `description` text,
+  PRIMARY KEY  (`id`)
+) TYPE=MyISAM; 
 
-DROP TABLE if exists user;
-CREATE TABLE user (
-	id integer not null auto_increment primary key,
-	uid varchar(25) not null,
-	realname varchar(100),
-	password varchar(32),
-	email varchar(100),
-	timestamp timestamp,
-    school varchar(255)
-);
+# Host: localhost
+# Database: schoolmanager
+# Table: 'unit'
+# 
+CREATE TABLE `unit` (
+  `id` int(11) NOT NULL auto_increment,
+  `name` varchar(100) default NULL,
+  `description` text,
+  PRIMARY KEY  (`id`)
+) TYPE=MyISAM; 
 
-DROP TABLE if exists testbank;
-CREATE TABLE testbank (
-	id integer auto_increment not null primary key,
-	question text,
-	answer text,
-    timestamp timestamp
-);
+# Host: localhost
+# Database: schoolmanager
+# Table: 'user'
+# 
+CREATE TABLE `user` (
+  `id` int(11) NOT NULL auto_increment,
+  `uid` varchar(25) NOT NULL default '',
+  `realname` varchar(100) default NULL,
+  `password` varchar(32) default NULL,
+  `email` varchar(100) default NULL,
+  `school` varchar(255) default NULL,
+  PRIMARY KEY  (`id`)
+) TYPE=MyISAM; 
 
-DROP TABLE if exists lesson_testbank;
-CREATE TABLE lesson_testbank (
-	lessonid integer not null,
-	testbankid integer not null
-);
+

@@ -65,7 +65,8 @@
         return db_get_insert_id($table . "_" . $column . "_seq");
     }
 
-    function get_lessonid_from_resourceid($resourceid) {
+    function get_lessonid_from_resourceid($resourceid) 
+    {
         global $conn;
         $query = "select lessonid from lesson_resource where resourceid = " . $conn->quote($resourceid);
         $result = $conn->query($query);
@@ -82,7 +83,8 @@
         return -1;
     }
     
-    function get_lessonid_from_testbankid($testbankid) {
+    function get_lessonid_from_testbankid($testbankid) 
+    {
         global $conn;
         $query = "select lessonid from lesson_testbank where testbankid = " . $conn->quote($testbankid);
         $result = $conn->query($query);
@@ -99,7 +101,8 @@
         return -1;
     }
     
-    function get_id_from_name($t, $c, $a) {
+    function get_id_from_name($t, $c, $a)
+    {
         global $conn;
         $qanswer = $conn->quote($a);
         $query = "select id from $t where $c = $qanswer";
@@ -117,7 +120,8 @@
         return -1;
     }
     
-    function get_name_from_id($t, $c, $a) {
+    function get_name_from_id($t, $c, $a) 
+    {
         global $conn;
         
         if ($a == "" || $a == -1) {
@@ -348,7 +352,8 @@
 
     }
     
-    function show_breadcrumb ($levelid = -1, $subjectid = -1, $topicid = -1, $unitid = -1)
+    function show_breadcrumb ($levelid = -1, $subjectid = -1, $topicid = -1, 
+                              $unitid = -1)
     {
         $level_name = get_name_from_id("level", "id", $levelid);
         $subject_name = get_name_from_id("subject", "id", $subjectid);
@@ -356,7 +361,7 @@
         $unit_name = get_name_from_id("unit", "id", $unitid);
 
         echo "<div id=breadcrumb>"; 
-        echo "<a href=\"Home.php\">Home</a> :: ";
+        echo "<a href=\"Home.php\">Curriculum Home</a> :: ";
         echo "<a href=\"ChooseLevel.php\">Lesson Plans</a>";
         
         // Show Level
@@ -390,7 +395,8 @@
         echo "</div>";   
     }
 
-    function RTESafe($strText) {
+    function RTESafe($strText) 
+    {
         //returns safe code for preloading in the RTE
         $tmpString = trim($strText);
         
@@ -411,7 +417,9 @@
         return $tmpString;
     }
     
-    function get_lessonids($levelid, $subjectid, $topicid, $unitid, $lessonid) {
+    function get_lessonids($levelid, $subjectid, $topicid, $unitid, 
+                           $lessonid) 
+    {
         
         global $conn;
         $query = null;
@@ -492,11 +500,10 @@
         return array();
     }
     
-    function get_lesson_xml ($lessonid) {
+    function get_lesson_xml ($lessonid) 
+    {
         $lesson = get_lesson($lessonid);
-        
         $xml = null;
-        
         $xml .= "  <lesson>\r\n";
         $xml .= "    <level>" . htmlentities(get_name_from_id("level", "id", $lesson['levelid'])) . "</level>\r\n";
         $xml .= "    <subject>" . htmlentities(get_name_from_id("subject", "id", $lesson['subjectid'])) . "</subject>\r\n";
@@ -513,22 +520,9 @@
         return $xml;
     }
         
-    function get_resources_xml ($lessonid) {
+    function get_resources_xml ($lessonid) 
+    {
         global $conn;
-        
-        //
-        //        CREATE TABLE resource (
-        //            id integer auto_increment not null primary key,
-        //            name varchar(100),
-        //            description text,
-        //            type integer not null,
-        //            path text,
-        //            uid varchar(32),
-        //            mimetype varchar(100),
-        //            md5 varchar(32),
-        //            timestamp timestamp
-        //        );
-        //        
         $query = "select * from resource r join lesson_resource lr on (r.id = lr.resourceid) where lr.lessonid = " . $conn->quote($lessonid);
         $result = $conn->query($query); 
         
@@ -545,7 +539,6 @@
             $xml .= "      <path>" . htmlentities($row['path']) . "</path>\r\n";
             $xml .= "      <description>" . htmlentities($row['description']) . "</description>\r\n";
             $xml .= "      <type>" . htmlentities($row['type']) . "</type>\r\n";
-            $xml .= "      <uid>" . htmlentities($row['uid']) . "</uid>\r\n";
             $xml .= "      <mimetype>" . htmlentities($row['mimetype']) . "</mimetype>\r\n";
             $xml .= "      <md5>" . htmlentities($row['md5']) . "</md5>\r\n";
             $xml .= "      <timestamp>" . htmlentities($row['timestamp']) . "</timestamp>\r\n";
@@ -554,17 +547,9 @@
         return $xml;
     }
     
-    function get_testbank_xml ($lessonid) {
+    function get_testbank_xml ($lessonid) 
+    {
         global $conn;
-        
-        //
-        //CREATE TABLE testbank (
-        //    id integer auto_increment not null primary key,
-        //    question text,
-        //    answer text,
-        //    timestamp timestamp
-        //);
-        //        
         $query = "select * from testbank t join lesson_testbank lt on (t.id = lt.testbankid) where lt.lessonid = " . $conn->quote($lessonid);
         $result = $conn->query($query); 
         
@@ -585,7 +570,8 @@
         return $xml;
     }
     
-    function get_file_paths ($lessonid, &$f) {
+    function get_file_paths ($lessonid, &$f)
+    {
         global $conn;
 
         $query = "select r.md5 from resource r join lesson_resource lr on (r.id = lr.resourceid) where r.type =  2 and lr.lessonid = " . $conn->quote($lessonid);
@@ -605,137 +591,146 @@
         $result->free();
     }    
     
-    function import_lesson_from_xml($l) {
-        
+    function import_lesson_from_xml($l) 
+    {
         if (count($l) == 0) {
             return true;
         }
         
         // Make sure index 0 is data_type lesson
         if (strtoupper($l[0]['data_type']) == "LESSON") {
-            add_lesson($l[0]);
+
+            // Import Lesson
+            $lessonid = import_add_lesson($l[0]);
+
+            echo "<li><a href=\"ViewLesson.php?lessonid=$lessonid\">";
+            echo $l[0]['NAME'] . "</a>";
+
+            if (array_key_exists('AUTHOR', $l[0])) {
+                echo "  by {$l[0]['AUTHOR']}";
+            }
+
+            if (array_key_exists('SCHOOL', $l[0])) {
+                echo "  at {$l[0]['SCHOOL']}";
+            }
+            echo "</li>\n";
+        
+            // Import Resources and Testbanks
+            for ($i = 1; $i < count($l); $i++) {
+                
+                if (strtoupper($l[$i]['data_type']) == "RESOURCE") {
+                    if (0 > import_add_resource($l[$i], $lessonid)) {
+                        return false;
+                    }
+                }
+                else if (strtoupper($l[$i]['data_type']) == "TESTBANK") {
+                    if (0 > import_add_testbank($l[$i], $lessonid)) {
+                        return false;
+                    }
+                } 
+            }
         }
         else {
             return false;
         }
+        return true;
     }
     
-    function add_lesson($l) {
+    function import_add_lesson($l) 
+    {
         global $conn;
-        
         $levelid = curriculum_add_answer("level", "name", $l['LEVEL']);
         $subjectid = curriculum_add_answer("subject", "name", $l['SUBJECT']);
         $topicid = curriculum_add_answer("topic", "name", $l['TOPIC']);
         $unitid = curriculum_add_answer("unit", "name", $l['UNIT']);
-        
-        $query = "insert into lesson (name, description, author, school, uid, timestamp) values (";
+        $query = "insert into lesson ";
+        $query .= " (name, description, author, school, timestamp) ";
+        $query .= " values ( ";
         $query .= $conn->quote($l['NAME']) . ", ";
         $query .= $conn->quote($l['DESCRIPTION']) . ", ";
         $query .= $conn->quote($l['AUTHOR']) . ", ";
         $query .= $conn->quote($l['SCHOOL']) . ", ";
-        $query .= $conn->quote($l['UID']) . ", ";
         $query .= $conn->quote($l['CREATED']) . ");";
-        
         $result = $conn->query($query);
         
         if (DB::isError($result)) {
             trigger_error("Import of lesson failed.", E_USER_NOTICE);
-            return false;
+            return -1;
         }
-        
-        $query = "insert into lstul (levelid, subjectid, topicid, unitid, timestamp) values (";
-        $query .= $conn->query($levelid) . ", ";
-        $query .= $conn->query($subjectid). ", ";
-        $query .= $conn->query($topicid). ", ";
-        $query .= $conn->query($unitid) . ", ";
-        $query .= $conn->query($l['CREATED']) . ")";
-        
+        $lessonid = db_get_insert_id("lesson_id_seq");
+        $query = "insert into lstul (levelid, subjectid, topicid, unitid, ".
+                 "lessonid, timestamp) values (";
+        $query .= $conn->quote($levelid) . ", ";
+        $query .= $conn->quote($subjectid). ", ";
+        $query .= $conn->quote($topicid). ", ";
+        $query .= $conn->quote($unitid) . ", ";
+        $query .= $conn->quote($lessonid) . ", ";
+        $query .= $conn->quote($l['CREATED']) . ")";
         $result = $conn->query($query);
         
         if (DB::isError($result)) {
             trigger_error("Import of lstul failed.", E_USER_NOTICE);
-            return false;
+            return -1;
         }
-        
-        $lessonid = db_get_insert_id("lesson_id_seq");
-        
-        for ($i = 1; $i < count($l); $i++) {
-            
-            if (strtoupper($l[$i]['data_type']) == "RESOURCE") {
-                if (!add_resource($l[$i], $lessonid)) {
-                    return false;
-                }
-            }
-            else if (strtoupper($l[$i]['data_type']) == "TESTBANK") {
-                if (!add_testbank($l[$i], $lessonid)) {
-                    return false;
-                }
-            } 
-        }
-        return true;
+        return $lessonid;
     }
     
-    function add_resource ($r, $lessonid) {
-        $query = "insert into resource (name, path, description, type, uid, mimetype, md5, timestamp) values (";
-        $query .= $conn->query($r['NAME']) . ", ";
-        $query .= $conn->query($r['PATH']). ", ";
-        $query .= $conn->query($r['DESCRIPTION']). ", ";
-        $query .= $conn->query($r['TYPE']) . ", ";
-        $query .= $conn->query($r['UID']) . ", ";
-        $query .= $conn->query($r['MIMETYPE']) . ", ";
-        $query .= $conn->query($r['MD5']) . ", ";
-        $query .= $conn->query($r['TIMESTAMP']) . ")";
-        
+    function import_add_resource ($r, $lessonid) 
+    {
+        global $conn;
+        $query = "insert into resource (name, path, description, type, " .
+                 "mimetype, md5, timestamp) values (";
+        $query .= $conn->quote($r['NAME']) . ", ";
+        $query .= $conn->quote($r['PATH']). ", ";
+        $query .= $conn->quote($r['DESCRIPTION']). ", ";
+        $query .= $conn->quote($r['TYPE']) . ", ";
+        $query .= $conn->quote($r['MIMETYPE']) . ", ";
+        $query .= $conn->quote($r['MD5']) . ", ";
+        $query .= $conn->quote($r['TIMESTAMP']) . ")";
         $result = $conn->query($query);
         
         if (DB::isError($result)) {
             trigger_error("Import of resource failed.", E_USER_NOTICE);
-            return false;
+            return -1;
         }
-        
         $resourceid = db_get_insert_id("resource_id_seq");
-        
         $query = "insert into lesson_resource (lessonid, resourceid) values (";
-        $query .= $conn->query($lessonid) . ", ";
-        $query .= $conn->query($resourceid). ") ";
-        
+        $query .= $conn->quote($lessonid) . ", ";
+        $query .= $conn->quote($resourceid). ") ";
         $result = $conn->query($query);
         
         if (DB::isError($result)) {
             trigger_error("Import of lesson_resource failed.", E_USER_NOTICE);
-            return false;
+            return -1;
         }
         
-        return true;
+        return $resourceid;
     }
     
-    function add_testbank ($t, $lessonid) {
+    function import_add_testbank ($t, $lessonid) 
+    {
+        global $conn;
         $query = "insert into testbank (question, answer, timestamp) values (";
-        $query .= $conn->query($r['QUESTION']) . ", ";
-        $query .= $conn->query($r['ANSWER']). ", ";
-        $query .= $conn->query($r['TIMESTAMP']) . ")";
-        
+        $query .= $conn->quote($t['QUESTION']) . ", ";
+        $query .= $conn->quote($t['ANSWER']). ", ";
+        $query .= $conn->quote($t['TIMESTAMP']) . ")";
         $result = $conn->query($query);
         
         if (DB::isError($result)) {
             trigger_error("Import of testbank failed.", E_USER_NOTICE);
-            return false;
+            return -1;
         }
-        
         $testbankid = db_get_insert_id("testbank_id_seq");
-        
         $query = "insert into lesson_testbank (lessonid, testbankid) values (";
-        $query .= $conn->query($lessonid) . ", ";
-        $query .= $conn->query($testbankid). ") ";
-        
+        $query .= $conn->quote($lessonid) . ", ";
+        $query .= $conn->quote($testbankid). ") ";
         $result = $conn->query($query);
         
         if (DB::isError($result)) {
             trigger_error("Import of lesson_testbank failed.", E_USER_NOTICE);
-            return false;
+            return -1;
         }
-        
-        return true;
+        return $testbankid;
     }
 
-?
+?>

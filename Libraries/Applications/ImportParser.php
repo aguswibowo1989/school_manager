@@ -7,6 +7,7 @@
         var $lesson_queue;
         var $current_index;
         var $current_tag;
+
       
         function ImportParser()
         {
@@ -28,19 +29,41 @@
             if (strtoupper($name) == "LESSON") {
                 $this->current_index = 0;
                 $this->lesson_queue = array();
-                $this->lesson_queue[$this->current_index] = array("data_type" => "lesson");
-
+                $this->lesson_queue[$this->current_index] = 
+                    array("data_type" => "lesson",
+                          "LEVEL" => "",
+                          "SUBJECT" => "",
+                          "UNIT" => "",
+                          "TOPIC" => "",
+                          "NAME" => "",
+                          "DESCRIPTION" => "",
+                          "AUTHOR" => "",
+                          "SCHOOL" => "",
+                          "CREATED" => "",
+                          "UID" => "");
             }
             
             else if (strtoupper($name) == "RESOURCE") {
                 $this->current_index++;
-                $this->lesson_queue[$this->current_index] = array("data_type" => "resource");
-
+                $this->lesson_queue[$this->current_index] = 
+                    array("data_type" => "resource",
+                          "NAME" => "",
+                          "PATH" => "",
+                          "DESCRIPTION" => "",
+                          "TYPE" => "",
+                          "MIMETYPE" => "",
+                          "MD5" => "",
+                          "TIMESTAMP" => "",
+                          "UID" => "");
             }
             
             else if (strtoupper($name) == "TESTBANK") {
                 $this->current_index++;
-                $this->lesson_queue[$this->current_index] = array("data_type" => "testbank");
+                $this->lesson_queue[$this->current_index] = 
+                    array("data_type" => "testbank",
+                          "QUESTION" => "",
+                          "ANSWER" => "",
+                          "TIMESTAMP" => "");
             }
 
             $this->current_tag = strtoupper($name);
@@ -63,6 +86,15 @@
         
         function cdataHandler($xp, $data)
         {
+            if (strlen($data) == 0) {
+                return NULL;
+            }
+            
+            if (in_array($this->current_tag,
+                         array("EXPORT", "LESSON", "TESTBANK", "RESOURCE"))) {
+                return NULL;
+            }
+
             $this->lesson_queue[$this->current_index][$this->current_tag] .= $data;
         }
     }
