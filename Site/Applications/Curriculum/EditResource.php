@@ -18,35 +18,9 @@
 <table class="FormTable">
 <form action="UpdateResource.php" method="POST">
 
-<tr class="FormTable">
-<th class="FormTable">Level</th>
-<td>
-<?php echo show_level_select("Choose:", "", "Normal", $resource['levelid']); ?>
-</td>
-</tr>
-
-<tr class="FormTable">
-<th class="FormTable">Subject</th>
-<td>
-<?php echo show_subject_select("Choose:", "",  "Normal", $resource['levelid'], $resource['subjectid']); ?>
-</td>
-
-</tr>
-<tr class="FormTable">
-<th class="FormTable">Topic</th>
-<td>
-<?php echo show_topic_select("Choose:", "",  "Normal", $resource['levelid'], $resource['subjectid'], $resource['topicid']); ?>
-</td>
-</tr>
-
-<input type="hidden" name="orig_levelid" value="<?= $resource['levelid'] ?>">
-<input type="hidden" name="orig_subjectid" value="<?= $resource['subjectid'] ?>">
-<input type="hidden" name="orig_topicid" value="<?= $resource['topicid'] ?>">
-<input type="hidden" name="orig_resourcetype" value="<?= $resource['type'] ?>">
 <input type="hidden" name="orig_name" value="<?= $resource['name'] ?>">
 <input type="hidden" name="orig_path" value="<?= $resource['path'] ?>">
-<input type="hidden" name="orig_description" value="<?= $resource['description'] ?>">
-<input type="hidden" name="resourceid" value="<?= $resource['resourceid'] ?>">
+<input type="hidden" name="resourceid" value="<?= $resource['id'] ?>">
 <input type="hidden" name="resourcetype" value="<?= $resource['type'] ?>">
 
 <tr class="FormTable">
@@ -56,19 +30,21 @@
 </td>
 </tr>
 
+<?php if ($resource['type'] == TYPE_URL) { ?>
 <tr class="FormTable">
-<th class="FormTable">Web Link (URL)</th>
+<th class="FormTable">URL (Web Site)</th>
 <td>
 <input type="text" name="path" value="<?= $resource['path'] ?>" size="40"/>
 </td>
 </tr>
-
+<?php } else if ($resource['type'] == TYPE_FILE_PATH) { ?>
 <tr class="FormTable">
-<th class="FormTable" valign=top>Description</th>
+<th class="FormTable">File Path (CD)</th>
 <td>
-<textarea name="description" rows=6 cols=40><?= $resource['description'] ?></textarea>
+<input type="text" name="path" value="<?= $resource['path'] ?>" size="40"/>
 </td>
 </tr>
+<?php } ?>
 
 <tr class="FormTable">
 <td class="FormTable">&nbsp;</td>

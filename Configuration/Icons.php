@@ -4,6 +4,7 @@
     
     $config['icons']['default'] = $config['path']['icons'] . "default_icon.gif";
     $config['icons']['HOME'] = $config['path']['icons'] . "tb_home.gif";
+    $config['icons']['Home'] = $config['path']['icons'] . "tb_home.gif";
     $config['icons']['Curriculum'] = $config['path']['icons'] . "tb_book_yellow.gif";
     $config['icons']['Assessment'] = $config['path']['icons'] . "tb_book_red.gif";
     $config['icons']['Attendance'] = $config['path']['icons'] . "tb_book_blue.gif";

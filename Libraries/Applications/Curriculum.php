@@ -64,6 +64,23 @@
         }
         return db_get_insert_id($table . "_" . $column . "_seq");
     }
+
+    function get_lessonid_from_resourceid($resourceid) {
+        global $conn;
+        $query = "select lessonid from lesson_resource where resourceid = " . $conn->quote($resourceid);
+        $result = $conn->query($query);
+        
+        if (DB::isError($result)) {
+            trigger_error($query, E_USER_NOTICE);
+            trigger_error($result->getMessage(), E_USER_NOTICE);
+            trigger_error("Failed to retrieve lessonid", E_USER_ERROR);
+        }
+        
+        if ($row = $result->fetchRow()) {
+            return $row[0];
+        }
+        return -1;
+    }
     
     function get_id_from_name($t, $c, $a) {
         global $conn;
@@ -253,7 +270,7 @@
     function get_resource ($resourceid)
     {
         global $conn;
-        $query = "select * from resource join lstul on (lstul.resourceid = resource.id) where id = " . $conn->quote($resourceid);
+        $query = "select * from resource where id = " . $conn->quote($resourceid);
         $result = $conn->query($query);
         
         if (DB::isError($result)) {
@@ -358,6 +375,5 @@
         
         return $tmpString;
     }
-
 
 ?>

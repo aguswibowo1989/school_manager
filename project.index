@@ -1,6 +1,6 @@
 /SchoolManager/Libraries/HTTP/HTTP.php	fhttp_build_simple_query	o22
 /SchoolManager/Libraries/Auth/LDAP.php	fcheck_auth_options	o148	fauth_user_pw_mod	o1151
-/SchoolManager/Libraries/Layout/Layout.php	flayout_begin	o26	flayout_end	o403	flayout_open	o572	flayout_close	o643	flayout_open_header	o743	flayout_close_header	o908	flayout_display_stylesheet	o1014	flayout_display_javascript	o2021	flayout_display_banner	o2288	flayout_open_cols	o2784	flayout_close_cols	o2965	flayout_display_left_col	o3110	flayout_open_body	o3994	flayout_close_body	o4253	flayout_display_navigation_box	o4403	flayout_display_error	o6787	flayout_display_pagnation_bar	o7312	flayout_display_dialog	o8576	flayout_display_page_title	o9771	flayout_display_icon_small	o10380	flayout_display_icon_large	o10901	flayout_display_error_footer	o11359
+/SchoolManager/Libraries/Layout/Layout.php	flayout_begin	o26	flayout_end	o403	flayout_open	o572	flayout_close	o643	flayout_open_header	o743	flayout_close_header	o908	flayout_display_stylesheet	o1014	flayout_display_javascript	o1426	flayout_display_banner	o1811	flayout_open_cols	o2307	flayout_close_cols	o2501	flayout_display_left_col	o2646	flayout_open_body	o3504	flayout_close_body	o3731	flayout_display_navigation_box	o3881	flayout_display_error	o6265	flayout_display_pagnation_bar	o6790	flayout_display_dialog	o8054	flayout_display_page_title	o9249	flayout_display_icon_small	o9878	flayout_display_icon_large	o10399	flayout_display_error_footer	o10857
 /SchoolManager/Libraries/Database/Connection.php	fbuild_dsn	o307
 /SchoolManager/Libraries/Escape/Escape.php	fjsEscape	o78
 /SchoolManager/Libraries/Auth/Connection.php	fcheck_auth_options	o148	fauth_user_pw_mod	o1129
@@ -9,7 +9,7 @@
 /SchoolManager/Libraries/HTTP/Parameter.php	fgetUnescapedPOST	o64	fgetEscapedPOST	o445	fgetUnescapedGET	o654	fgetUnescapedRequest	o1011	fgetEscapedGET	o1404	fupdate_cookie	o1565
 /SchoolManager/Libraries/Database/MySQL.php	fdb_connect	o18	fdb_begin_transaction	o725	fdb_rollback_transaction	o802	fdb_commit_transaction	o885	fdb_get_insert_id	o965
 /SchoolManager/Libraries/Auth/Auth.php	fauth_user_pw	o19
-/SchoolManager/Libraries/Applications/Curriculum.php	dNO_ANSWER	o21	dNEW_ANSWER	o50	dADD_ANSWER	o80	dTYPE_URL	o115	dTYPE_LOCAL_FILE	o142	dTYPE_FILE_PATH	o176	fget_level_navigation	o216	fcurriculum_add_answer	o856	fget_id_from_name	o1968	fget_name_from_id	o2528	fshow_level_select	o3177	fshow_subject_select	o4480	fshow_topic_select	o5825	fshow_unit_select	o7174	fget_resource	o8535	fget_lesson	o9143	fshow_breadcrumb	o9739
+/SchoolManager/Libraries/Applications/Curriculum.php	dNO_ANSWER	o21	dNEW_ANSWER	o50	dADD_ANSWER	o80	dTYPE_URL	o115	dTYPE_LOCAL_FILE	o142	dTYPE_FILE_PATH	o176	fget_level_navigation	o216	fcurriculum_add_answer	o856	fget_id_from_name	o1968	fget_name_from_id	o2528	fshow_level_select	o3177	fshow_subject_select	o4480	fshow_topic_select	o5825	fshow_unit_select	o7174	fget_resource	o8535	fget_lesson	o9143	fshow_breadcrumb_lesson	o9854	fshow_breadcrumb	o10159	fRTESafe	o11830
 /SchoolManager/Libraries/Curriculum/Curriculum.php	fget_level_navigation	o20
 /SchoolManager/Libraries/Errors/Errors.php	fmy_error_screen	o238	fmy_error_log	o436	fmy_error_handler	o1055
 /SchoolManager/Libraries/Database/PgSQL.php	fdb_connect	o18	fdb_begin_transaction	o725	fdb_rollback_transaction	o802	fdb_commit_transaction	o885	fdb_lastvalue	o965

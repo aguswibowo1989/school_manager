@@ -3,16 +3,6 @@
     require_once("config.php");
     
     $resourceid = getUnescapedGET("resourceid");
-    $levelid = getUnescapedGET("levelid");
-    $subjectid = getUnescapedGET("subjectid");
-    $topicid = getUnescapedGET("topic");
-    $action = getUnescapedGET("action");
-    
-    $vars = array();
-    $vars['levelid'] = $levelid;
-    $vars['subjectid'] = $subjectid;
-    $vars['topicid'] = $topicid;
-    $vars['resourceid'] = $resourceid;
     
     if (! $resourceid) {
         trigger_error("Resource ID is a require parameter", E_USER_ERROR);
@@ -25,7 +15,7 @@
         exit();
     }
     else if ($resource['type'] == TYPE_FILE_PATH) {
-        header("Location:  " . rawurlencode($resource['path']));
+        header("Location:  file://" . rawurlencode($resource['path']));
         exit();
     }
     else if ($resource['type'] == TYPE_LOCAL_FILE) {

@@ -17,8 +17,16 @@
 
 <div id=actions>
 
+        <a class=DataView href="ViewResources.php?lessonid=<?= urlencode($lessonid) ?>">
+        <img src="<?= $config['local']['icons'] ?>tb_open.gif" border=0 
+             alt="Delete Lesson" align=middle> View Test Bank</a>
+
+        <a class=DataView href="ViewResources.php?lessonid=<?= urlencode($lessonid) ?>">
+        <img src="<?= $config['local']['icons'] ?>tb_open.gif" border=0 
+             alt="Delete Lesson" align=middle> View Resources</a>
+
         <a class=DataView href="Export.php?lessonid=<?= urlencode($lessonid) ?>">
-        <img src="<?= $config['local']['icons'] ?>tb_save.gif" border=0 
+        <img src="<?= $config['local']['icons'] ?>tb_save_as.gif" border=0 
              alt="Delete Lesson" align=middle> Export</a>
 
         <a class=DataView href="EditLesson.php?lessonid=<?= urlencode($lessonid) ?>">
@@ -40,12 +48,13 @@
     </tr>
     <tr>
     <td valign=top>
-    <h3><?= $lesson['school'] ?></h3>
-    <h3><?= $lesson['author'] ?></h3>
+    <strong><?= $lesson['school'] ?></strong><br>
+    <strong><?= $lesson['author'] ?></strong>
     </td>
     <td align=right valign=top>
-    <h3><?= get_name_from_id("level", "id", $lesson['levelid']) ?></h2>
-    <h3><?= $lesson['t'] ?></h3>
+    <strong><?= get_name_from_id("level", "id", $lesson['levelid']) ?>
+    </strong><br>
+    <strong><?= $lesson['t'] ?></strong>
     </td>
     </tr>
 </table>

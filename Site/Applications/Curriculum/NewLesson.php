@@ -60,15 +60,16 @@
 
 <tr>
 <td colspan=2>
+<small>(use [Style] for most consistant documents)</small>
 <script language="JavaScript" type="text/javascript">
 
 //Usage: initRTE(imagesPath, includesPath, cssFile)
-initRTE("<?= $config['local']['images'] ?>rte/", "<?= $config['local']['home'] ?>Utils/", "<?= $config['path']['style'] ?>lesson-plan.css");
+initRTE("<?= $config['local']['images'] ?>rte/", "<?= $config['local']['home'] ?>Utils/", "<?= $config['path']['style'] ?>screen.css");
 
 //Usage: writeRichText(fieldname, html, width, height, buttons)
 writeRichText("description", 
               "<?= RTESafe("<h1>Objective:</h1><h1>Summary:</h1><h1>Materials:</h1><h1>Procedures:</h1><h1>Teaching Tips:</h1><h1>Additional Activity:</h1><h1>Assessment:</h1><h1>Handouts:</h1>") ?>", 
-              550, 250, true, false);
+              550, 500, true, false);
 </script>
 </td>
 </tr>

@@ -82,7 +82,8 @@
 </tr>
 
 <tr>
-<td colspan=2>
+<td colspan=2 style="padding-left: 10px;padding-top: 0px;">
+<small>(use [Style] for most consistant documents)</small>
 <script language="JavaScript" type="text/javascript">
 
 function submitForm() {
@@ -93,10 +94,10 @@ function submitForm() {
 //Usage: initRTE(imagesPath, includesPath, cssFile)
 initRTE("<?= $config['local']['images'] ?>rte/", 
         "<?= $config['local']['home'] ?>Utils/", 
-        "<?= $config['path']['style'] ?>lesson-plan.css");
+        "<?= $config['local']['style'] ?>screen.css");
 
 //Usage: writeRichText(fieldname, html, width, height, buttons)
-writeRichText('description', '<?= $description ?>', 550, 250, true, false);
+writeRichText('description', '<?= $description ?>', 550, 500, true, false);
 </script>
 </td>
 </tr>

@@ -24,6 +24,7 @@
     
     $config['local']['user'] = my_session_query(session_id());
     
+    $config['local']['navigation']['Home'] = "Home.php";
     //$config['local']['navigation']['View Resources'] = "ViewResources.php";
     $config['local']['navigation']['Lesson Plans'] = "ChooseLevel.php";
     //$config['local']['navigation']['Edit Resource'] = "EditResource.php";

@@ -2,41 +2,32 @@
 
     require("config.php");
     
-    $in['description'] = getUnescapedPost("description");
-    $in['path'] = getUnescapedPost("path");
-    $in['name'] = getUnescapedPost("name");
-    $in['type'] = getUnescapedPost("type");
-    $in['topicid'] = getUnescapedPost("topicid");
-    $in['subjectid'] = getUnescapedPost("subjectid");
-    $in['levelid'] = getUnescapedPost("levelid");
+    $path = getUnescapedPost("path");
+    $name = getUnescapedPost("name");
+    $type = getUnescapedPost("type");
+    $lessonid = getUnescapedPost("lessonid");
     
-    if (!$in['levelid']) {
-        trigger_error("Level ID is required", E_USER_ERROR);
+    if (!$lessonid) {
+        trigger_error("Lesson ID is required", E_USER_ERROR);
     }
-    else if (!$in['subjectid']) {
-        trigger_error("Subject ID is required", E_USER_ERROR);
-    }
-    else if (!$in['topicid']) {
-        trigger_error("Topic ID is required", E_USER_ERROR);
-    }
-    else if (!$in['name']) {
+    else if (!$name) {
         trigger_error("Name is required", E_USER_ERROR);
     }
-    else if (!$in['type']) {
+    else if (!$type) {
         trigger_error("Resource type is required", E_USER_ERROR);
     }
-    else if ($in['type'] == TYPE_URL && !$in['path']) {
+    else if ($type == TYPE_URL && !$path) {
         trigger_error("URL is required", E_USER_ERROR);
     }
-    else if ($in['type'] == TYPE_FILE_PATH && !$in['path']) {
+    else if ($type == TYPE_FILE_PATH && !$path) {
         trigger_error("URL is required", E_USER_ERROR);
     }
-    else if ($in['type'] == TYPE_LOCAL_FILE && $_FILES['filename']['error'] != 0) {
+    else if ($type == TYPE_LOCAL_FILE && $_FILES['filename']['error'] != 0) {
         trigger_error("File Upload failed", E_USER_ERROR);
     }
     
-    if ($in['type'] == TYPE_LOCAL_FILE) {
-        $in['path'] = $_FILES['filename']['name'];
+    if ($type == TYPE_LOCAL_FILE) {
+        $path = $_FILES['filename']['name'];
         $basepath = $config['path']['filestore'];
         
         if (! file_exists($basepath)) {      
@@ -65,21 +56,19 @@
              trigger_error("Could not move file into place.", E_USER_ERROR);
         }
         
-        $query = "insert into resource (name, path, description, type, uid, md5, mimetype) values (" .
-             $conn->quote($in['name']) . ", " .
-             $conn->quote($in['path']) . ", " .
-             $conn->quote($in['description']) . ", " .
-             $conn->quote($in['type']) . ", " .
+        $query = "insert into resource (name, path, type, uid, md5, mimetype) values (" .
+             $conn->quote($name) . ", " .
+             $conn->quote($path) . ", " .
+             $conn->quote($type) . ", " .
              $conn->quote($config['local']['user']['uid']) . ", " .
              $conn->quote($md5) . ", " .
              $conn->quote($_FILES['filename']['type']) . ")";
     }
     else {
-        $query = "insert into resource (name, path, description, type, uid) values (" .
-                 $conn->quote($in['name']) . ", " .
-                 $conn->quote($in['path']) . ", " .
-                 $conn->quote($in['description']) . ", " .
-                 $conn->quote($in['type']) . ", " .
+        $query = "insert into resource (name, path, type, uid) values (" .
+                 $conn->quote($name) . ", " .
+                 $conn->quote($path) . ", " .
+                 $conn->quote($type) . ", " .
                  $conn->quote($config['local']['user']['uid']) . ")";
     }
     $result = $conn->query($query);
@@ -90,13 +79,11 @@
         trigger_error("Failed to create resource", E_USER_ERROR);
     }
     
-    $in['resourceid'] = db_get_insert_id("resource_id_seq");
+    $resourceid = db_get_insert_id("resource_id_seq");
     
-    $query = "insert into lstr (levelid, subjectid, topicid, resourceid) values (" .
-             $conn->quote($in['levelid']) . ", " .
-             $conn->quote($in['subjectid']) . ", " .
-             $conn->quote($in['topicid']) . ", " .
-             $conn->quote($in['resourceid']) . ")";
+    $query = "insert into lesson_resource (lessonid, resourceid) values (" .
+             $conn->quote($lessonid) . ", " .
+             $conn->quote($resourceid) . ")";
     $result = $conn->query($query);
     
     if (DB::isError($result)) {
@@ -104,33 +91,7 @@
         trigger_error($result->getMessage(), E_USER_NOTICE);
         trigger_error("Failed to create resource", E_USER_ERROR);
     }
-    
-    layout_begin();
-    
-?>
-<pre>
-<?php print_r($_FILES) ?>
-</pre>
-<table class="FormTable">
-<form action="ViewResources.php" method="GET">
-<tr class="FormTable">
-<th class="FormTable">Resource Successfully Added</th>
-<td>
-&nbsp;
-</td>
-</tr>
-<tr class="FormTable">
-<td class="FormTable">&nbsp;</td>
-<td class="FormTable">
-<input type=submit name=action value="Finish">
-</td>
-</tr>
-</form>
-</table>
 
-
-<?php
-
-    layout_end();
+    header("Location: ViewResources.php?lessonid=" . urlencode($lessonid));
     
 ?>

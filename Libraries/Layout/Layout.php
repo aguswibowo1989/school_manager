@@ -7,7 +7,6 @@
         layout_display_stylesheet();
         layout_display_javascript();
         layout_close_header();
-        //layout_display_banner();
         layout_open_cols();
         layout_display_left_col();
         layout_open_body();
@@ -60,21 +59,6 @@
         echo "\n<!-- JavaScript -->\n";
         echo "<script language=\"JavaScript\" src=\"{$config['local']['home']}JavaScript/Navigation.js\"></script>\n";
         echo "<script language=\"JavaScript\" src=\"{$config['local']['home']}JavaScript/richtext.js\"></script>\n";
-    }
-
-    function layout_display_banner()
-    {
-        global $config;
-
-        echo "<!-- BEGIN BANNER -->\n";
-        echo "<table class=header border=0 cellpadding=0 cellspacing=0 height=60 width=100%>\n";
-        echo "  <tr>\n";
-        echo "    <td align=left valign=middle>\n";
-        echo "    <h1 class=header>". $config['site']['name'] . "</h1>";
-        echo "    </td>\n";
-        echo "  </tr>\n";
-        echo "</table>\n";
-        echo "<!-- END BANNER -->\n";
     }
 
     function layout_open_cols()
