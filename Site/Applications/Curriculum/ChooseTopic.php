@@ -2,6 +2,7 @@
 
     require("config.php");
     
+    $in['topicid'] = NEW_ANSWER;
     $in['subjectid'] = getUnescapedGet("subjectid");
     $in['levelid'] = getUnescapedGet("levelid");
     
@@ -30,10 +31,19 @@
     show_breadcrumb($in['levelid'], $in['subjectid']);
     
 ?>
-
-<h2>Choose Topic:</h2>
+<div id=bar>
+    <a href="Search.php?<?= http_build_simple_query($in) ?>">Search Subject</a>
+    <a href="EditCategory.php?<?= http_build_simple_query($in) ?>">Edit Subject</a>
+</div>
+<strong>Choose Topic: &nbsp;</strong>
+<a href="NewTopic.php?<?= http_build_simple_query($in) ?>">Add New Topic...</a>
 <ul>
-<?php 
+<?php
+
+    if ($result->numRows() == 0) {
+        echo "<li>No Topics</li>\n";
+    }
+    
     while ($row = $result->fetchRow(DB_FETCHMODE_ASSOC)) {
         $var = array('levelid'=> $in['levelid'],
                      'subjectid' => $in['subjectid'],
@@ -47,7 +57,6 @@
                      'topicid' => NEW_ANSWER);
 ?>
 
-<li><a href="NewTopic.php?<?= http_build_simple_query($var) ?>">Add New Topic...</a></li>
 </ul>
 
 <?php

@@ -28,28 +28,12 @@
 
 ?>
 
-<div id=actions>
-
-        <a href="NewResource.php?lessonid=<?= urlencode($lessonid) ?>&type=<?= TYPE_URL ?>">
-        <img src="<?= $config['local']['icons'] ?>tb_new.gif" border=0 
-             alt="Delete Lesson" align=middle> New URL (Web Site)</a>
-
-        <a href="NewResource.php?lessonid=<?= urlencode($lessonid) ?>&type=<?= TYPE_LOCAL_FILE ?>">
-        <img src="<?= $config['local']['icons'] ?>tb_new.gif" border=0 
-             alt="Delete Lesson" align=middle> New File (Document)</a>
-
-        <a href="NewResource.php?lessonid=<?= urlencode($lessonid) ?>&type=<?= TYPE_FILE_PATH ?>">
-        <img src="<?= $config['local']['icons'] ?>tb_new.gif" border=0 
-             alt="Delete Lesson" align=middle> New Path (CD)</a>
-<br>
-        <a href="ViewTestBank.php?lessonid=<?= urlencode($lessonid) ?>">
-        <img src="<?= $config['local']['icons'] ?>tb_open.gif" border=0 
-             alt="Delete Lesson" align=middle> View Test Bank</a>
-
-        <a href="ViewLesson.php?lessonid=<?= urlencode($lessonid) ?>">
-        <img src="<?= $config['local']['icons'] ?>tb_open.gif" border=0 
-             alt="Delete Lesson" align=middle> View Lesson</a>
-
+<div id=bar>
+    <a href="ViewTestBank.php?lessonid=<?= urlencode($lessonid) ?>">Test Bank</a>
+    <a href="ViewLesson.php?lessonid=<?= urlencode($lessonid) ?>">Lesson</a>
+    <a href="NewResource.php?lessonid=<?= urlencode($lessonid) ?>&type=<?= TYPE_URL ?>">New URL (Web Site)</a>
+    <a href="NewResource.php?lessonid=<?= urlencode($lessonid) ?>&type=<?= TYPE_LOCAL_FILE ?>">New File (Document)</a
+    <a href="NewResource.php?lessonid=<?= urlencode($lessonid) ?>&type=<?= TYPE_FILE_PATH ?>">New Path (CD)</a>
 </div>
 
 <table cellpadding=2 cellspacing=0 border=0 width=100% 

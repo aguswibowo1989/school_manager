@@ -28,20 +28,10 @@
 
 ?>
 
-<div id=actions>
-
-        <a href="ViewResources.php?lessonid=<?= urlencode($lessonid) ?>">
-        <img src="<?= $config['local']['icons'] ?>tb_open.gif" border=0 
-             alt="View Resources" align=middle> View Resources</a>
-
-        <a href="ViewLesson.php?lessonid=<?= urlencode($lessonid) ?>">
-        <img src="<?= $config['local']['icons'] ?>tb_open.gif" border=0 
-             alt="View Lesson" align=middle> View Lesson</a>
-             
-        <a href="NewTestQuestion.php?lessonid=<?= urlencode($lessonid) ?>">
-        <img src="<?= $config['local']['icons'] ?>tb_new.gif" border=0 
-             alt="New Test Question" align=middle> New Test Question</a>
-
+<div id=bar>
+    <a href="ViewResources.php?lessonid=<?= urlencode($lessonid) ?>">Resources</a>
+    <a href="ViewLesson.php?lessonid=<?= urlencode($lessonid) ?>">Lesson</a>
+    <a href="NewTestQuestion.php?lessonid=<?= urlencode($lessonid) ?>">New Test Question</a>
 </div>
 
 <table cellpadding=2 cellspacing=0 border=0 width=100% 

@@ -20,7 +20,8 @@
 	function auth_user_pw_mod($username, $password)
 	{
 		$return = array();
-		check_auth_options($config['auth']);
+        
+		check_auth_options();
         
         $return['uid'] = 'Unknown';
         $return['name'] = 'Unknown User';

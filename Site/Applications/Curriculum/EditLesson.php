@@ -22,21 +22,21 @@
 <tr class="FormTable">
 <th class="FormTable">Level</th>
 <td>
-<input type="text" name="level" value="<?= get_name_from_id("level", "id", $lesson['levelid'])?>">
+<input type="text" name="level" value="<?= get_name_from_id("level", "id", $lesson['levelid'])?>" size="40">
 </td>
 </tr>
 
 <tr class="FormTable">
 <th class="FormTable">Subject</th>
 <td>
-<input type="text" name="subject" value="<?= get_name_from_id("subject", "id", $lesson['subjectid'])?>">
+<input type="text" name="subject" value="<?= get_name_from_id("subject", "id", $lesson['subjectid'])?>" size="40">
 </td>
 
 </tr>
 <tr class="FormTable">
 <th class="FormTable">Topic</th>
 <td>
-<input type="text" name="topic" value="<?= get_name_from_id("topic", "id", $lesson['topicid'])?>">
+<input type="text" name="topic" value="<?= get_name_from_id("topic", "id", $lesson['topicid'])?>" size="40">
 </td>
 </tr>
 
@@ -44,7 +44,7 @@
 <tr class="FormTable">
 <th class="FormTable">Unit</th>
 <td>
-<input type="text" name="unit" value="<?= get_name_from_id("unit", "id", $lesson['unitid'])?>">
+<input type="text" name="unit" value="<?= get_name_from_id("unit", "id", $lesson['unitid'])?>" size="40">
 </td>
 </tr>
 <input type="hidden" name="lessonid" value="<?= $lessonid ?>">
@@ -97,7 +97,7 @@ initRTE("<?= $config['local']['images'] ?>rte/",
         "<?= $config['local']['style'] ?>screen.css");
 
 //Usage: writeRichText(fieldname, html, width, height, buttons)
-writeRichText('description', '<?= $description ?>', 550, 500, true, false);
+writeRichText('description', '<?= $description ?>', 700, 500, true, false);
 </script>
 </td>
 </tr>

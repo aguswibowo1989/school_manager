@@ -9,34 +9,18 @@
     }
     
     $lesson = get_lesson($lessonid);
-    $config['local']['title'] = $config['local']['name'] . ": Lesson Plans";
+    $config['local']['title'] = $config['local']['name'] . ": " . $lesson['name']   ;
     layout_begin();
     show_breadcrumb_lesson($lessonid) 
 
 ?>
 
-<div id=actions>
-
-        <a class=DataView href="ViewTestBank.php?lessonid=<?= urlencode($lessonid) ?>">
-        <img src="<?= $config['local']['icons'] ?>tb_open.gif" border=0 
-             alt="View Test Bank" align=middle> View Test Bank</a>
-
-        <a class=DataView href="ViewResources.php?lessonid=<?= urlencode($lessonid) ?>">
-        <img src="<?= $config['local']['icons'] ?>tb_open.gif" border=0 
-             alt="View Resources" align=middle> View Resources</a>
-
-        <a class=DataView href="Export.php?lessonid=<?= urlencode($lessonid) ?>">
-        <img src="<?= $config['local']['icons'] ?>tb_save_as.gif" border=0 
-             alt="Export Lesson" align=middle> Export</a>
-
-        <a class=DataView href="EditLesson.php?lessonid=<?= urlencode($lessonid) ?>">
-        <img src="<?= $config['local']['icons'] ?>tb_edit.gif" border=0 
-             alt="Edit Lesson" align=middle> Edit</a>
-
-        <a class=DataView href="DeleteLesson.php?lessonid=<?= urlencode($lessonid) ?>">
-        <img src="<?= $config['local']['icons'] ?>tb_trash.gif" border=0 
-             alt="Delete Lesson" align=middle> Delete</a>
-
+<div id=bar>
+    <a class=DataView href="ViewTestBank.php?lessonid=<?= urlencode($lessonid) ?>">Test Bank</a>
+    <a class=DataView href="ViewResources.php?lessonid=<?= urlencode($lessonid) ?>">Resources</a>
+    <a class=DataView href="Export.php?lessonid=<?= urlencode($lessonid) ?>">Export Lesson</a>
+    <a class=DataView href="EditLesson.php?lessonid=<?= urlencode($lessonid) ?>">Edit Lesson</a>
+    <a class=DataView href="DeleteLesson.php?lessonid=<?= urlencode($lessonid) ?>">Delete Lesson</a>
 </div>
 
 <hr>

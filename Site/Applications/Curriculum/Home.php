@@ -32,6 +32,7 @@
     }
     
     layout_begin();
+    show_breadcrumb();
     
 ?>
 

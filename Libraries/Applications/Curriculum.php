@@ -356,6 +356,7 @@
         $unit_name = get_name_from_id("unit", "id", $unitid);
 
         echo "<div id=breadcrumb>"; 
+        echo "<a href=\"Home.php\">Home</a> :: ";
         echo "<a href=\"ChooseLevel.php\">Lesson Plans</a>";
         
         // Show Level

@@ -6,6 +6,12 @@
     $name = getUnescapedPost("name");
     $type = getUnescapedPost("type");
     $lessonid = getUnescapedPost("lessonid");
+    $action = getUnescapedPost("action");
+    
+    if ($action && $action == "Cancel") {
+        header("Location: ViewResources.php?lessonid=" . urlencode($lessonid));
+        exit();
+    }
     
     if (!$lessonid) {
         trigger_error("Lesson ID is required", E_USER_ERROR);

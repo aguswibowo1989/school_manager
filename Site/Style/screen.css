@@ -2,19 +2,9 @@ body {
     font-family: Verdana, Lucida, Arial, Helvetica, sans-serif;
     font-size: 12px;
     color: #000000;
-    margin: 5;
+    background-color: #ebebeb;
+    margin: 0;
     padding: 0;
-    background-color: #cbcbcb;
-    background-image: url(../../Images/barely_textured-blue.png);
-}
-
-/* Column Widths -- there are only two columns */
-td.left-column {
-	width: 150px;
-}
-
-td.middle-column {
-	width: 610px;
 }
 
 h1 {
@@ -41,7 +31,6 @@ li {
 	padding-top: 2px;
 	padding-bottom: 2px;
 }
-	
 
 table.ErrorBox {
 	background: #ff9999;
@@ -85,49 +74,19 @@ th.FormTable {
 	text-align: left;
 }
 
-table.Navigation {
-	background: #ebebeb;
-	border-width: thin;
-	border-style: solid;
-	border-color: #000000;
-	width: 100%;
-	border-spacing: 0px; 
-	border-collapse: collapse;
-	font-family: verdana, arial;
-	margin-bottom: 4px;
-}
-
-td.Navigation_sel {
-	background: #cbcbcb;
-	font-size: 12px;
-	font-weight: bold;
-}
-
-th.Navigation {
-    font-size: 14px;
-    color: #000000;
-	padding: 5px;
-	text-align: left;
-}
-
-a.Navigation {
-	color: #000000;
-	font-size: 12px;
-	font-weight: normal;
-}
-
-a.Navigation:hover {
-	color: #000000;
-}
-
 #ContentArea {
 	background: #ffffff;
 	padding: 10px;
-	border-width: thin;
-	border-style: solid;
-	border-color: #000000;
-	width: 100%;
-	margin-left: 4px;
+	width: 750;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+#BannerArea {
+	padding: 10px;
+	width: 750;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 #breadcrumb {
@@ -135,17 +94,29 @@ a.Navigation:hover {
 	padding-left: 10px;
 	width: 100%;
 	font-size: 10px;
+	 margin-bottom: 15px;
 }
 
-#actions {
+#bar {
     background: #ebebeb;
-    right: 5px;
     text-align: center;
 	padding: 5px;
     border-style: solid;
     border-color: #000000;
     border-width: thin;
 	font-size: 10px;
+	margin-bottom: 10px;
+}
+
+#bar a{
+    padding: 5px;
+	font-size: 10px;
+	padding-right: 10px;
+	padding-left: 10px;
+}
+
+#bar a:hover {
+	background: #cbcbcb;
 }
 
 #actions a {

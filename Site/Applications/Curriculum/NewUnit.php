@@ -56,7 +56,7 @@
 <tr class="FormTable">
 <td class="FormTable">&nbsp;</td>
 <td class="FormTable">
-<input type=submit name=action value="Next &gt;&gt;">
+<input type=submit name=action value="Create">
 </td>
 </tr>
 </form>

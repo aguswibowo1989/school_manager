@@ -63,7 +63,8 @@
 
 <tr class="FormTable">
 <td class="FormTable">&nbsp;</td>
-<td class="FormTable"><input type=submit name=action value="Create Resource"></td>
+<td class="FormTable"><input type=submit name=action value="Create Resource">
+                      <input type=submit name=action value="Cancel"></td>
 </tr>
 </form>
 </table>

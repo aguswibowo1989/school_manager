@@ -54,7 +54,7 @@
         header("Location:  ChooseLesson.php?" . http_build_simple_query($vars));
     }
     elseif ($action == "No") {
-        header("Location:  ViewLesson.php?levelid" . urlencode($lessonid));
+        header("Location:  ViewLesson.php?lessonid=" . urlencode($lessonid));
     }
     else {
         layout_display_dialog("Are you sure you want to delete the resource named '{$lesson['name']}'?", "YesNo", $vars);

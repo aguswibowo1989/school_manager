@@ -7,8 +7,7 @@
         layout_display_stylesheet();
         layout_display_javascript();
         layout_close_header();
-        layout_open_cols();
-        layout_display_left_col();
+        layout_display_top();
         layout_open_body();
         layout_display_page_title();
     }
@@ -16,7 +15,6 @@
     function layout_end ()
     {
         layout_close_body();
-        layout_close_cols();
         layout_display_error_footer();
         layout_close();
     }
@@ -61,54 +59,47 @@
         echo "<script language=\"JavaScript\" src=\"{$config['local']['home']}JavaScript/richtext.js\"></script>\n";
     }
 
-    function layout_open_cols()
-    {
-        echo "<!-- BEGIN COLUMNS -->\n";
-        echo "<table class=layout border=0 cellpadding=0 cellspacing=0>\n";
-        echo "  <tr>\n";
-    }
-
-    function layout_close_cols()
-    {
-        echo "  </tr>\n";
-        echo "</table>\n";
-        echo "<!-- END COLUMNS -->\n";
-    }
-
-    function layout_display_left_col()
+    function layout_display_top()
     {
         global $config;
-        echo "<!-- BEGIN LEFT COLUMN -->\n";
-        echo "    <td class=left-column valign=top>\n";
         
+        echo "<!-- START SITE NAVIGATION -->\n";
+        echo "<div id=\"BannerArea\">\n";
+        echo "<table cellpadding=0 cellspacing=0 border=0 width=100%><tr><td>\n";
+
+
         if (array_key_exists("navigation", $config) and $config['local']['name'] != "Login") {
-            layout_display_navigation_box($config['site']['name'], $config['navigation']);
+            echo "<form name=navigation>\n";
+            echo "<select name=navigation
+                  onChange='document.location=document.navigation.navigation.value'>\n";
+            foreach ($config['navigation'] as $key => $value) {
+                if ($key == $config['local']['name']) {
+                    echo "<option value=\"$value\" selected>$key</option>\n";
+                }
+                else {
+                    echo "<option value=\"$value\">$key</option>\n";
+                }
+            }
+            echo "</select>\n";
+            echo "</form>\n";
         }
-        
-        if (array_key_exists("navigation", $config['local'])) {
-            layout_display_navigation_box($config['local']['name'], $config['local']['navigation']);
-        }
-         
-        if (array_key_exists("page_navigation", $config['local'])) {
-            layout_display_navigation_box("Page Options", $config['local']['right_navigation']);
-        }
-        
-        echo "    </td>\n";
-        echo "<!-- END LEFT COLUMN -->\n";
+        echo "</td><td align=right>\n";
+        echo "<h1>" . $config['site']['name'] .  "</h1>\n";
+        echo "</td></tr></table>\n";
+        echo "</div>\n";
+        echo "<!-- END SITE NAVIGATION -->\n";
     }
     
     function layout_open_body()
     {
         global $config;
         echo "<!-- BEGIN BODY -->\n";
-        echo "    <td class=middle-column valign=top align=left>\n";
         echo "<div id=\"ContentArea\">\n";
     }
 
     function layout_close_body()
     {
-        echo "    </div>\n";
-        echo "    </td>\n";
+        echo "</div>\n";
         echo "<!-- END BODY -->\n";
     }
     
@@ -267,14 +258,7 @@
         if (in_array($config['local']['name'], $config['layout']['notitle'])) {
             return;
         }
-        
-        //echo "<table cellpadding=0 cellspacing=0 border=0 width=100%>\n";
-        //echo "<tr><td>\n";
-        //layout_display_icon_large($config['local']['name']);
-        //echo "</td>\n";
-        //echo "<td>\n";
         echo "<div id=title><h1>" . $config['local']['title'] . "</h1></diV>\n";
-        //echo "</td></tr></table>";
     }
     
     function layout_display_icon_small($key, $attr = "") {

@@ -2,6 +2,7 @@
 
     require("config.php");
     
+    $in['unitid'] = NEW_ANSWER;
     $in['topicid'] = getUnescapedGet("topicid");
     $in['subjectid'] = getUnescapedGet("subjectid");
     $in['levelid'] = getUnescapedGet("levelid");
@@ -35,10 +36,19 @@
     show_breadcrumb($in['levelid'], $in['subjectid'], $in['topicid']);
     
 ?>
-
-<h2>Choose Unit:</h2>
+<div id=bar>
+    <a href="Search.php?<?= http_build_simple_query($in) ?>">Search Topic</a>
+    <a href="EditCategory.php?<?= http_build_simple_query($in) ?>">Edit Topic</a>
+</div>
+<strong>Choose Unit: &nbsp;</strong>
+<a href="NewUnit.php?<?= http_build_simple_query($in) ?>">Add New Unit...</a>
 <ul>
 <?php 
+
+    if ($result->numRows() == 0) {
+        echo "<li>No Units</li>\n";
+    }
+    
     while ($row = $result->fetchRow(DB_FETCHMODE_ASSOC)) {
         $var = array('levelid'=> $in['levelid'],
                      'subjectid' => $in['subjectid'],
@@ -54,7 +64,6 @@
                      'unitid' => NEW_ANSWER);
 ?>
 
-<li><a href="NewUnit.php?<?= http_build_simple_query($var) ?>">Add New Unit...</a></li>
 </ul>
 
 <?php

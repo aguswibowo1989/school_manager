@@ -2,6 +2,7 @@
 
     require("config.php");
     
+    $in['lessonid'] = NEW_ANSWER;
     $in['unitid'] = getUnescapedGet("unitid");
     $in['topicid'] = getUnescapedGet("topicid");
     $in['subjectid'] = getUnescapedGet("subjectid");
@@ -41,10 +42,20 @@
     show_breadcrumb($in['levelid'], $in['subjectid'], $in['topicid'], $in['unitid']);
     
 ?>
+<div id=bar>
+    <a href="Search.php?<?= http_build_simple_query($in) ?>">Search Unit</a>
+    <a href="EditCategory.php?<?= http_build_simple_query($in) ?>">Edit Unit</a>
+</div>
+<strong>Choose Lesson: &nbsp;</strong>
+<a href="NewLesson.php?<?= http_build_simple_query($in) ?>">Add New Lesson...</a>
 
-<h2>Choose Lesson:</h2>
 <ul>
 <?php 
+    
+    if ($result->numRows() == 0) {
+        echo "<li>No Lessons</li>\n";
+    }
+    
     while ($row = $result->fetchRow(DB_FETCHMODE_ASSOC)) {
         $var = array('lessonid' => $row['id']);
 ?>
@@ -65,7 +76,6 @@
                  'unitid' => $in['unitid']);
 ?>
 
-<li><a href="NewLesson.php?<?= http_build_simple_query($var) ?>">Add New Lesson...</a></li>
 </ul>
 
 <?php

@@ -69,7 +69,7 @@ initRTE("<?= $config['local']['images'] ?>rte/", "<?= $config['local']['home'] ?
 //Usage: writeRichText(fieldname, html, width, height, buttons)
 writeRichText("description", 
               "<?= RTESafe("<h1>Objective:</h1><h1>Summary:</h1><h1>Materials:</h1><h1>Procedures:</h1><h1>Teaching Tips:</h1><h1>Additional Activity:</h1><h1>Assessment:</h1><h1>Handouts:</h1>") ?>", 
-              550, 500, true, false);
+              700, 500, true, false);
 </script>
 </td>
 </tr>
@@ -77,7 +77,7 @@ writeRichText("description",
 <tr class="FormTable">
 <td class="FormTable">&nbsp;</td>
 <td class="FormTable">
-<input type=submit name=action value="Next &gt;&gt;">
+<input type=submit name=action value="Create">
 </td>
 </tr>
 </form>

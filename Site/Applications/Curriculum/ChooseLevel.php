@@ -6,6 +6,7 @@
                 join level on (id = levelid) 
                group by id";
     $result = $conn->query($query);
+   
     
     if (DB::isError($result)) {
         trigger_error($query);
@@ -17,12 +18,26 @@
     show_breadcrumb();
   
 ?>
-<h2>Choose Level:</h2>
+<div id=bar>
+    <a href="Search.php">Search Lesson Plans</a>
+
+</div>
+<strong>Choose Level: &nbsp;</strong>
+<a href="NewLevel.php?levelid=<?= NEW_ANSWER ?>">Add New Level...</a>
 <ul>
-<?php while ($row = $result->fetchRow(DB_FETCHMODE_ASSOC)) { ?>
+<?php 
+    if ($result->numRows() == 0) {
+        echo "<li>No Levels</li>\n";
+    }
+    
+    while ($row = $result->fetchRow(DB_FETCHMODE_ASSOC)) { 
+?>
+
 <li><a href="NewLevel.php?levelid=<?= $row['id'] ?>"><?= $row['name'] ?></a></li>
-<?php } ?>
-<li><a href="NewLevel.php?levelid=<?= NEW_ANSWER ?>">Add New Level...</a></li>
+<?php 
+    } 
+?>
+
 </ul>
 
 <?php

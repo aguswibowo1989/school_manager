@@ -10,13 +10,6 @@ body {
 table.layout {
 	width: 100%;
 }
-td.left-column {
-    display: none;
-}
-
-td.middle-column {
-	width: 100%;
-}
 
 h1 {
 	font-size: 18px;
@@ -80,7 +73,11 @@ th.FormTable {
 	font-size: 10px;
 }
 
-#actions {
+#BannerArea {
+	display: none;
+}
+
+#bar {
     display: none;
 }
 

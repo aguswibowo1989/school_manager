@@ -2,6 +2,7 @@
 
     require("config.php");
     
+    $in['subjectid'] = NEW_ANSWER;
     $in['levelid'] = getUnescapedGet("levelid");
     
     if (!$in['levelid']) {
@@ -24,10 +25,19 @@
     layout_begin();
     show_breadcrumb($in['levelid']);
 ?>
-
-<h2>Choose Subject:</h2>
+<div id=bar>
+    <a href="Search.php?<?= http_build_simple_query($in) ?>">Search Level</a>
+    <a href="EditCategory.php?<?= http_build_simple_query($in) ?>">Edit Level</a>
+</div>
+<strong>Choose Subject: &nbsp;</strong>
+<a href="NewSubject.php?<?= http_build_simple_query($in) ?>">Add New Subject...</a>
 <ul>
 <?php 
+    
+    if ($result->numRows() == 0) {
+        echo "<li>No Subjects</li>\n";
+    }
+    
     while ($row = $result->fetchRow(DB_FETCHMODE_ASSOC)) {
         $var = array('levelid'=> $in['levelid'],
                      'subjectid' => $row['id']);
@@ -39,7 +49,6 @@
                  'subjectid' => NEW_ANSWER);
 ?>
 
-<li><a href="NewSubject.php?<?= http_build_simple_query($var) ?>">Add New Subject...</a></li>
 </ul>
 
 <?php
