@@ -10,7 +10,7 @@
     $config['path']['home']   = $homedir . "/";
     $config['path']['lib']    = $homedir . "/Libraries/";
     $config['path']['filestore']    = "c:\\FileStore\\";
-    $config['path']['style']  = $config['local']['home'] . "Style/Default/";
+    $config['path']['style']  = $config['local']['home'] . "Style/";
     $config['path']['js']     = $config['local']['home'] . "JavaScript/";
     $config['path']['images'] = $config['local']['home'] . "Images/";
     $config['path']['icons'] = $config['local']['home'] . "Images/Icons/";

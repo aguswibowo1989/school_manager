@@ -22,12 +22,16 @@
         trigger_error("Topic ID is required", E_USER_ERROR);
     }
     else if ($in['topicid'] == ADD_ANSWER) {
-        $in['topicid'] = curriculum_add_answer();
+        $id = curriculum_add_answer(getUnescapedGET("table"), 
+                                    getUnescapedGET("column"),
+                                    getUnescapedGET("answer"));
+        $in['topicid'] = $id;
         header("Location: ChooseUnit.php?" . http_build_simple_query($in));
         exit();
     }
-    $config['local']['title'] = $config['local']['name'] . ": New Resource";
+    $config['local']['title'] = $config['local']['name'] . ": Lesson Plans";
     layout_begin();
+    show_breadcrumb($in['levelid'], $in['subjectid']);
     
 ?>
 

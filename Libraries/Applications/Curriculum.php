@@ -29,13 +29,9 @@
         return $return;
     }
     
-    function curriculum_add_answer()
+    function curriculum_add_answer($table, $column, $answer)
     {
         global $conn;
-        
-        $table = getUnescapedGET("table");
-        $column = getUnescapedGET("column");
-        $answer = getUnescapedGET("answer");
         
         if (!$table) {
             trigger_error("table is required", E_USER_ERROR);
@@ -85,6 +81,28 @@
             return $row[0];
         }
         return -1;
+    }
+    
+    function get_name_from_id($t, $c, $a) {
+        global $conn;
+        
+        if ($a == "" || $a == -1) {
+            return "";
+        }
+        $qanswer = $conn->quote($a);
+        $query = "select name from $t where $c = $qanswer";
+        $result = $conn->query($query);
+        
+        if (DB::isError($result)) {
+            trigger_error($query, E_USER_NOTICE);
+            trigger_error($result->getMessage(), E_USER_NOTICE);
+            trigger_error("Failed to retrieve answer", E_USER_ERROR);
+        }
+        
+        if ($row = $result->fetchRow()) {
+            return $row[0];
+        }
+        return "";
     }
         
     
@@ -248,5 +266,98 @@
         $result->free();
         return $row;
     }
+    
+    function get_lesson ($lessonid)
+    {
+        global $conn;
+        $query = "select name, author, school, description, levelid, topicid, subjectid, unitid, date_format(lstul.timestamp, '%c/%e/%Y %r') as t from lesson join lstul on (lstul.lessonid = lesson.id) where id = " . $conn->quote($lessonid);
+        $result = $conn->query($query);
+        
+        if (DB::isError($result)) {
+            trigger_error($query, E_USER_NOTICE);
+            trigger_error($result->getMessage(), E_USER_NOTICE);
+            trigger_error("Failed to get resource information.", E_USER_ERROR);
+        }
+        
+        $row = $result->fetchRow(DB_FETCHMODE_ASSOC);
+        $result->free();
+        return $row;
+    }
+
+    function show_breadcrumb_lesson ($lessonid = -1)
+    {
+
+        if ($lessonid == -1) {
+            return;
+        }
+
+        $lesson = get_lesson($lessonid);
+        show_breadcrumb($lesson['levelid'], $lesson['subjectid'], $lesson['topicid'],
+                        $lesson['unitid']);
+
+    }
+    
+    function show_breadcrumb ($levelid = -1, $subjectid = -1, $topicid = -1, $unitid = -1)
+    {
+        $level_name = get_name_from_id("level", "id", $levelid);
+        $subject_name = get_name_from_id("subject", "id", $subjectid);
+        $topic_name = get_name_from_id("topic", "id", $topicid);
+        $unit_name = get_name_from_id("unit", "id", $unitid);
+
+        echo "<div id=breadcrumb>"; 
+        echo "<a href=\"ChooseLevel.php\">Lesson Plans</a>";
+        
+        // Show Level
+        if ($level_name) {
+           
+            $var['levelid'] = $levelid;
+            echo " &gt; "; 
+            echo "<a href=\"ChooseSubject.php? " . http_build_simple_query($var) . "\">" . $level_name . "</a>";
+            
+            // Show Subject
+            if ($subject_name) {
+                $var['subjectid'] = $subjectid;
+                echo " &gt; ";               
+                echo "<a href=\"ChooseTopic.php? " . http_build_simple_query($var) . "\">" . $subject_name . "</a>";
+            
+                // Show Topic
+                if ($topic_name) {
+                    $var['topicid'] = $topicid;
+                    echo " &gt; ";
+                    echo "<a href=\"ChooseUnit.php? " . http_build_simple_query($var) . "\">" . $topic_name . "</a>";
+               
+                    // Show Unit
+                    if ($unit_name) {
+                        $var['unitid'] = $unitid;
+                        echo " &gt; ";
+                        echo "<a href=\"ChooseLesson.php? " . http_build_simple_query($var) . "\">" . $unit_name . "</a>";
+                    } 
+                }
+            }
+        }
+        echo "</div>";   
+    }
+
+    function RTESafe($strText) {
+        //returns safe code for preloading in the RTE
+        $tmpString = trim($strText);
+        
+        //convert all types of single quotes
+        $tmpString = str_replace(chr(145), chr(39), $tmpString);
+        $tmpString = str_replace(chr(146), chr(39), $tmpString);
+        $tmpString = str_replace("'", "&#39;", $tmpString);
+        
+        //convert all types of double quotes
+        $tmpString = str_replace(chr(147), chr(34), $tmpString);
+        $tmpString = str_replace(chr(148), chr(34), $tmpString);
+//    	$tmpString = str_replace("\"", "\"", $tmpString);
+        
+        //replace carriage returns & line feeds
+        $tmpString = str_replace(chr(10), " ", $tmpString);
+        $tmpString = str_replace(chr(13), " ", $tmpString);
+        
+        return $tmpString;
+    }
+
 
 ?>

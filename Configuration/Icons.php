@@ -12,7 +12,7 @@
     $config['icons']['Logout'] = $config['path']['icons'] . "tb_exit.gif";
     
     $config['icons']['View Resources'] = $config['path']['icons'] . "tb_book_open.gif";
-    $config['icons']['New Resource'] = $config['path']['icons'] . "tb_new.gif";
+    $config['icons']['Lesson Plans'] = $config['path']['icons'] . "tb_new.gif";
     $config['icons']['Edit Resource'] = $config['path']['icons'] . "tb_edit.gif";
     $config['icons']['Delete Resource'] = $config['path']['icons'] . "tb_trash.gif";
     $config['icons']['Search'] = $config['path']['icons'] . "tb_search.gif";

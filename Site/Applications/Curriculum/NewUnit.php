@@ -19,26 +19,30 @@
         trigger_error("Unit ID is required", E_USER_ERROR);
     }
     else if ($in['unitid'] >= 0) {
-        header("Location: NewLesson.php?" . http_build_simple_query($in));
+        header("Location: ChooseLesson.php?" . http_build_simple_query($in));
         exit();
     }
     else if ($in['unitid'] == NO_ANSWER) {
         trigger_error("Unit ID is required", E_USER_ERROR);
     }
     else if ($in['unitid'] == ADD_ANSWER) {
-        $in['unitid'] = curriculum_add_answer();
-        header("Location: NewLesson.php?" . http_build_simple_query($in));
+        $id = curriculum_add_answer(getUnescapedGET("table"), 
+                                    getUnescapedGET("column"),
+                                    getUnescapedGET("answer"));
+        $in['unitid'] = $id;
+        header("Location: ChooseLesson.php?" . http_build_simple_query($in));
         exit();
     }
-    $config['local']['title'] = $config['local']['name'] . ": New Resource";
+    $config['local']['title'] = $config['local']['name'] . ": Lesson Plans";
     layout_begin();
+    show_breadcrumb($in['levelid'], $in['subjectid'], $in['topicid']);
     
 ?>
 
 <table class="FormTable">
 <form action="NewUnit.php" method="GET">
 <input type="hidden" name="unitid" value="<?= ADD_ANSWER ?>">
-<input type="hidden" name="topicid" value="<?= $in['subjectid'] ?>">
+<input type="hidden" name="topicid" value="<?= $in['topicid'] ?>">
 <input type="hidden" name="subjectid" value="<?= $in['subjectid'] ?>">
 <input type="hidden" name="levelid" value="<?= $in['levelid'] ?>">
 <input type="hidden" name="table" value="unit">

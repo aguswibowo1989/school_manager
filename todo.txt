@@ -1,0 +1,54 @@
+Tasks
+    o Send Tasklist to Vivek and Jim.
+
+Bugs:
+    o  Fix bug in session with NULL Authentication
+
+Features: 
+    Priority: HIGH 
+    x create/copy application template 	3
+    x create database schema	2
+    x create grade level manager	2
+    o create content area manager (subject) (topic) (unit)	4
+    o create lesson management	3
+    o create category managaer (sub-content)	2
+    x add/delete/edit http link to category      	2
+    x add/delete/edit document to category	3
+    o add/delete/edit test item bank to category	6
+        - print test	
+        - print key	
+        - screen mode (future)	
+        - explination of answer (future)	
+
+Completed:
+
+MEDIUM	5.00%	research localization practices for php 	2
+MEDIUM	0.00%	adjust template for localization 	2
+HIGH	80.00%	add/delete/edit cd-rom/local file to category 	6
+	5.00%	research feasibility of finding cdrom drive	6
+	0.00%	impliment cdrom drive solution	2
+HIGH	0.00%	export lesson(s) 	6
+		      - global	
+		      - content area	
+		      - category	
+		      - item	
+HIGH	0.00%	import lesson(s)   	6
+		      - global	
+		      - content area	
+		      - category	
+		      - item	
+MEDIUM	0.00%	Search Capability	4
+HIGH	60.00%	Basic Security	2
+MEDIUM	0.00%	 User Management 	4
+LOW	10.00%	SchoolManager Mock-Ups 	6
+		       - Assessment	
+		       - Attendence (Demographic Information, Schedules)	
+		       - Student Portal (Homework Assignments from Test Banks)	
+HIGH	90.00%	Layout and Aesthetics	10
+MEDIUM	0.00%	 Install Scripts	4
+LOW	0.00%	Advanced Security	3
+LOW	0.00%	Lesson Sharing Options	5
+LOW	100.00%	Icons  	1
+LOW	10.00%	Order Resources by popularity	1
+LOW	0.00%	Wiki Integration For Site Content	2
+

@@ -1,0 +1,281 @@
+body {
+    background-image: url(../../Images/barely_textured-blue.png);
+    background-color: #cbcbcb;
+    color: #000000;
+	font-size: 11px;
+	font-family: palatino, georgia, times new roman, serif;
+	margin: 5;
+	padding: 0;
+}
+
+h1 {
+	font-size: 18px;
+	font-weight: bold;
+}
+
+h2 {
+	font-size: 16px;
+	font-weight: bold;
+}
+
+h3 {
+	font-size: 12px;
+	font-weight: bold;
+}
+
+h4 {
+	font-size: 11px;
+	font-style: italics;
+	font-weight: bold;
+}
+
+h5 {
+	font-size: 11px;
+	font-style: italics;
+}
+
+p {
+	font-size: 11px;
+}
+
+li {
+	font-size: 12px;
+	padding-top: 2px;
+	padding-bottom: 2px;
+}
+	
+
+#ContentArea {
+	background: #ffffff;
+	width: 100%;
+}
+
+/* Pagination Bar */
+table.pagination_bar {
+    display: none;
+}
+
+table.data_table { 
+	background-color: #ebebeb;
+	border-bottom-width: thin;
+	border-right-width: thin;
+	border-bottom-style: solid;
+	border-right-style: solid;
+	border-bottom-color: #000000;
+	border-right-color: #000000;
+	width: 100%;
+	border-spacing: 0px; 
+	border-collapse: collapse;
+}
+
+td.data_table { 
+    font-family: Verdana, Arial, Helvetica, sans-serif;
+    font-size: 12px;
+	border-top-width: thin;
+	border-left-width: thin;
+	border-top-style: solid;
+	border-left-style: solid;
+	border-top-color: #000000;
+	border-left-color: #000000;
+	padding: 5px;
+	text-align: center;
+}
+
+th.data_table { 
+	background-color: #cbcbcb;
+    font-family: Verdana, Arial, Helvetica, sans-serif;
+    font-size: 12px;
+	border-top-width: thin;
+	border-left-width: thin;
+	border-top-style: solid;
+	border-left-style: solid;
+	border-top-color: #000000;
+	border-left-color: #000000;
+	padding: 5px;
+}
+
+tr.data_table_0 { 
+	background-color: #ffffff;
+}
+
+tr.data_table_1 { 
+	background-color: #ebebeb;
+}
+
+a.data_table { 
+	color: #000000;
+}
+
+a.data_table:hover { 
+	color: #cbcbcb;
+	
+}
+
+table.DataView {
+	border-top-width: thin;
+	border-top-style: solid;
+	border-top-color: #000000;
+	border-bottom-width: thin;
+	border-bottom-style: solid;
+	border-bottom-color: #000000;
+	border-right-width: thin;
+	border-right-style: solid;
+	border-right-color: #000000;
+	border-left-width: thin;
+	border-left-style: solid;
+	border-left-color: #000000;
+	width: 100%;
+	border-spacing: 0px; 
+	border-collapse: collapse;
+	margin-bottom: 4px;
+	margin-top: 2px;
+}
+
+th.DataView {
+	font-weight: bold;
+}
+
+td.DataView {
+	font-size: 11px;
+}
+
+a.DataView {
+	font-size: 11px;
+	text-decoration: none;
+	color: #000000;
+}
+
+a.DataView:hover {
+	font-size: 11px;
+	text-decoration: underline;
+	color: #000000;
+}
+
+table.ErrorBox {
+	display: none;
+}
+
+table.ErrorFoot {
+	display: none;
+}
+
+table.FormTable {
+	border-spacing: 10px; 
+	border-collapse: collapse;
+}
+
+td.FormTable {
+	padding: 10px;
+}
+
+th.FormTable {
+    font-size: 14px;
+    color: #000000;
+	padding: 10px;
+	text-align: left;
+}
+
+tr.FormTable {
+}
+
+a.FormTable {
+	color: #000000;
+	font-size: 12px;
+	font-weight: bold;
+}
+
+a.FormTable:hover {
+	color: #000000;
+}
+
+
+table.Navigation {
+	display: none;
+	width: 0px;
+}
+
+h1.header {
+	font-size: 20px;
+	color: #ffffff;
+	font-style: italic;
+	border-bottom: none;
+}
+
+table.header {
+	background-color: #999999;
+	padding: 10px;
+}
+
+#breadcrumb {
+	padding: 5px;
+	padding-left: 10px;
+	width: 100%;
+	font-size: 10px;
+}
+
+#actions {
+	display: none;
+}
+
+#title h1 {
+	display: none;
+}
+
+#lesson_head h1 {
+    font-size: 22px;
+	font-weight: bold;
+    padding: 0px;
+    padding-top: 10px;
+    margin: 0px;      
+}
+
+#lesson_head h2 {
+    font-size: 12px;
+	font-style: italic;
+    padding: 0px;
+    margin: 0px;       
+}
+
+#lesson_head h3 {
+    font-size: 11px;
+	font-style: italic;
+    padding: 0px;
+    margin: 0px;       
+}
+
+#lesson-plan {
+	font-size: 11px;
+	font-family: verdana;
+}
+
+#lesson-plan h1,h2,h3,h4,h5,h6 {
+	font-family: verdana;
+}
+
+#lesson-plan h1 {
+	font-size: 14px;
+	color: #000099;
+}
+
+#lesson-plan h2 {
+	font-size: 12px;
+	font-family: verdana;
+	text-decoration: underline;
+}
+
+#lesson-plan li {
+	font-size: 12px;
+	font-family: verdana;
+}
+
+table.layout {
+	width: 100%;
+}
+
+td.left-column {
+	display: none;
+}
+
+td.middle-column {
+	width: 100%;
+}

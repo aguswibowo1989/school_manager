@@ -12,8 +12,9 @@
         trigger_error($result->getMessage());
         trigger_error("Could not get levels", E_USER_ERROR);
     }
-    $config['local']['title'] = $config['local']['name'] . ": New Resource";
+    $config['local']['title'] = $config['local']['name'] . ": Lesson Plans";
     layout_begin();
+    show_breadcrumb();
   
 ?>
 <h2>Choose Level:</h2>

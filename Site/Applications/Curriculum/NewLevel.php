@@ -14,12 +14,15 @@
         trigger_error("Level ID is required", E_USER_ERROR);
     }
     else if ($levelid == ADD_ANSWER) {
-        $id = curriculum_add_answer();
+        $id = curriculum_add_answer(getUnescapedGET("table"), 
+                                    getUnescapedGET("column"),
+                                    getUnescapedGET("answer"));
         header("Location: ChooseSubject.php?levelid=" . urlencode($id));
         exit();
     }
-    $config['local']['title'] = $config['local']['name'] . ": New Resource";
+    $config['local']['title'] = $config['local']['name'] . ": Lesson Plans";
     layout_begin();
+    show_breadcrumb();
     
 ?>
 

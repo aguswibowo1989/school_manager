@@ -61,30 +61,5 @@
         trigger_error("Failed to create lesson", E_USER_ERROR);
     }
     
-    layout_begin();
+    header("Location: Finish.php?lessonid=" . urlencode($in['lessonid']));
     
-?>
-
-<table class="FormTable">
-<form action="ViewResources.php" method="GET">
-<tr class="FormTable">
-<th class="FormTable">Lesson Successfully Added</th>
-<td>
-&nbsp;
-</td>
-</tr>
-<tr class="FormTable">
-<td class="FormTable">&nbsp;</td>
-<td class="FormTable">
-<input type=submit name=action value="Finish">
-</td>
-</tr>
-</form>
-</table>
-
-
-<?php
-
-    layout_end();
-    
-?>

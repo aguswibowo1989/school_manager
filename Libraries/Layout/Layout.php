@@ -50,12 +50,8 @@
     {
         global $config;
         echo "\n<!-- StyleSheets -->\n";
-        echo "<link rel='stylesheet' type='text/css' media='screen' href='{$config['local']['home']}Style/Default/Default.css'></script>\n";
-        echo "<link rel='stylesheet' type='text/css' media='screen' href='{$config['local']['home']}Style/Default/Header.css'></script>\n";
-        echo "<link rel='stylesheet' type='text/css' media='screen' href='{$config['local']['home']}Style/Default/Navigation.css'></script>\n";
-        echo "<link rel='stylesheet' type='text/css' media='screen' href='{$config['local']['home']}Style/Default/FormTable.css'></script>\n";
-        echo "<link rel='stylesheet' type='text/css' media='screen' href='{$config['local']['home']}Style/Default/ErrorBox.css'></script>\n";
-        echo "<link rel='stylesheet' type='text/css' media='screen' href='{$config['local']['home']}Style/Default/DataTable.css'></script>\n";
+        echo "<link rel='stylesheet' type='text/css' media='screen' href='{$config['local']['home']}Style/screen.css'></script>\n";
+        echo "<link rel='stylesheet' type='text/css' media='print' href='{$config['local']['home']}Style/print.css'></script>\n";
     }
 
     function layout_display_javascript($javascripts = array()) 
@@ -63,6 +59,7 @@
         global $config;
         echo "\n<!-- JavaScript -->\n";
         echo "<script language=\"JavaScript\" src=\"{$config['local']['home']}JavaScript/Navigation.js\"></script>\n";
+        echo "<script language=\"JavaScript\" src=\"{$config['local']['home']}JavaScript/richtext.js\"></script>\n";
     }
 
     function layout_display_banner()
@@ -83,7 +80,7 @@
     function layout_open_cols()
     {
         echo "<!-- BEGIN COLUMNS -->\n";
-        echo "<table border=0 cellpadding=0 cellspacing=0>\n";
+        echo "<table class=layout border=0 cellpadding=0 cellspacing=0>\n";
         echo "  <tr>\n";
     }
 
@@ -98,7 +95,7 @@
     {
         global $config;
         echo "<!-- BEGIN LEFT COLUMN -->\n";
-        echo "    <td valign=top width={$config['layout']['left_col_width']}>\n";
+        echo "    <td class=left-column valign=top>\n";
         
         if (array_key_exists("navigation", $config) and $config['local']['name'] != "Login") {
             layout_display_navigation_box($config['site']['name'], $config['navigation']);
@@ -120,7 +117,7 @@
     {
         global $config;
         echo "<!-- BEGIN BODY -->\n";
-        echo "    <td valign=top align=left width=" . $config['layout']['middle_col_width'] . ">\n";
+        echo "    <td class=middle-column valign=top align=left>\n";
         echo "<div id=\"ContentArea\">\n";
     }
 
@@ -292,7 +289,7 @@
         //layout_display_icon_large($config['local']['name']);
         //echo "</td>\n";
         //echo "<td>\n";
-        echo "<h1>" . $config['local']['title'] . "</h1>\n";
+        echo "<div id=title><h1>" . $config['local']['title'] . "</h1></diV>\n";
         //echo "</td></tr></table>";
     }
     

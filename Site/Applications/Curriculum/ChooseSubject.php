@@ -20,9 +20,9 @@
         trigger_error($result->getMessage());
         trigger_error("Could not get subjects", E_USER_ERROR);
     }
-    $config['local']['title'] = $config['local']['name'] . ": New Resource";
+    $config['local']['title'] = $config['local']['name'] . ": Lesson Plans";
     layout_begin();
-    
+    show_breadcrumb($in['levelid']);
 ?>
 
 <h2>Choose Subject:</h2>

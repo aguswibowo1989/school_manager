@@ -39,7 +39,7 @@
     	    $value = stripslashes($value);   // unescape back to original form
     	    return $value;
         }
-        return "";          
+        return null;          
 	}
 	    
 	// function is to remind us $_GET returns slashed strings

@@ -27,6 +27,7 @@
     } 
     $config['local']['title'] = $config['local']['name'] . ": New Resource";
     layout_begin();
+    show_breadcrumb($in['levelid'], $in['subjectid']);
     
 ?>
 
