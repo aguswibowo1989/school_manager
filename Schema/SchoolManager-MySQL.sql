@@ -152,7 +152,7 @@ CREATE TABLE help_section (
   id int(11) not null auto_increment primary key,
   displayorder int(11),
   name varchar(100)
-)
+);
 
 create table help_content (
   id int(11) not null auto_increment primary key,
