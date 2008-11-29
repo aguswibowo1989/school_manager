@@ -45,63 +45,70 @@
 	    // define an assoc array of error string in reality the only entries we should
 	    // consider are 2,8,256,512 and 1024
 	    $errortype = array (
-	                E_ERROR				=>  "Error",
-	                E_WARNING			=>  "Warning",
-	                E_PARSE				=>  "Parsing Error",
-	                E_NOTICE			=>  "Notice",
-	                E_CORE_ERROR		=>  "Core Error",
-	                E_CORE_WARNING  	=>  "Core Warning",
-	                E_COMPILE_ERROR		=>  "Compile Error",
-	                E_COMPILE_WARNING	=>  "Compile Warning",
-	                E_USER_ERROR		=>  "User Error",
-	                E_USER_WARNING		=>  "User Warning",
-	                E_USER_NOTICE		=>  "User Notice"
-	                );
-	    // set of errors for which a var trace will be saved
-	    $user_errors = array(E_USER_ERROR, E_USER_WARNING, E_USER_NOTICE);
+	                E_ERROR            =>  "Error",
+	                E_WARNING          =>  "Warning",
+	                E_PARSE            =>  "Parsing Error",
+	                E_NOTICE           =>  "Notice",
+	                E_CORE_ERROR       =>  "Core Error",
+	                E_CORE_WARNING     =>  "Core Warning",
+	                E_COMPILE_ERROR    =>  "Compile Error",
+	                E_COMPILE_WARNING  =>  "Compile Warning",
+	                E_USER_ERROR       =>  "User Error",
+	                E_USER_WARNING     =>  "User Warning",
+	                E_USER_NOTICE      =>  "User Notice",
+	                E_STRICT           => "Strict"
+	                );                                       
+      $ignore = array(E_STRICT);
+      // set of errors for which a var trace will be saved 
+      $user_errors = array(E_USER_ERROR, E_USER_WARNING, E_USER_NOTICE);
+
+      // Each error will have it's own behavior.  Currently there are three behaviors. 
+      // log, log and print, and log and die.  log will only be seen by administrators.  log
+      // and print will print to the screen and to the log. log and die will stop execution and log.
+      //$print = array(E_NOTICE, E_USER_NOTICE);
+      $print = array(E_NOTICE, E_USER_NOTICE, E_WARNING, E_CORE_WARNING, E_COMPILE_WARNING, E_USER_WARNING);
+      $log_and_print = array();
+      $log_and_die = array();
+      $die = array(E_ERROR, E_PARSE, E_CORE_ERROR, E_COMPILE_ERROR, E_USER_ERROR); 
+                    
+      # ignore
+      if (in_array($errno, $ignore)) {
+        return true;
+      }
+
+      // This is the format of the
+      $err = "<b>$errortype[$errno]</b>: ";
+      $err .= "$errmsg ";
+      $err .= "in $filename ";
+      $err .= "on line $linenum";        
+
+      //if (in_array($errno, $user_errors)) {
+      //    $err .= ":".wddx_serialize_value($vars,"Variables");
+      //}
+
+      $err .= "\n";
 	    
-	    // Each error will have it's own behavior.  Currently there are three behaviors. 
-	    // log, log and print, and log and die.  log will only be seen by administrators.  log
-	    // and print will print to the screen and to the log. log and die will stop execution and log.
-	    //$print = array(E_NOTICE, E_USER_NOTICE);
-        $print = array(E_NOTICE, E_USER_NOTICE, E_WARNING, E_CORE_WARNING, E_COMPILE_WARNING, E_USER_WARNING);
-	    $log_and_print = array();
-	    $log_and_die = array();
-        $die = array(E_ERROR, E_PARSE, E_CORE_ERROR, E_COMPILE_ERROR, E_USER_ERROR);
-	    
-	    // This is the format of the
-	    $err = "<b>$errortype[$errno]</b>: ";
-	    $err .= "$errmsg ";
-	    $err .= "in $filename ";
-	    $err .= "on line $linenum";
-	    
-	    //if (in_array($errno, $user_errors)) {
-	    //    $err .= ":".wddx_serialize_value($vars,"Variables");
-	    //}
-	    
-	    $err .= "\n";
-	    	    
-	    if (in_array($errno, $log_and_die)) {
-	    	my_error_log("Error", $err);
-	    	my_error_screen($errortype[$errno], $errmsg, $filename, $linenum);
-	    }
-        
-        elseif (in_array($errno, $die)) {
-            my_error_screen($errortype[$errno], $errmsg, $filename, $linenum);
-        }
-         
-	    elseif (in_array($errno, $log_and_print)) {
-	    	my_error_log("Warn", $err);
+      if (in_array($errno, $log_and_die)) {
+        my_error_log("Error", $err);
+        my_error_screen($errortype[$errno], $errmsg, $filename, $linenum);
+      }
+      elseif (in_array($errno, $die)) {
+        my_error_screen($errortype[$errno], $errmsg, $filename, $linenum);
+      }
+      elseif (in_array($errno, $log_and_print)) {
+      	my_error_log("Warn", $err);
             my_error_print("Warn", $err);
-	    }
-	    
-	    elseif (in_array($errno, $print)) {
+      }
+
+      elseif (in_array($errno, $print)) {
             my_error_print("Notice", $err);
-	    }
-	    
-	    else {
+      }
+
+      else {
             trigger_error("Wierd Error Case", E_USER_NOTICE);
-	    }	   
+      }
+
+      return true;	   
 	}
 
 ?>
